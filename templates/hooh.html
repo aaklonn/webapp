@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Collegewise Cutoff 2024</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+     <style>
+ /* Style for select dropdown */
+select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    background-color: rgba(255, 255, 255, 0.7); /* Translucent background */
+    transition: background-color 0.3s ease; /* Smooth transition effect */
+}
+
+/* Style for dropdown options */
+select option {
+    padding: 8px;
+    background-color: rgba(255, 255, 255, 0.7); /* Translucent background for options */
+}
+
+/* Light blue color effect on hover */
+select option:hover {
+    background-color: #add8e6; /* Light blue color on hover */
+}
+
+
+
+
+        table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    th, td {
+        padding: 8px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+
+    tr {
+        /* Adjust this value to increase or decrease row spacing */
+        margin-bottom: 10px;
+    }
+    </style>
+</head>
+<body class="bg-gray-900 text-gray-400">
+    <header class="text-gray-400 bg-gray-900 body-font">
+        <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
+            <!-- Logo and Name -->
+            <a href="https://youtube.com/MahenjuWeb" class="flex order-first lg:order-none lg:w-2/5 title-font font-medium items-center text-white lg:items-center lg:justify-center mb-4 md:mb-0">
+                <img src="https://i.ibb.co/y42LjdW/p.png" class="w-14 h-14 text-white bg-gray-900" alt="Logo">
+                  <h1 class="flex items-center text-3xl font-extrabold text-white dark:text-gray-100">Mahenju<span class="bg-blue-100 text-blue-800 text-3xl font-semibold me-2 px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800 ms-2">Web</span></h1>
+
+            </a>
+
+
+
+
+
+
+            </div>
+        </div>
+    </header>
+<section class="container mx-auto flex px-5 py-24 md:flex-row flex-col items-center">
+    <div class="lg:max-w-lg lg:w-full md:w-1/2 w-5/6 md:mb-0 mb-10">
+        <form class="w-full max-w-lg" method="POST" action="/hooh/process_data" onsubmit="sendData(event)">
+            <div class="flex flex-wrap mb-6">
+                <div class="w-full md:w-1/3 py-2 px-3 mb-6 md:mb-0">
+                    <label class="block uppercase tracking-wide text-xs font-bold mb-2 text-transparent bg-clip-text bg-gradient-to-r from-red-400 to-orange-600" for="grid-state">
+                       College
+                    </label>
+                    <div class="relative">
+                        <select class="block appearance-none w-full bg-gray-200 border border-6px border-red-400 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-red-500" id="college"  onchange="populateCol(this.value)">
+                            <option selected>--Select--</option>
+                            <option value="ALL">ALL</option>
+                            <option value="NIT">NIT</option>
+                            <option value="IIIT">IIIT</option>
+                            <option value="GFTI">GFTI</option>
+
+
+                    </select>
+                    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                        <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+                    </div>
+                </div>
+                </div>
+                </div>
+
+            <div class="flex flex-wrap mb-2">
+                <div class="w-full md:w-1/3 py-2 px-3 mb-6 md:mb-0">
+                    <label class="block uppercase tracking-wide text-xs font-bold mb-2 text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-yellow-600" for="grid-state">
+                        Category
+                    </label>
+                    <div class="relative">
+                        <select class="block appearance-none w-full bg-gray-200 border  border-6px border-orange-400 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="category">
+                            <option  selected>--Select--</option>
+                            <option >OPEN</option>
+                            <option >OBC-NCL</option>
+                            <option >EWS</option>
+                            <option >SC</option>
+                            <option >ST</option>
+                            <option >OPEN-PWD</option>
+                            <option >OBC-PWD</option>
+                            <option >EWS-PWD</option>
+                            <option >SC-PWD</option>
+                        </select>
+                        <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                            <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-full md:w-1/3 py-2 px-3 mb-6 md:mb-0">
+                    <label class="block uppercase tracking-wide text-xs font-bold mb-2 text-transparent bg-clip-text bg-gradient-to-r from-yellow-600 to-green-600" for="grid-state">
+                        Gender
+                    </label>
+                    <div class="relative">
+                        <select class="block appearance-none w-full bg-gray-200 border border-6px border-yellow-400 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="gender">
+                            <option selected>--Select--</option>
+                            <option>MALE</option>
+                            <option>FEMALE</option>
+                        </select>
+                        <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                            <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-full md:w-1/3 py-2 px-3 mb-6 md:mb-0">
+                    <label class="block uppercase tracking-wide text-xs font-bold mb-2 text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-cyan-600" for="grid-state">
+                        Quota
+                                  </label>
+                    <div class="relative">
+                        <select class="block appearance-none w-full bg-gray-200 border border-6px border-green-400 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="quota" >
+                            <option selected>--Select--</option>
+
+                        </select>
+                        <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                            <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Inside the form, below the College selection -->
+<div class="w-full md:w-1/3 py-2 px-3 mb-6 md:mb-0">
+    <label class="block uppercase tracking-wide text-xs font-bold mb-2 text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-600" for="grid-state">
+        College Name
+    </label>
+    <div class="relative">
+        <select class="block appearance-none w-full bg-gray-200 border border-6px border-cyan-400 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="collegename" onchange="populateBranch(document.getElementById('college').value, this.value)">
+            <option selected>--Select--</option>
+        </select>
+        <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+            <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+        </div>
+    </div>
+</div>
+
+
+               <!-- Inside the form, below the College selection -->
+<div class="w-full md:w-1/3 py-2 px-3 mb-6 md:mb-0">
+    <label class="block uppercase tracking-wide text-xs font-bold mb-2 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600" for="grid-state">
+        Branch
+    </label>
+    <div class="relative">
+        <select class="block appearance-none w-full bg-gray-200 border border-6px border-purple-400 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="branch">
+            <!-- Options will be populated dynamically -->
+            <option selected>--Select--</option>
+        </select>
+        <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+            <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+        </div>
+    </div>
+</div>
+
+                <div class="p-2 w-full">
+                    <button value="Submit" onclick="sendData(event)" class="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">Submit</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="lg:flex-grow md:w-1/2 lg:pl-24 md:pl-16 flex flex-col md:items-start md:text-left items-center text-center">
+        <h1 class="title-font sm:text-4xl text-3xl mb-4 font-extrabold text-white">Closing and Opening Ranks of Colleges - 2024
+            <br class="hidden lg:inline-block text-blue-800">By Mahenju Web
+        </h1>
+        <p class="mb-8 leading-relaxed font-bold text-[#ffc821]">Find Out The Cutoff Of All The Colleges As Per 2023's Last Round of Josaa Counselling.</p>
+    </div>
+</section>
+
+
+
+<section class="text-gray-400 bg-gray-900 body-font">
+    <div class="container px-5 py-24 mx-auto">
+        <div class="overflow-x-auto">
+            <table class="table-auto border-collapse w-full">
+                <thead>
+                    <tr>
+                        <th class="px-4 py-2">College</th>
+                        <th class="px-4 py-2">Branch</th>
+                        <th class="px-4 py-2">Category</th>
+                        <th class="px-4 py-2">Opening Rank</th>
+                        <th class="px-4 py-2">Closing Rank</th>
+                    </tr>
+                </thead>
+                <tbody id="resultBody">
+                    <!-- Results will be dynamically inserted here -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+
+
+<script>
+    const hok={
+        "ALL" : {"Quota" : ["LA", "JK", "HS","AI", "GO"]},
+        "NIT" : {"Quota" : ["LA", "JK", "HS","AI", "GO"]},
+        "IIIT" : {"Quota" : ["AI"]},
+        "GFTI" : {"Quota" : ["AI","HS"]}
+
+    }
+   const collegeData = {
+        "ALL": {
+        "Colleges": ["ALL","Assam University Silchar","Atal Bihari Vajpayee Indian Institute of Information Technology & Management Gwalior","Birla Institute of Technology Deoghar Off-Campus","Birla Institute of Technology Mesra Ranchi","Birla Institute of Technology Patna Off-Campus","Central University of Haryana","Central University of Jammu","Central University of RajasthanRajasthan","Central institute of Technology KokrajarAssam","Chhattisgarh Swami Vivekanada Technical UniversityBhilai (CSVTU Bhilai)","Dr. B R Ambedkar National Institute of Technology Jalandhar","Ghani Khan Choudhary Institute of Engineering and Technology MaldaWest Bengal","Gurukula Kangri Vishwavidyalaya Haridwar","Indian Institute of Carpet Technology  Bhadohi","Indian Institute of Engineering Science and Technology Shibpur","Indian Institute of Handloom Technology Salem","Indian Institute of Handloom Technology(IIHT)Varanasi","Indian Institute of Information Technology  Manipur","Indian Institute of Information Technology (IIIT) Nagpur","Indian Institute of Information Technology (IIIT) Pune","Indian Institute of Information Technology (IIIT) Ranchi","Indian Institute of Information Technology (IIIT)KotaRajasthan","Indian Institute of Information Technology (IIIT)Sri CityChittoor","Indian Institute of Information Technology Agartala","Indian Institute of Information Technology Allahabad","Indian Institute of Information Technology Bhagalpur","Indian Institute of Information Technology Bhopal","Indian Institute of Information Technology Design & Manufacturing Kancheepuram","Indian Institute of Information Technology Design & Manufacturing Kurnool Andhra Pradesh","Indian Institute of Information Technology Guwahati","Indian Institute of Information Technology Lucknow","Indian Institute of Information Technology Surat","Indian Institute of Information Technology Tiruchirappalli","Indian Institute of Information Technology Vadodara International Campus Diu (IIITVICD)","Indian Institute of Information Technology(IIIT) Dharwad","Indian Institute of Information Technology(IIIT) KalyaniWest Bengal","Indian Institute of Information Technology(IIIT) KilohradSonepatHaryana","Indian Institute of Information Technology(IIIT) Kottayam","Indian Institute of Information Technology(IIIT) UnaHimachal Pradesh","Indian Institute of Information Technology(IIIT)VadodaraGujrat","Indian institute of information technology RaichurKarnataka","Institute of Chemical Technology Mumbai Indian Oil Odisha CampusBhubaneswar","Institute of Engineering and Technology Dr. H. S. Gour University. Sagar (A Central University)","Institute of InfrastructureTechnology Research and Management-Ahmedabad","Institute of Technology Guru Ghasidas Vishwavidyalaya (A Central University)Bilaspur(C.G.)","International Institute of Information Technology Bhubaneswar","International Institute of Information Technology Naya Raipur","J.K. Institute of Applied Physics & Technology Department of Electronics & CommunicationUniversity of Allahabad- Allahabad","Jawaharlal Nehru UniversityDelhi","Malaviya National Institute of Technology Jaipur","Maulana Azad National Institute of Technology Bhopal","Mizoram UniversityAizawl","Motilal Nehru National Institute of Technology Allahabad","National Institute of Advanced Manufacturing Technology Ranchi","National Institute of Electronics and Information Technology Aurangabad (Maharashtra)","National Institute of Food Technology Entrepreneurship and ManagementKundli","National Institute of Food Technology Entrepreneurship and ManagementThanjavur","National Institute of Technology  Agartala","National Institute of Technology Andhra Pradesh","National Institute of Technology Arunachal Pradesh","National Institute of Technology Calicut","National Institute of Technology Delhi","National Institute of Technology Durgapur","National Institute of Technology Goa","National Institute of Technology Hamirpur","National Institute of Technology Jamshedpur","National Institute of Technology Karnataka Surathkal","National Institute of Technology Kurukshetra","National Institute of Technology Manipur","National Institute of Technology Meghalaya","National Institute of Technology Mizoram","National Institute of Technology Nagaland","National Institute of Technology Patna","National Institute of Technology Puducherry","National Institute of Technology Raipur","National Institute of Technology Rourkela","National Institute of Technology Sikkim","National Institute of Technology Silchar","National Institute of Technology Srinagar","National Institute of Technology Tiruchirappalli","National Institute of Technology Uttarakhand","National Institute of Technology Warangal","North Eastern Regional Institute of Science and Technology Nirjuli-791109 (Itanagar)","North-Eastern Hill UniversityShillong","Pt. Dwarka Prasad Mishra Indian Institute of Information Technology Design & Manufacture Jabalpur","Puducherry Technological UniversityPuducherry","Punjab Engineering CollegeChandigarh","Sant Longowal Institute of Engineering and Technology","Sardar Vallabhbhai National Institute of Technology Surat","School of EngineeringTezpur UniversityNapaamTezpur","School of Planning & Architecture: Vijayawada","School of Planning & ArchitectureBhopal","School of Planning & ArchitectureNew Delhi","Shri Mata Vaishno Devi UniversityKatraJammu & Kashmir","University of Hyderabad","Visvesvaraya National Institute of Technology Nagpur"], // Add all colleges here
+        "Branches": ["ALL","AI","AI and DATA SCIENCE","Aeronautical Engineering","Aerospace Engineering","Agricultural Engineering","Architecture  (5 Years Bachelor of Architecture)","Architecture  (5 YearsBachelor of Architecture)","Artificial Intelligence and Machine Learning","Arunachal Pradesh","BIOMEDICAL","BIOTECH","BIOTECH DUAL","Bio Medical Engineering","CERAMIC","CERAMIC DUAL","CHEMICAL","CHEMICAL DUAL","CIVIL","CIVIL DUAL","COMPUTER ENGINEERING","CSE","CSE DUAL","CSE DUAL with CYBER","CSE DUAL with DATA SCIENCE","CSE with AI","CSE with CYBER","CSE with DATA SCIENCE","Carpet  and Textile Technology","Chemical Engineering DUAL","Chemistry (5 Years Bachelor of Science and Master of Science (Dual Degree))","Chemistry (5 Years Integrated Master of Science)","Computational Mathematics Dual","Computational and Data Science","Computer Science Engineering (Data Science and Analytics) (4 YearsBachelor of Technology)","Computer Science Engineering (Human Computer lnteraction and Gaming Technology)","Computer Science and Business","Dairy Engineering","Data Science and Engineering","ECE","ECE DUAL","ECE DUAL VLSI","ECE DUAL with Design","ECE with EMbedding","ECE with SPECIALISATION","ECE with VLSI","EE","EE DUAL","EEE","Electronics System Engineering","Electronics and Communication Engineering (Avionics)","Electronics and ICE","Electronics and Instrumentation Engineering","Electronics and Telecommunication Engineering","Electronics and VLSI Engineering","Energy Engineering","Engineering Physics","Engineering and Computational Mechanics","Fashion and Apparel Engineering","Food Engineering  and Technology","Food Process Engineering","Food Technology","Handloom and Textile Technology","ICE","IPE","IT","IT DUAL","IT DUAL with MBA","Industrial Design","Information Technology-Business Informatics","Life Science (5 Years Integrated Master of Science)","MATHS AND DATA SCIENCE DUAL","MECHANICAL","MECHANICAL DUAL","MECHINCAL DUAL","MECHINCAL with Design","METALLURGY","METALLURGY DUAL","MINING","MINING DUAL","Material Science and Engineering Dual","Materials Science and Engineering","Mathematics & Computing","Mathematics & Computing DUAL","Mathematics (5 Years Integrated Master of Science)","Mathematics and Computing (5 YearsIntegrated Master of Science)","Mechatronics Engineering","Mechatronics and Automation Engineering","Physics (5 Years Bachelor of Science and Master of Science (Dual Degree))","Physics (5 Years Integrated Master of Science)","Physics (5 YearsIntegrated Master of Science)","Planning (4 Years Bachelor of Planning)","Planning (4 YearsBachelor of Planning)","Printing and Packaging Technology","Quantitative Economics & Data Science (5 YearsIntegrated Master of Science)","SMART MANUFACTURING","TEXTILE"] // Add branches for all colleges here
+    },
+    "NIT": {
+        "Colleges": ["ALL","Dr. B R Ambedkar National Institute of Technology Jalandhar","Indian Institute of Engineering Science and Technology Shibpur","Malaviya National Institute of Technology Jaipur","Maulana Azad National Institute of Technology Bhopal","Motilal Nehru National Institute of Technology Allahabad","National Institute of Technology  Agartala","National Institute of Technology Andhra Pradesh","National Institute of Technology Arunachal Pradesh","National Institute of Technology Calicut","National Institute of Technology Delhi","National Institute of Technology Durgapur","National Institute of Technology Goa","National Institute of Technology Hamirpur","National Institute of Technology Jamshedpur","National Institute of Technology Karnataka Surathkal","National Institute of Technology Kurukshetra","National Institute of Technology Manipur","National Institute of Technology Meghalaya","National Institute of Technology Mizoram","National Institute of Technology Nagaland","National Institute of Technology Patna","National Institute of Technology Puducherry","National Institute of Technology Raipur","National Institute of Technology Rourkela","National Institute of Technology Sikkim","National Institute of Technology Silchar","National Institute of Technology Srinagar","National Institute of Technology Tiruchirappalli","National Institute of Technology Uttarakhand","National Institute of Technology Warangal","Sardar Vallabhbhai National Institute of Technology Surat","Visvesvaraya National Institute of Technology Nagpur"], // Add NITs here
+        "Branches": ["ALL","AI","AI and DATA SCIENCE","Aerospace Engineering","Architecture  (5 Years Bachelor of Architecture)","BIOMEDICAL","BIOTECH","BIOTECH DUAL","CERAMIC","CERAMIC DUAL","CHEMICAL","CIVIL","CIVIL DUAL","COMPUTER ENGINEERING","CSE","CSE DUAL","CSE DUAL with CYBER","CSE DUAL with DATA SCIENCE","Chemical Engineering DUAL","Chemistry (5 Years Bachelor of Science and Master of Science (Dual Degree))","Chemistry (5 Years Integrated Master of Science)","Computational Mathematics Dual","Computational and Data Science","Data Science and Engineering","ECE","ECE DUAL","ECE with VLSI","EE","EE DUAL","EEE","Electronics and Instrumentation Engineering","Electronics and Telecommunication Engineering","Electronics and VLSI Engineering","Engineering Physics","Engineering and Computational Mechanics","Food Process Engineering","ICE","IPE","IT","Industrial Design","Life Science (5 Years Integrated Master of Science)","MATHS AND DATA SCIENCE DUAL","MECHANICAL","MECHANICAL DUAL","METALLURGY","METALLURGY DUAL","MINING","MINING DUAL","Material Science and Engineering Dual","Materials Science and Engineering","Mathematics & Computing","Mathematics & Computing DUAL","Mathematics (5 Years Integrated Master of Science)","Physics (5 Years Bachelor of Science and Master of Science (Dual Degree))","Physics (5 Years Integrated Master of Science)","Planning (4 Years Bachelor of Planning)","TEXTILE"] // Add branches for NITs here
+    },
+    "IIIT": {
+        "Colleges": ["ALL","Atal Bihari Vajpayee Indian Institute of Information Technology & Management Gwalior","Indian Institute of Information Technology  Manipur","Indian Institute of Information Technology (IIIT) Nagpur","Indian Institute of Information Technology (IIIT) Pune","Indian Institute of Information Technology (IIIT) Ranchi","Indian Institute of Information Technology (IIIT)KotaRajasthan","Indian Institute of Information Technology (IIIT)Sri CityChittoor","Indian Institute of Information Technology Agartala","Indian Institute of Information Technology Allahabad","Indian Institute of Information Technology Bhagalpur","Indian Institute of Information Technology Bhopal","Indian Institute of Information Technology Design & Manufacturing Kancheepuram","Indian Institute of Information Technology Design & Manufacturing Kurnool Andhra Pradesh","Indian Institute of Information Technology Guwahati","Indian Institute of Information Technology Lucknow","Indian Institute of Information Technology Surat","Indian Institute of Information Technology Tiruchirappalli","Indian Institute of Information Technology Vadodara International Campus Diu (IIITVICD)","Indian Institute of Information Technology(IIIT) Dharwad","Indian Institute of Information Technology(IIIT) KalyaniWest Bengal","Indian Institute of Information Technology(IIIT) KilohradSonepatHaryana","Indian Institute of Information Technology(IIIT) Kottayam","Indian Institute of Information Technology(IIIT) UnaHimachal Pradesh","Indian Institute of Information Technology(IIIT)VadodaraGujrat","Indian institute of information technology RaichurKarnataka","Pt. Dwarka Prasad Mishra Indian Institute of Information Technology Design & Manufacture Jabalpur"], // Add IIITs here
+        "Branches": ["ALL","AI and DATA SCIENCE","CSE","CSE DUAL","CSE with AI","CSE with CYBER","CSE with DATA SCIENCE","Computer Science Engineering (Data Science and Analytics) (4 YearsBachelor of Technology)","Computer Science Engineering (Human Computer lnteraction and Gaming Technology)","Computer Science and Business","ECE","ECE DUAL","ECE DUAL VLSI","ECE DUAL with Design","ECE with EMbedding","ECE with SPECIALISATION","ECE with VLSI","EEE","IT","IT DUAL","IT DUAL with MBA","Information Technology-Business Informatics","MECHANICAL","MECHINCAL DUAL","MECHINCAL with Design","Mathematics & Computing","Mechatronics and Automation Engineering","SMART MANUFACTURING"]  // Add branches for IIITs here
+    },
+    "GFTI": {
+        "Colleges": ["ALL","Assam University Silchar","Birla Institute of Technology Deoghar Off-Campus","Birla Institute of Technology Mesra Ranchi","Birla Institute of Technology Patna Off-Campus","Central University of Haryana","Central University of Jammu","Central University of RajasthanRajasthan","Central institute of Technology KokrajarAssam","Chhattisgarh Swami Vivekanada Technical UniversityBhilai (CSVTU Bhilai)","Ghani Khan Choudhary Institute of Engineering and Technology MaldaWest Bengal","Gurukula Kangri Vishwavidyalaya Haridwar","Indian Institute of Carpet Technology  Bhadohi","Indian Institute of Handloom Technology Salem","Indian Institute of Handloom Technology(IIHT)Varanasi","Institute of Chemical Technology Mumbai Indian Oil Odisha CampusBhubaneswar","Institute of Engineering and Technology Dr. H. S. Gour University. Sagar (A Central University)","Institute of InfrastructureTechnology Research and Management-Ahmedabad","Institute of Technology Guru Ghasidas Vishwavidyalaya (A Central University)Bilaspur(C.G.)","International Institute of Information Technology Bhubaneswar","International Institute of Information Technology Naya Raipur","J.K. Institute of Applied Physics & Technology Department of Electronics & CommunicationUniversity of Allahabad- Allahabad","Jawaharlal Nehru UniversityDelhi","Mizoram UniversityAizawl","National Institute of Advanced Manufacturing Technology Ranchi","National Institute of Electronics and Information Technology Aurangabad (Maharashtra)","National Institute of Food Technology Entrepreneurship and ManagementKundli","National Institute of Food Technology Entrepreneurship and ManagementThanjavur","North Eastern Regional Institute of Science and Technology Nirjuli-791109 (Itanagar)","North-Eastern Hill UniversityShillong","Puducherry Technological UniversityPuducherry","Punjab Engineering CollegeChandigarh","Sant Longowal Institute of Engineering and Technology","School of EngineeringTezpur UniversityNapaamTezpur","School of Planning & Architecture: Vijayawada","School of Planning & ArchitectureBhopal","School of Planning & ArchitectureNew Delhi","Shri Mata Vaishno Devi UniversityKatraJammu & Kashmir","University of Hyderabad"], // Add GFTIs here
+        "Branches": ["ALL","AI and DATA SCIENCE","Aeronautical Engineering","Aerospace Engineering","Agricultural Engineering","Architecture  (5 YearsBachelor of Architecture)","Artificial Intelligence and Machine Learning","Arunachal Pradesh","BIOTECH","Bio Medical Engineering","CHEMICAL","CHEMICAL DUAL","CIVIL","COMPUTER ENGINEERING","CSE","CSE DUAL","CSE with AI","CSE with CYBER","CSE with DATA SCIENCE","Carpet  and Textile Technology","Dairy Engineering","ECE","EE","EEE","Electronics System Engineering","Electronics and Communication Engineering (Avionics)","Electronics and ICE","Electronics and Telecommunication Engineering","Electronics and VLSI Engineering","Energy Engineering","Fashion and Apparel Engineering","Food Engineering  and Technology","Food Technology","Handloom and Textile Technology","ICE","IPE","IT","MECHANICAL","METALLURGY","Mathematics and Computing (5 YearsIntegrated Master of Science)","Mechatronics Engineering","Physics (5 YearsIntegrated Master of Science)","Planning (4 YearsBachelor of Planning)","Printing and Packaging Technology","Quantitative Economics & Data Science (5 YearsIntegrated Master of Science)"] // Add branches for GFTIs here
+    }
+    };
+    const collegeBranches = {
+    "ALL": {
+        "ALL" : ["ALL","AI","AI and DATA SCIENCE","Aeronautical Engineering","Aerospace Engineering","Agricultural Engineering","Architecture  (5 Years Bachelor of Architecture)","Architecture  (5 YearsBachelor of Architecture)","Artificial Intelligence and Machine Learning","Arunachal Pradesh","BIOMEDICAL","BIOTECH","BIOTECH DUAL","Bio Medical Engineering","CERAMIC","CERAMIC DUAL","CHEMICAL","CHEMICAL DUAL","CIVIL","CIVIL DUAL","COMPUTER ENGINEERING","CSE","CSE DUAL","CSE DUAL with CYBER","CSE DUAL with DATA SCIENCE","CSE with AI","CSE with CYBER","CSE with DATA SCIENCE","Carpet  and Textile Technology","Chemical Engineering DUAL","Chemistry (5 Years Bachelor of Science and Master of Science (Dual Degree))","Chemistry (5 Years Integrated Master of Science)","Computational Mathematics Dual","Computational and Data Science","Computer Science Engineering (Data Science and Analytics) (4 YearsBachelor of Technology)","Computer Science Engineering (Human Computer lnteraction and Gaming Technology)","Computer Science and Business","Dairy Engineering","Data Science and Engineering","ECE","ECE DUAL","ECE DUAL VLSI","ECE DUAL with Design","ECE with EMbedding","ECE with SPECIALISATION","ECE with VLSI","EE","EE DUAL","EEE","Electronics System Engineering","Electronics and Communication Engineering (Avionics)","Electronics and ICE","Electronics and Instrumentation Engineering","Electronics and Telecommunication Engineering","Electronics and VLSI Engineering","Energy Engineering","Engineering Physics","Engineering and Computational Mechanics","Fashion and Apparel Engineering","Food Engineering  and Technology","Food Process Engineering","Food Technology","Handloom and Textile Technology","ICE","IPE","IT","IT DUAL","IT DUAL with MBA","Industrial Design","Information Technology-Business Informatics","Life Science (5 Years Integrated Master of Science)","MATHS AND DATA SCIENCE DUAL","MECHANICAL","MECHANICAL DUAL","MECHINCAL DUAL","MECHINCAL with Design","METALLURGY","METALLURGY DUAL","MINING","MINING DUAL","Material Science and Engineering Dual","Materials Science and Engineering","Mathematics & Computing","Mathematics & Computing DUAL","Mathematics (5 Years Integrated Master of Science)","Mathematics and Computing (5 YearsIntegrated Master of Science)","Mechatronics Engineering","Mechatronics and Automation Engineering","Physics (5 Years Bachelor of Science and Master of Science (Dual Degree))","Physics (5 Years Integrated Master of Science)","Physics (5 YearsIntegrated Master of Science)","Planning (4 Years Bachelor of Planning)","Planning (4 YearsBachelor of Planning)","Printing and Packaging Technology","Quantitative Economics & Data Science (5 YearsIntegrated Master of Science)","SMART MANUFACTURING","TEXTILE"],
+   "Dr. B R Ambedkar National Institute of Technology Jalandhar": ["ALL","BIOTECH", "CHEMICAL", "CIVIL", "CSE", "Data Science and Engineering", "EE", "ECE", "Electronics and VLSI Engineering", "IPE", "IT", "ICE", "MECHANICAL", "TEXTILE"],
+     "Malaviya National Institute of Technology Jaipur": ["ALL","Architecture  (5 Years Bachelor of Architecture)", "AI and DATA SCIENCE", "CHEMICAL", "CIVIL", "CSE", "EE", "ECE", "MECHANICAL", "METALLURGY"],
+     "Maulana Azad National Institute of Technology Bhopal": ["ALL","Architecture  (5 Years Bachelor of Architecture)", "CHEMICAL", "CIVIL", "CSE", "EE", "ECE", "METALLURGY", "MATHS AND DATA SCIENCE DUAL", "MECHANICAL", "Planning (4 Years Bachelor of Planning)"],
+     "Motilal Nehru National Institute of Technology Allahabad": ["ALL","BIOTECH", "CHEMICAL", "CIVIL", "CSE", "EE", "ECE", "Engineering and Computational Mechanics", "MECHANICAL", "IPE"],
+     "National Institute of Technology  Agartala": ["ALL","BIOTECH", "CHEMICAL", "Chemistry (5 Years Bachelor of Science and Master of Science (Dual Degree))", "CIVIL", "Computational Mathematics Dual", "CSE", "EE", "ECE", "Electronics and Instrumentation Engineering", "Engineering Physics", "Mathematics & Computing", "MECHANICAL", "Physics (5 Years Bachelor of Science and Master of Science (Dual Degree))", "IPE"],
+     "National Institute of Technology Calicut": ["ALL","Architecture  (5 Years Bachelor of Architecture)", "BIOTECH", "CHEMICAL", "CIVIL", "CSE", "EEE", "ECE", "Engineering Physics", "Materials Science and Engineering", "MECHANICAL", "IPE"],
+     "National Institute of Technology Delhi": ["ALL","AI and DATA SCIENCE", "CIVIL", "CSE", "EE", "ECE", "MECHANICAL"],
+     "National Institute of Technology Durgapur": ["ALL","BIOTECH", "BIOTECH DUAL", "CHEMICAL", "Chemical Engineering DUAL", "Chemistry (5 Years Integrated Master of Science)", "CIVIL", "CSE", "EE", "ECE", "MECHANICAL", "METALLURGY"],
+     "National Institute of Technology Goa": ["ALL","CIVIL", "CSE", "EEE", "ECE", "MECHANICAL"],
+     "National Institute of Technology Hamirpur": ["ALL","Architecture  (5 Years Bachelor of Architecture)", "CHEMICAL", "CIVIL", "CSE", "CSE DUAL", "EE", "ECE", "ECE DUAL", "Engineering Physics", "Materials Science and Engineering", "Mathematics & Computing", "MECHANICAL"],
+     "National Institute of Technology Karnataka Surathkal": ["ALL","AI", "CHEMICAL", "CIVIL", "Computational and Data Science", "CSE", "EEE", "ECE", "IT", "MECHANICAL", "METALLURGY", "MINING"],
+     "National Institute of Technology Meghalaya": ["ALL","CIVIL", "CSE", "EEE", "ECE", "MECHANICAL"],
+     "National Institute of Technology Nagaland": ["ALL","CIVIL", "CSE", "EEE", "ECE", "Electronics and Instrumentation Engineering", "MECHANICAL"],
+     "National Institute of Technology Patna": ["ALL","Architecture  (5 Years Bachelor of Architecture)", "Chemical Engineering DUAL", "CIVIL", "CIVIL DUAL", "CCIVIL DUAL", "CSE", "CSE DUAL with CYBER", "CSE DUAL with DATA SCIENCE", "EE", "EE DUAL", "ECE", "ECE DUAL", "Material Science and Engineering Dual", "Mathematics & Computing DUAL", "MECHANICAL", "MECHANICAL DUAL"],
+     "National Institute of Technology Puducherry": ["ALL","CIVIL", "CSE", "EEE", "ECE", "MECHANICAL"],
+     "National Institute of Technology Raipur": ["ALL","Architecture  (5 Years Bachelor of Architecture)", "BIOMEDICAL", "BIOTECH", "CHEMICAL", "CIVIL", "CSE", "EE", "ECE", "IT", "MECHANICAL", "METALLURGY", "MINING"],
+     "National Institute of Technology Sikkim": ["ALL","CIVIL", "CSE", "EEE", "ECE", "MECHANICAL"],
+     "National Institute of Technology Arunachal Pradesh": ["ALL","CIVIL", "CSE", "EE", "ECE", "MECHANICAL"],
+     "National Institute of Technology Jamshedpur": ["ALL","CIVIL", "CSE", "EE", "ECE", "Engineering and Computational Mechanics", "MECHANICAL", "METALLURGY", "IPE"],
+     "National Institute of Technology Kurukshetra": ["ALL","AI", "CIVIL", "COMPUTER ENGINEERING", "EE", "ECE", "IPE", "IT", "Mathematics & Computing", "MECHANICAL"],
+     "National Institute of Technology Manipur": ["ALL","CIVIL", "CSE", "EE", "ECE", "MECHANICAL"],
+     "National Institute of Technology Mizoram": ["ALL","CIVIL", "CSE", "EE", "ECE", "Mathematics & Computing", "MECHANICAL"],
+     "National Institute of Technology Rourkela": ["ALL","Architecture  (5 Years Bachelor of Architecture)", "BIOMEDICAL", "BIOTECH", "CERAMIC", "CERAMIC DUAL", "CHEMICAL", "Chemical Engineering DUAL", "Chemistry (5 Years Integrated Master of Science)", "CIVIL", "CSE", "EE", "ECE", "Electronics and Instrumentation Engineering", "Food Process Engineering", "Industrial Design", "Life Science (5 Years Integrated Master of Science)", "Mathematics (5 Years Integrated Master of Science)", "MECHANICAL", "METALLURGY", "METALLURGY DUAL", "MINING", "MINING DUAL", "Physics (5 Years Integrated Master of Science)"],
+     "National Institute of Technology Silchar": ["ALL","CIVIL", "CSE", "EE", "ECE", "Electronics and Instrumentation Engineering", "MECHANICAL"],
+     "National Institute of Technology Srinagar": ["ALL","CHEMICAL", "CIVIL", "CSE", "EE", "ECE", "IT", "MECHANICAL", "METALLURGY"],
+     "National Institute of Technology Tiruchirappalli": ["ALL","Architecture  (5 Years Bachelor of Architecture)", "CHEMICAL", "CIVIL", "CSE", "EEE", "ECE", "ICE", "MECHANICAL", "METALLURGY", "IPE"],
+     "National Institute of Technology Uttarakhand": ["ALL","CIVIL", "CSE", "EEE", "ECE", "MECHANICAL"],
+     "National Institute of Technology Warangal": ["ALL","BIOTECH", "CHEMICAL", "Chemistry (5 Years Integrated Master of Science)", "CIVIL", "CSE", "EEE", "ECE", "ECE with VLSI", "Mathematics (5 Years Integrated Master of Science)", "Mathematics & Computing", "MECHANICAL", "METALLURGY", "Physics (5 Years Integrated Master of Science)"],
+     "Sardar Vallabhbhai National Institute of Technology Surat": ["ALL","AI", "CHEMICAL", "Chemistry (5 Years Integrated Master of Science)", "CIVIL", "CSE", "EE", "ECE", "Mathematics (5 Years Integrated Master of Science)", "MECHANICAL", "Physics (5 Years Integrated Master of Science)"],
+     "Visvesvaraya National Institute of Technology Nagpur": ["ALL","Architecture  (5 Years Bachelor of Architecture)", "CHEMICAL", "CIVIL", "CSE", "EEE", "ECE", "MECHANICAL", "METALLURGY", "MINING"],
+     "National Institute of Technology Andhra Pradesh": ["ALL","BIOTECH", "CHEMICAL", "CIVIL", "CSE", "EEE", "ECE", "MECHANICAL", "METALLURGY"],
+     "Indian Institute of Engineering Science and Technology Shibpur": ["ALL","Aerospace Engineering", "Architecture  (5 Years Bachelor of Architecture)", "CIVIL", "CSE", "EE", "Electronics and Telecommunication Engineering", "IT", "MECHANICAL", "METALLURGY", "MINING"],
+     "Atal Bihari Vajpayee Indian Institute of Information Technology & Management Gwalior": ["ALL","CSE", "EEE", "IT DUAL", "IT DUAL with MBA", "Mathematics & Computing"],
+     "Indian Institute of Information Technology (IIIT)KotaRajasthan": ["ALL","CSE", "ECE"],
+     "Indian Institute of Information Technology Guwahati": ["ALL","CSE", "ECE"],
+     "Indian Institute of Information Technology(IIIT) KalyaniWest Bengal": ["ALL","CSE", "ECE"],
+     "Indian Institute of Information Technology(IIIT) KilohradSonepatHaryana": ["ALL","CSE", "IT"],
+     "Indian Institute of Information Technology(IIIT) UnaHimachal Pradesh": ["ALL","CSE", "ECE", "IT"],
+     "Indian Institute of Information Technology (IIIT)Sri CityChittoor": ["ALL","AI and DATA SCIENCE", "CSE", "ECE"],
+     "Indian Institute of Information Technology(IIIT)VadodaraGujrat": ["ALL","CSE", "IT"],
+     "Indian Institute of Information Technology Allahabad": ["ALL","ECE", "IT", "Information Technology-Business Informatics"],
+     "Indian Institute of Information Technology Design & Manufacturing Kancheepuram": ["ALL","ECE DUAL", "ECE DUAL VLSI", "CSE", "CSE DUAL", "CSE with AI", "ECE", "MECHANICAL", "SMART MANUFACTURING"],
+     "Pt. Dwarka Prasad Mishra Indian Institute of Information Technology Design & Manufacture Jabalpur": ["ALL","CSE", "ECE", "MECHANICAL", "SMART MANUFACTURING"],
+     "Indian Institute of Information Technology  Manipur": ["ALL","CSE", "CSE with AI", "ECE", "ECE with VLSI"],
+     "Indian Institute of Information Technology Tiruchirappalli": ["ALL","CSE", "ECE"],
+     "Indian Institute of Information Technology Lucknow": ["ALL","CSE", "CSE with AI", "Computer Science and Business", "IT"],
+     "Indian Institute of Information Technology(IIIT) Dharwad": ["ALL","CSE", "AI and DATA SCIENCE", "ECE"],
+     "Indian Institute of Information Technology Design & Manufacturing Kurnool Andhra Pradesh": ["ALL","AI and DATA SCIENCE", "CSE", "CSE DUAL", "ECE DUAL", "ECE DUAL with Design", "MECHINCAL DUAL", "MECHINCAL with Design"],
+     "Indian Institute of Information Technology(IIIT) Kottayam": ["ALL","CSE", "CSE with AI", "CSE with CYBER", "ECE"],
+     "Indian Institute of Information Technology (IIIT) Ranchi": ["ALL","CSE", "CSE with DATA SCIENCE", "ECE", "ECE with EMbedding"],
+     "Indian Institute of Information Technology (IIIT) Nagpur": ["ALL","CSE", "CSE with AI", "Computer Science Engineering (Data Science and Analytics) (4 YearsBachelor of Technology)", "Computer Science Engineering (Human Computer lnteraction and Gaming Technology)", "ECE", "ECE with SPECIALISATION"],
+     "Indian Institute of Information Technology (IIIT) Pune": ["ALL","CSE", "ECE"],
+     "Indian Institute of Information Technology Bhagalpur": ["ALL","CSE", "ECE", "Mathematics & Computing", "Mechatronics and Automation Engineering"],
+     "Indian Institute of Information Technology Bhopal": ["ALL","CSE", "ECE", "IT"],
+     "Indian Institute of Information Technology Surat": ["ALL","CSE", "ECE"],
+     "Indian Institute of Information Technology Agartala": ["ALL","CSE"],
+     "Indian institute of information technology RaichurKarnataka": ["ALL","AI and DATA SCIENCE", "CSE"],
+     "Indian Institute of Information Technology Vadodara International Campus Diu (IIITVICD)": ["ALL","CSE"],
+     "International Institute of Information Technology Bhubaneswar": ["ALL","COMPUTER ENGINEERING", "CSE", "EEE", "Electronics and Telecommunication Engineering", "IT"],
+     "Assam University Silchar": ["ALL","Agricultural Engineering", "CSE", "ECE"],
+     "Birla Institute of Technology Mesra Ranchi": ["ALL","Architecture  (5 YearsBachelor of Architecture)", "Artificial Intelligence and Machine Learning", "BIOTECH", "CHEMICAL", "CIVIL", "CSE", "EEE", "ECE", "Food Engineering  and Technology", "Mathematics and Computing (5 YearsIntegrated Master of Science)", "MECHANICAL", "Physics (5 YearsIntegrated Master of Science)", "IPE", "Quantitative Economics & Data Science (5 YearsIntegrated Master of Science)"],
+     "Gurukula Kangri Vishwavidyalaya Haridwar": ["ALL","CSE", "EE", "ECE", "MECHANICAL"],
+     "Indian Institute of Carpet Technology  Bhadohi": ["ALL","Carpet  and Textile Technology"],
+     "Institute of InfrastructureTechnology Research and Management-Ahmedabad": ["ALL","CIVIL", "COMPUTER ENGINEERING", "EE", "MECHANICAL"],
+     "Institute of Technology Guru Ghasidas Vishwavidyalaya (A Central University)Bilaspur(C.G.)": ["ALL","CHEMICAL", "CIVIL", "CSE", "ECE", "IPE", "IT", "MECHANICAL"],
+     "J.K. Institute of Applied Physics & Technology Department of Electronics & CommunicationUniversity of Allahabad- Allahabad": ["ALL","CSE", "ECE"],
+     "National Institute of Electronics and Information Technology Aurangabad (Maharashtra)": ["ALL","Electronics System Engineering"],
+     "National Institute of Advanced Manufacturing Technology Ranchi": ["ALL","COMPUTER ENGINEERING", "MECHANICAL", "METALLURGY", "IPE"],
+     "Sant Longowal Institute of Engineering and Technology": ["ALL","CHEMICAL", "CSE", "EE", "ECE", "Food Technology", "ICE", "MECHANICAL"],
+     "Mizoram UniversityAizawl": ["ALL","Architecture  (5 YearsBachelor of Architecture)", "CIVIL", "COMPUTER ENGINEERING", "EE", "ECE", "IT"],
+     "School of EngineeringTezpur UniversityNapaamTezpur": ["ALL","CIVIL", "CSE", "EE", "ECE", "Food Engineering  and Technology", "MECHANICAL"],
+     "School of Planning & ArchitectureBhopal": ["ALL","Architecture  (5 YearsBachelor of Architecture)", "Planning (4 YearsBachelor of Planning)"],
+     "School of Planning & ArchitectureNew Delhi": ["ALL","Architecture  (5 YearsBachelor of Architecture)", "Planning (4 YearsBachelor of Planning)"],
+     "School of Planning & Architecture: Vijayawada": ["ALL","Architecture  (5 YearsBachelor of Architecture)", "Planning (4 YearsBachelor of Planning)"],
+     "Shri Mata Vaishno Devi UniversityKatraJammu & Kashmir": ["ALL","Architecture  (5 YearsBachelor of Architecture)", "CIVIL", "CSE", "EE", "ECE", "MECHANICAL"],
+     "International Institute of Information Technology Naya Raipur": ["ALL","CSE", "AI and DATA SCIENCE", "ECE"],
+     "University of Hyderabad": ["ALL","CSE DUAL"],
+     "Punjab Engineering CollegeChandigarh": ["ALL","Aerospace Engineering", "CIVIL", "CSE", "CSE with AI", "CSE with DATA SCIENCE", "EE", "ECE", "Electronics and VLSI Engineering", "MECHANICAL", "METALLURGY", "IPE"],
+     "Jawaharlal Nehru UniversityDelhi": ["ALL","CSE", "ECE"],
+     "Central institute of Technology KokrajarAssam": ["ALL","CIVIL", "CSE", "ECE", "Food Engineering  and Technology", "ICE"],
+     "Puducherry Technological UniversityPuducherry": ["ALL","CHEMICAL", "CIVIL", "CSE", "EEE", "ECE", "Electronics and ICE", "IT", "MECHANICAL", "Mechatronics Engineering"],
+     "Ghani Khan Choudhary Institute of Engineering and Technology MaldaWest Bengal": ["ALL","CIVIL", "CSE with AI", "EE", "Food Technology", "MECHANICAL"],
+     "Central University of RajasthanRajasthan": ["ALL","Bio Medical Engineering", "CSE", "ECE"],
+     "National Institute of Food Technology Entrepreneurship and ManagementKundli": ["ALL","Food Technology"],
+     "National Institute of Food Technology Entrepreneurship and ManagementThanjavur": ["ALL","Food Technology"],
+     "North Eastern Regional Institute of Science and Technology Nirjuli-791109 (Itanagar)": ["ALL","Agricultural Engineering", "CIVIL", "CSE", "EE", "ECE", "MECHANICAL"],
+     "Indian Institute of Handloom Technology(IIHT)Varanasi": ["ALL","Handloom and Textile Technology"],
+     "Chhattisgarh Swami Vivekanada Technical UniversityBhilai (CSVTU Bhilai)": ["ALL","CSE with AI", "CSE with DATA SCIENCE"],
+     "Institute of Chemical Technology Mumbai Indian Oil Odisha CampusBhubaneswar": ["ALL","CHEMICAL DUAL"],
+     "North-Eastern Hill UniversityShillong": ["ALL","Bio Medical Engineering", "ECE", "Energy Engineering", "IT"],
+     "Central University of Jammu": ["ALL","CSE", "CSE with CYBER", "ECE", "Electronics and Communication Engineering (Avionics)"],
+     "Institute of Engineering and Technology Dr. H. S. Gour University. Sagar (A Central University)": ["ALL","Aeronautical Engineering", "CSE", "Dairy Engineering", "ECE", "Fashion and Apparel Engineering", "Food Engineering  and Technology"],
+     "Central University of Haryana": ["ALL","CIVIL", "CSE", "EE", "Printing and Packaging Technology"],
+     "Birla Institute of Technology Deoghar Off-Campus": ["ALL","CSE", "EEE", "ECE", "MECHANICAL"],
+     "Birla Institute of Technology Patna Off-Campus": ["ALL","CIVIL", "CSE", "EEE", "ECE", "MECHANICAL"],
+     "Indian Institute of Handloom Technology Salem": ["ALL","Handloom and Textile Technology"]}
+
+,
+    "NIT": {
+        "ALL" : ["ALL","AI","AI and DATA SCIENCE","Aerospace Engineering","Architecture  (5 Years Bachelor of Architecture)","BIOMEDICAL","BIOTECH","BIOTECH DUAL","CERAMIC","CERAMIC DUAL","CHEMICAL","CIVIL","CIVIL DUAL","COMPUTER ENGINEERING","CSE","CSE DUAL","CSE DUAL with CYBER","CSE DUAL with DATA SCIENCE","Chemical Engineering DUAL","Chemistry (5 Years Bachelor of Science and Master of Science (Dual Degree))","Chemistry (5 Years Integrated Master of Science)","Computational Mathematics Dual","Computational and Data Science","Data Science and Engineering","ECE","ECE DUAL","ECE with VLSI","EE","EE DUAL","EEE","Electronics and Instrumentation Engineering","Electronics and Telecommunication Engineering","Electronics and VLSI Engineering","Engineering Physics","Engineering and Computational Mechanics","Food Process Engineering","ICE","IPE","IT","Industrial Design","Life Science (5 Years Integrated Master of Science)","MATHS AND DATA SCIENCE DUAL","MECHANICAL","MECHANICAL DUAL","METALLURGY","METALLURGY DUAL","MINING","MINING DUAL","Material Science and Engineering Dual","Materials Science and Engineering","Mathematics & Computing","Mathematics & Computing DUAL","Mathematics (5 Years Integrated Master of Science)","Physics (5 Years Bachelor of Science and Master of Science (Dual Degree))","Physics (5 Years Integrated Master of Science)","Planning (4 Years Bachelor of Planning)","TEXTILE"],
+        "Dr. B R Ambedkar National Institute of Technology Jalandhar": ["ALL","BIOTECH", "CHEMICAL", "CIVIL", "CSE", "Data Science and Engineering", "EE", "ECE", "Electronics and VLSI Engineering", "IPE", "IT", "ICE", "MECHANICAL", "TEXTILE"],
+     "Malaviya National Institute of Technology Jaipur": ["ALL","Architecture  (5 Years Bachelor of Architecture)", "AI and DATA SCIENCE", "CHEMICAL", "CIVIL", "CSE", "EE", "ECE", "MECHANICAL", "METALLURGY"],
+     "Maulana Azad National Institute of Technology Bhopal": ["ALL","Architecture  (5 Years Bachelor of Architecture)", "CHEMICAL", "CIVIL", "CSE", "EE", "ECE", "METALLURGY", "MATHS AND DATA SCIENCE DUAL", "MECHANICAL", "Planning (4 Years Bachelor of Planning)"],
+     "Motilal Nehru National Institute of Technology Allahabad": ["ALL","BIOTECH", "CHEMICAL", "CIVIL", "CSE", "EE", "ECE", "Engineering and Computational Mechanics", "MECHANICAL", "IPE"],
+     "National Institute of Technology  Agartala": ["ALL","BIOTECH", "CHEMICAL", "Chemistry (5 Years Bachelor of Science and Master of Science (Dual Degree))", "CIVIL", "Computational Mathematics Dual", "CSE", "EE", "ECE", "Electronics and Instrumentation Engineering", "Engineering Physics", "Mathematics & Computing", "MECHANICAL", "Physics (5 Years Bachelor of Science and Master of Science (Dual Degree))", "IPE"],
+     "National Institute of Technology Calicut": ["ALL","Architecture  (5 Years Bachelor of Architecture)", "BIOTECH", "CHEMICAL", "CIVIL", "CSE", "EEE", "ECE", "Engineering Physics", "Materials Science and Engineering", "MECHANICAL", "IPE"],
+     "National Institute of Technology Delhi": ["ALL","AI and DATA SCIENCE", "CIVIL", "CSE", "EE", "ECE", "MECHANICAL"],
+     "National Institute of Technology Durgapur": ["ALL","BIOTECH", "BIOTECH DUAL", "CHEMICAL", "Chemical Engineering DUAL", "Chemistry (5 Years Integrated Master of Science)", "CIVIL", "CSE", "EE", "ECE", "MECHANICAL", "METALLURGY"],
+     "National Institute of Technology Goa": ["ALL","CIVIL", "CSE", "EEE", "ECE", "MECHANICAL"],
+     "National Institute of Technology Hamirpur": ["ALL","Architecture  (5 Years Bachelor of Architecture)", "CHEMICAL", "CIVIL", "CSE", "CSE DUAL", "EE", "ECE", "ECE DUAL", "Engineering Physics", "Materials Science and Engineering", "Mathematics & Computing", "MECHANICAL"],
+     "National Institute of Technology Karnataka Surathkal": ["ALL","AI", "CHEMICAL", "CIVIL", "Computational and Data Science", "CSE", "EEE", "ECE", "IT", "MECHANICAL", "METALLURGY", "MINING"],
+     "National Institute of Technology Meghalaya": ["ALL","CIVIL", "CSE", "EEE", "ECE", "MECHANICAL"],
+     "National Institute of Technology Nagaland": ["ALL","CIVIL", "CSE", "EEE", "ECE", "Electronics and Instrumentation Engineering", "MECHANICAL"],
+     "National Institute of Technology Patna": ["ALL","Architecture  (5 Years Bachelor of Architecture)", "Chemical Engineering DUAL", "CIVIL", "CIVIL DUAL", "CCIVIL DUAL", "CSE", "CSE DUAL with CYBER", "CSE DUAL with DATA SCIENCE", "EE", "EE DUAL", "ECE", "ECE DUAL", "Material Science and Engineering Dual", "Mathematics & Computing DUAL", "MECHANICAL", "MECHANICAL DUAL"],
+     "National Institute of Technology Puducherry": ["ALL","CIVIL", "CSE", "EEE", "ECE", "MECHANICAL"],
+     "National Institute of Technology Raipur": ["ALL","Architecture  (5 Years Bachelor of Architecture)", "BIOMEDICAL", "BIOTECH", "CHEMICAL", "CIVIL", "CSE", "EE", "ECE", "IT", "MECHANICAL", "METALLURGY", "MINING"],
+     "National Institute of Technology Sikkim": ["ALL","CIVIL", "CSE", "EEE", "ECE", "MECHANICAL"],
+     "National Institute of Technology Arunachal Pradesh": ["ALL","CIVIL", "CSE", "EE", "ECE", "MECHANICAL"],
+     "National Institute of Technology Jamshedpur": ["ALL","CIVIL", "CSE", "EE", "ECE", "Engineering and Computational Mechanics", "MECHANICAL", "METALLURGY", "IPE"],
+     "National Institute of Technology Kurukshetra": ["ALL","AI", "CIVIL", "COMPUTER ENGINEERING", "EE", "ECE", "IPE", "IT", "Mathematics & Computing", "MECHANICAL"],
+     "National Institute of Technology Manipur": ["ALL","CIVIL", "CSE", "EE", "ECE", "MECHANICAL"],
+     "National Institute of Technology Mizoram": ["ALL","CIVIL", "CSE", "EE", "ECE", "Mathematics & Computing", "MECHANICAL"],
+     "National Institute of Technology Rourkela": ["ALL","Architecture  (5 Years Bachelor of Architecture)", "BIOMEDICAL", "BIOTECH", "CERAMIC", "CERAMIC DUAL", "CHEMICAL", "Chemical Engineering DUAL", "Chemistry (5 Years Integrated Master of Science)", "CIVIL", "CSE", "EE", "ECE", "Electronics and Instrumentation Engineering", "Food Process Engineering", "Industrial Design", "Life Science (5 Years Integrated Master of Science)", "Mathematics (5 Years Integrated Master of Science)", "MECHANICAL", "METALLURGY", "METALLURGY DUAL", "MINING", "MINING DUAL", "Physics (5 Years Integrated Master of Science)"],
+     "National Institute of Technology Silchar": ["ALL","CIVIL", "CSE", "EE", "ECE", "Electronics and Instrumentation Engineering", "MECHANICAL"],
+     "National Institute of Technology Srinagar": ["ALL","CHEMICAL", "CIVIL", "CSE", "EE", "ECE", "IT", "MECHANICAL", "METALLURGY"],
+     "National Institute of Technology Tiruchirappalli": ["ALL","Architecture  (5 Years Bachelor of Architecture)", "CHEMICAL", "CIVIL", "CSE", "EEE", "ECE", "ICE", "MECHANICAL", "METALLURGY", "IPE"],
+     "National Institute of Technology Uttarakhand": ["ALL","CIVIL", "CSE", "EEE", "ECE", "MECHANICAL"],
+     "National Institute of Technology Warangal": ["ALL","BIOTECH", "CHEMICAL", "Chemistry (5 Years Integrated Master of Science)", "CIVIL", "CSE", "EEE", "ECE", "ECE with VLSI", "Mathematics (5 Years Integrated Master of Science)", "Mathematics & Computing", "MECHANICAL", "METALLURGY", "Physics (5 Years Integrated Master of Science)"],
+     "Sardar Vallabhbhai National Institute of Technology Surat": ["ALL","AI", "CHEMICAL", "Chemistry (5 Years Integrated Master of Science)", "CIVIL", "CSE", "EE", "ECE", "Mathematics (5 Years Integrated Master of Science)", "MECHANICAL", "Physics (5 Years Integrated Master of Science)"],
+     "Visvesvaraya National Institute of Technology Nagpur": ["ALL","Architecture  (5 Years Bachelor of Architecture)", "CHEMICAL", "CIVIL", "CSE", "EEE", "ECE", "MECHANICAL", "METALLURGY", "MINING"],
+     "National Institute of Technology Andhra Pradesh": ["ALL","BIOTECH", "CHEMICAL", "CIVIL", "CSE", "EEE", "ECE", "MECHANICAL", "METALLURGY"],
+     "Indian Institute of Engineering Science and Technology Shibpur": ["ALL","Aerospace Engineering", "Architecture  (5 Years Bachelor of Architecture)", "CIVIL", "CSE", "EE", "Electronics and Telecommunication Engineering", "IT", "MECHANICAL", "METALLURGY", "MINING"]}
+,
+
+    "IIIT": {
+        "ALL" : ["ALL","AI and DATA SCIENCE","CSE","CSE DUAL","CSE with AI","CSE with CYBER","CSE with DATA SCIENCE","Computer Science Engineering (Data Science and Analytics) (4 YearsBachelor of Technology)","Computer Science Engineering (Human Computer lnteraction and Gaming Technology)","Computer Science and Business","ECE","ECE DUAL","ECE DUAL VLSI","ECE DUAL with Design","ECE with EMbedding","ECE with SPECIALISATION","ECE with VLSI","EEE","IT","IT DUAL","IT DUAL with MBA","Information Technology-Business Informatics","MECHANICAL","MECHINCAL DUAL","MECHINCAL with Design","Mathematics & Computing","Mechatronics and Automation Engineering","SMART MANUFACTURING"] ,
+        "Atal Bihari Vajpayee Indian Institute of Information Technology & Management Gwalior": ["ALL","CSE", "EEE", "IT DUAL", "IT DUAL with MBA", "Mathematics & Computing"],
+     "Indian Institute of Information Technology (IIIT)KotaRajasthan": ["ALL","CSE", "ECE"],
+     "Indian Institute of Information Technology Guwahati": ["ALL","CSE", "ECE"],
+     "Indian Institute of Information Technology(IIIT) KalyaniWest Bengal": ["ALL","CSE", "ECE"],
+     "Indian Institute of Information Technology(IIIT) KilohradSonepatHaryana": ["ALL","CSE", "IT"],
+     "Indian Institute of Information Technology(IIIT) UnaHimachal Pradesh": ["ALL","CSE", "ECE", "IT"],
+     "Indian Institute of Information Technology (IIIT)Sri CityChittoor": ["ALL","AI and DATA SCIENCE", "CSE", "ECE"],
+     "Indian Institute of Information Technology(IIIT)VadodaraGujrat": ["ALL","CSE", "IT"],
+     "Indian Institute of Information Technology Allahabad": ["ALL","ECE", "IT", "Information Technology-Business Informatics"],
+     "Indian Institute of Information Technology Design & Manufacturing Kancheepuram": ["ALL","ECE DUAL", "ECE DUAL VLSI", "CSE", "CSE DUAL", "CSE with AI", "ECE", "MECHANICAL", "SMART MANUFACTURING"],
+     "Pt. Dwarka Prasad Mishra Indian Institute of Information Technology Design & Manufacture Jabalpur": ["ALL","CSE", "ECE", "MECHANICAL", "SMART MANUFACTURING"],
+     "Indian Institute of Information Technology  Manipur": ["ALL","CSE", "CSE with AI", "ECE", "ECE with VLSI"],
+     "Indian Institute of Information Technology Tiruchirappalli": ["ALL","CSE", "ECE"],
+     "Indian Institute of Information Technology Lucknow": ["ALL","CSE", "CSE with AI", "Computer Science and Business", "IT"],
+     "Indian Institute of Information Technology(IIIT) Dharwad": ["ALL","CSE", "AI and DATA SCIENCE", "ECE"],
+     "Indian Institute of Information Technology Design & Manufacturing Kurnool Andhra Pradesh": ["ALL","AI and DATA SCIENCE", "CSE", "CSE DUAL", "ECE DUAL", "ECE DUAL with Design", "MECHINCAL DUAL", "MECHINCAL with Design"],
+     "Indian Institute of Information Technology(IIIT) Kottayam": ["ALL","CSE", "CSE with AI", "CSE with CYBER", "ECE"],
+     "Indian Institute of Information Technology (IIIT) Ranchi": ["ALL","CSE", "CSE with DATA SCIENCE", "ECE", "ECE with EMbedding"],
+     "Indian Institute of Information Technology (IIIT) Nagpur": ["ALL","CSE", "CSE with AI", "Computer Science Engineering (Data Science and Analytics) (4 YearsBachelor of Technology)", "Computer Science Engineering (Human Computer lnteraction and Gaming Technology)", "ECE", "ECE with SPECIALISATION"],
+     "Indian Institute of Information Technology (IIIT) Pune": ["ALL","CSE", "ECE"],
+     "Indian Institute of Information Technology Bhagalpur": ["ALL","CSE", "ECE", "Mathematics & Computing", "Mechatronics and Automation Engineering"],
+     "Indian Institute of Information Technology Bhopal": ["ALL","CSE", "ECE", "IT"],
+     "Indian Institute of Information Technology Surat": ["ALL","CSE", "ECE"],
+     "Indian Institute of Information Technology Agartala": ["ALL","CSE"],
+     "Indian institute of information technology RaichurKarnataka": ["ALL","AI and DATA SCIENCE", "CSE"],
+     "Indian Institute of Information Technology Vadodara International Campus Diu (IIITVICD)": ["ALL","CSE"]}
+
+ ,
+
+     "GFTI": {
+        "ALL" : ["ALL","AI and DATA SCIENCE","Aeronautical Engineering","Aerospace Engineering","Agricultural Engineering","Architecture  (5 YearsBachelor of Architecture)","Artificial Intelligence and Machine Learning","Arunachal Pradesh","BIOTECH","Bio Medical Engineering","CHEMICAL","CHEMICAL DUAL","CIVIL","COMPUTER ENGINEERING","CSE","CSE DUAL","CSE with AI","CSE with CYBER","CSE with DATA SCIENCE","Carpet  and Textile Technology","Dairy Engineering","ECE","EE","EEE","Electronics System Engineering","Electronics and Communication Engineering (Avionics)","Electronics and ICE","Electronics and Telecommunication Engineering","Electronics and VLSI Engineering","Energy Engineering","Fashion and Apparel Engineering","Food Engineering  and Technology","Food Technology","Handloom and Textile Technology","ICE","IPE","IT","MECHANICAL","METALLURGY","Mathematics and Computing (5 YearsIntegrated Master of Science)","Mechatronics Engineering","Physics (5 YearsIntegrated Master of Science)","Planning (4 YearsBachelor of Planning)","Printing and Packaging Technology","Quantitative Economics & Data Science (5 YearsIntegrated Master of Science)"],
+    "Dr. B R Ambedkar National Institute of Technology Jalandhar": ["ALL","BIOTECH", "CHEMICAL", "CIVIL", "CSE", "Data Science and Engineering", "EE", "ECE", "Electronics and VLSI Engineering", "IPE", "IT", "ICE", "MECHANICAL", "TEXTILE"],
+     "Malaviya National Institute of Technology Jaipur": ["ALL","Architecture  (5 Years Bachelor of Architecture)", "AI and DATA SCIENCE", "CHEMICAL", "CIVIL", "CSE", "EE", "ECE", "MECHANICAL", "METALLURGY"],
+     "Maulana Azad National Institute of Technology Bhopal": ["ALL","Architecture  (5 Years Bachelor of Architecture)", "CHEMICAL", "CIVIL", "CSE", "EE", "ECE", "METALLURGY", "MATHS AND DATA SCIENCE DUAL", "MECHANICAL", "Planning (4 Years Bachelor of Planning)"],
+     "Motilal Nehru National Institute of Technology Allahabad": ["ALL","BIOTECH", "CHEMICAL", "CIVIL", "CSE", "EE", "ECE", "Engineering and Computational Mechanics", "MECHANICAL", "IPE"],
+     "National Institute of Technology  Agartala": ["ALL","BIOTECH", "CHEMICAL", "Chemistry (5 Years Bachelor of Science and Master of Science (Dual Degree))", "CIVIL", "Computational Mathematics Dual", "CSE", "EE", "ECE", "Electronics and Instrumentation Engineering", "Engineering Physics", "Mathematics & Computing", "MECHANICAL", "Physics (5 Years Bachelor of Science and Master of Science (Dual Degree))", "IPE"],
+     "National Institute of Technology Calicut": ["ALL","Architecture  (5 Years Bachelor of Architecture)", "BIOTECH", "CHEMICAL", "CIVIL", "CSE", "EEE", "ECE", "Engineering Physics", "Materials Science and Engineering", "MECHANICAL", "IPE"],
+     "National Institute of Technology Delhi": ["ALL","AI and DATA SCIENCE", "CIVIL", "CSE", "EE", "ECE", "MECHANICAL"],
+     "National Institute of Technology Durgapur": ["ALL","BIOTECH", "BIOTECH DUAL", "CHEMICAL", "Chemical Engineering DUAL", "Chemistry (5 Years Integrated Master of Science)", "CIVIL", "CSE", "EE", "ECE", "MECHANICAL", "METALLURGY"],
+     "National Institute of Technology Goa": ["ALL","CIVIL", "CSE", "EEE", "ECE", "MECHANICAL"],
+     "National Institute of Technology Hamirpur": ["ALL","Architecture  (5 Years Bachelor of Architecture)", "CHEMICAL", "CIVIL", "CSE", "CSE DUAL", "EE", "ECE", "ECE DUAL", "Engineering Physics", "Materials Science and Engineering", "Mathematics & Computing", "MECHANICAL"],
+     "National Institute of Technology Karnataka Surathkal": ["ALL","AI", "CHEMICAL", "CIVIL", "Computational and Data Science", "CSE", "EEE", "ECE", "IT", "MECHANICAL", "METALLURGY", "MINING"],
+     "National Institute of Technology Meghalaya": ["ALL","CIVIL", "CSE", "EEE", "ECE", "MECHANICAL"],
+     "National Institute of Technology Nagaland": ["ALL","CIVIL", "CSE", "EEE", "ECE", "Electronics and Instrumentation Engineering", "MECHANICAL"],
+     "National Institute of Technology Patna": ["ALL","Architecture  (5 Years Bachelor of Architecture)", "Chemical Engineering DUAL", "CIVIL", "CIVIL DUAL", "CCIVIL DUAL", "CSE", "CSE DUAL with CYBER", "CSE DUAL with DATA SCIENCE", "EE", "EE DUAL", "ECE", "ECE DUAL", "Material Science and Engineering Dual", "Mathematics & Computing DUAL", "MECHANICAL", "MECHANICAL DUAL"],
+     "National Institute of Technology Puducherry": ["ALL","CIVIL", "CSE", "EEE", "ECE", "MECHANICAL"],
+     "National Institute of Technology Raipur": ["ALL","Architecture  (5 Years Bachelor of Architecture)", "BIOMEDICAL", "BIOTECH", "CHEMICAL", "CIVIL", "CSE", "EE", "ECE", "IT", "MECHANICAL", "METALLURGY", "MINING"],
+     "National Institute of Technology Sikkim": ["ALL","CIVIL", "CSE", "EEE", "ECE", "MECHANICAL"],
+     "National Institute of Technology Arunachal Pradesh": ["ALL","CIVIL", "CSE", "EE", "ECE", "MECHANICAL"],
+     "National Institute of Technology Jamshedpur": ["ALL","CIVIL", "CSE", "EE", "ECE", "Engineering and Computational Mechanics", "MECHANICAL", "METALLURGY", "IPE"],
+     "National Institute of Technology Kurukshetra": ["ALL","AI", "CIVIL", "COMPUTER ENGINEERING", "EE", "ECE", "IPE", "IT", "Mathematics & Computing", "MECHANICAL"],
+     "National Institute of Technology Manipur": ["ALL","CIVIL", "CSE", "EE", "ECE", "MECHANICAL"],
+     "National Institute of Technology Mizoram": ["ALL","CIVIL", "CSE", "EE", "ECE", "Mathematics & Computing", "MECHANICAL"],
+     "National Institute of Technology Rourkela": ["ALL","Architecture  (5 Years Bachelor of Architecture)", "BIOMEDICAL", "BIOTECH", "CERAMIC", "CERAMIC DUAL", "CHEMICAL", "Chemical Engineering DUAL", "Chemistry (5 Years Integrated Master of Science)", "CIVIL", "CSE", "EE", "ECE", "Electronics and Instrumentation Engineering", "Food Process Engineering", "Industrial Design", "Life Science (5 Years Integrated Master of Science)", "Mathematics (5 Years Integrated Master of Science)", "MECHANICAL", "METALLURGY", "METALLURGY DUAL", "MINING", "MINING DUAL", "Physics (5 Years Integrated Master of Science)"],
+     "National Institute of Technology Silchar": ["ALL","CIVIL", "CSE", "EE", "ECE", "Electronics and Instrumentation Engineering", "MECHANICAL"],
+     "National Institute of Technology Srinagar": ["ALL","CHEMICAL", "CIVIL", "CSE", "EE", "ECE", "IT", "MECHANICAL", "METALLURGY"],
+     "National Institute of Technology Tiruchirappalli": ["ALL","Architecture  (5 Years Bachelor of Architecture)", "CHEMICAL", "CIVIL", "CSE", "EEE", "ECE", "ICE", "MECHANICAL", "METALLURGY", "IPE"],
+     "National Institute of Technology Uttarakhand": ["ALL","CIVIL", "CSE", "EEE", "ECE", "MECHANICAL"],
+     "National Institute of Technology Warangal": ["ALL","BIOTECH", "CHEMICAL", "Chemistry (5 Years Integrated Master of Science)", "CIVIL", "CSE", "EEE", "ECE", "ECE with VLSI", "Mathematics (5 Years Integrated Master of Science)", "Mathematics & Computing", "MECHANICAL", "METALLURGY", "Physics (5 Years Integrated Master of Science)"],
+     "Sardar Vallabhbhai National Institute of Technology Surat": ["ALL","AI", "CHEMICAL", "Chemistry (5 Years Integrated Master of Science)", "CIVIL", "CSE", "EE", "ECE", "Mathematics (5 Years Integrated Master of Science)", "MECHANICAL", "Physics (5 Years Integrated Master of Science)"],
+     "Visvesvaraya National Institute of Technology Nagpur": ["ALL","Architecture  (5 Years Bachelor of Architecture)", "CHEMICAL", "CIVIL", "CSE", "EEE", "ECE", "MECHANICAL", "METALLURGY", "MINING"],
+     "National Institute of Technology Andhra Pradesh": ["ALL","BIOTECH", "CHEMICAL", "CIVIL", "CSE", "EEE", "ECE", "MECHANICAL", "METALLURGY"],
+     "Indian Institute of Engineering Science and Technology Shibpur": ["ALL","Aerospace Engineering", "Architecture  (5 Years Bachelor of Architecture)", "CIVIL", "CSE", "EE", "Electronics and Telecommunication Engineering", "IT", "MECHANICAL", "METALLURGY", "MINING"],
+     "Atal Bihari Vajpayee Indian Institute of Information Technology & Management Gwalior": ["ALL","CSE", "EEE", "IT DUAL", "IT DUAL with MBA", "Mathematics & Computing"],
+     "Indian Institute of Information Technology (IIIT)KotaRajasthan": ["ALL","CSE", "ECE"],
+     "Indian Institute of Information Technology Guwahati": ["ALL","CSE", "ECE"],
+     "Indian Institute of Information Technology(IIIT) KalyaniWest Bengal": ["ALL","CSE", "ECE"],
+     "Indian Institute of Information Technology(IIIT) KilohradSonepatHaryana": ["ALL","CSE", "IT"],
+     "Indian Institute of Information Technology(IIIT) UnaHimachal Pradesh": ["ALL","CSE", "ECE", "IT"],
+     "Indian Institute of Information Technology (IIIT)Sri CityChittoor": ["ALL","AI and DATA SCIENCE", "CSE", "ECE"],
+     "Indian Institute of Information Technology(IIIT)VadodaraGujrat": ["ALL","CSE", "IT"],
+     "Indian Institute of Information Technology Allahabad": ["ALL","ECE", "IT", "Information Technology-Business Informatics"],
+     "Indian Institute of Information Technology Design & Manufacturing Kancheepuram": ["ALL","ECE DUAL", "ECE DUAL VLSI", "CSE", "CSE DUAL", "CSE with AI", "ECE", "MECHANICAL", "SMART MANUFACTURING"],
+     "Pt. Dwarka Prasad Mishra Indian Institute of Information Technology Design & Manufacture Jabalpur": ["ALL","CSE", "ECE", "MECHANICAL", "SMART MANUFACTURING"],
+     "Indian Institute of Information Technology  Manipur": ["ALL","CSE", "CSE with AI", "ECE", "ECE with VLSI"],
+     "Indian Institute of Information Technology Tiruchirappalli": ["ALL","CSE", "ECE"],
+     "Indian Institute of Information Technology Lucknow": ["ALL","CSE", "CSE with AI", "Computer Science and Business", "IT"],
+     "Indian Institute of Information Technology(IIIT) Dharwad": ["ALL","CSE", "AI and DATA SCIENCE", "ECE"],
+     "Indian Institute of Information Technology Design & Manufacturing Kurnool Andhra Pradesh": ["ALL","AI and DATA SCIENCE", "CSE", "CSE DUAL", "ECE DUAL", "ECE DUAL with Design", "MECHINCAL DUAL", "MECHINCAL with Design"],
+     "Indian Institute of Information Technology(IIIT) Kottayam": ["ALL","CSE", "CSE with AI", "CSE with CYBER", "ECE"],
+     "Indian Institute of Information Technology (IIIT) Ranchi": ["ALL","CSE", "CSE with DATA SCIENCE", "ECE", "ECE with EMbedding"],
+     "Indian Institute of Information Technology (IIIT) Nagpur": ["ALL","CSE", "CSE with AI", "Computer Science Engineering (Data Science and Analytics) (4 YearsBachelor of Technology)", "Computer Science Engineering (Human Computer lnteraction and Gaming Technology)", "ECE", "ECE with SPECIALISATION"],
+     "Indian Institute of Information Technology (IIIT) Pune": ["ALL","CSE", "ECE"],
+     "Indian Institute of Information Technology Bhagalpur": ["ALL","CSE", "ECE", "Mathematics & Computing", "Mechatronics and Automation Engineering"],
+     "Indian Institute of Information Technology Bhopal": ["ALL","CSE", "ECE", "IT"],
+     "Indian Institute of Information Technology Surat": ["ALL","CSE", "ECE"],
+     "Indian Institute of Information Technology Agartala": ["ALL","CSE"],
+     "Indian institute of information technology RaichurKarnataka": ["ALL","AI and DATA SCIENCE", "CSE"],
+     "Indian Institute of Information Technology Vadodara International Campus Diu (IIITVICD)": ["ALL","CSE"],
+     "International Institute of Information Technology Bhubaneswar": ["ALL","COMPUTER ENGINEERING", "CSE", "EEE", "Electronics and Telecommunication Engineering", "IT"],
+     "Assam University Silchar": ["ALL","Agricultural Engineering", "CSE", "ECE"],
+     "Birla Institute of Technology Mesra Ranchi": ["ALL","Architecture  (5 YearsBachelor of Architecture)", "Artificial Intelligence and Machine Learning", "BIOTECH", "CHEMICAL", "CIVIL", "CSE", "EEE", "ECE", "Food Engineering  and Technology", "Mathematics and Computing (5 YearsIntegrated Master of Science)", "MECHANICAL", "Physics (5 YearsIntegrated Master of Science)", "IPE", "Quantitative Economics & Data Science (5 YearsIntegrated Master of Science)"],
+     "Gurukula Kangri Vishwavidyalaya Haridwar": ["ALL","CSE", "EE", "ECE", "MECHANICAL"],
+     "Indian Institute of Carpet Technology  Bhadohi": ["ALL","Carpet  and Textile Technology"],
+     "Institute of InfrastructureTechnology Research and Management-Ahmedabad": ["ALL","CIVIL", "COMPUTER ENGINEERING", "EE", "MECHANICAL"],
+     "Institute of Technology Guru Ghasidas Vishwavidyalaya (A Central University)Bilaspur(C.G.)": ["ALL","CHEMICAL", "CIVIL", "CSE", "ECE", "IPE", "IT", "MECHANICAL"],
+     "J.K. Institute of Applied Physics & Technology Department of Electronics & CommunicationUniversity of Allahabad- Allahabad": ["ALL","CSE", "ECE"],
+     "National Institute of Electronics and Information Technology Aurangabad (Maharashtra)": ["ALL","Electronics System Engineering"],
+     "National Institute of Advanced Manufacturing Technology Ranchi": ["ALL","COMPUTER ENGINEERING", "MECHANICAL", "METALLURGY", "IPE"],
+     "Sant Longowal Institute of Engineering and Technology": ["ALL","CHEMICAL", "CSE", "EE", "ECE", "Food Technology", "ICE", "MECHANICAL"],
+     "Mizoram UniversityAizawl": ["ALL","Architecture  (5 YearsBachelor of Architecture)", "CIVIL", "COMPUTER ENGINEERING", "EE", "ECE", "IT"],
+     "School of EngineeringTezpur UniversityNapaamTezpur": ["ALL","CIVIL", "CSE", "EE", "ECE", "Food Engineering  and Technology", "MECHANICAL"],
+     "School of Planning & ArchitectureBhopal": ["ALL","Architecture  (5 YearsBachelor of Architecture)", "Planning (4 YearsBachelor of Planning)"],
+     "School of Planning & ArchitectureNew Delhi": ["ALL","Architecture  (5 YearsBachelor of Architecture)", "Planning (4 YearsBachelor of Planning)"],
+     "School of Planning & Architecture: Vijayawada": ["ALL","Architecture  (5 YearsBachelor of Architecture)", "Planning (4 YearsBachelor of Planning)"],
+     "Shri Mata Vaishno Devi UniversityKatraJammu & Kashmir": ["ALL","Architecture  (5 YearsBachelor of Architecture)", "CIVIL", "CSE", "EE", "ECE", "MECHANICAL"],
+     "International Institute of Information Technology Naya Raipur": ["ALL","CSE", "AI and DATA SCIENCE", "ECE"],
+     "University of Hyderabad": ["ALL","CSE DUAL"],
+     "Punjab Engineering CollegeChandigarh": ["ALL","Aerospace Engineering", "CIVIL", "CSE", "CSE with AI", "CSE with DATA SCIENCE", "EE", "ECE", "Electronics and VLSI Engineering", "MECHANICAL", "METALLURGY", "IPE"],
+     "Jawaharlal Nehru UniversityDelhi": ["ALL","CSE", "ECE"],
+     "Central institute of Technology KokrajarAssam": ["ALL","CIVIL", "CSE", "ECE", "Food Engineering  and Technology", "ICE"],
+     "Puducherry Technological UniversityPuducherry": ["ALL","CHEMICAL", "CIVIL", "CSE", "EEE", "ECE", "Electronics and ICE", "IT", "MECHANICAL", "Mechatronics Engineering"],
+     "Ghani Khan Choudhary Institute of Engineering and Technology MaldaWest Bengal": ["ALL","CIVIL", "CSE with AI", "EE", "Food Technology", "MECHANICAL"],
+     "Central University of RajasthanRajasthan": ["ALL","Bio Medical Engineering", "CSE", "ECE"],
+     "National Institute of Food Technology Entrepreneurship and ManagementKundli": ["ALL","Food Technology"],
+     "National Institute of Food Technology Entrepreneurship and ManagementThanjavur": ["ALL","Food Technology"],
+     "North Eastern Regional Institute of Science and Technology Nirjuli-791109 (Itanagar)": ["ALL","Agricultural Engineering", "CIVIL", "CSE", "EE", "ECE", "MECHANICAL"],
+     "Indian Institute of Handloom Technology(IIHT)Varanasi": ["ALL","Handloom and Textile Technology"],
+     "Chhattisgarh Swami Vivekanada Technical UniversityBhilai (CSVTU Bhilai)": ["ALL","CSE with AI", "CSE with DATA SCIENCE"],
+     "Institute of Chemical Technology Mumbai Indian Oil Odisha CampusBhubaneswar": ["ALL","CHEMICAL DUAL"],
+     "North-Eastern Hill UniversityShillong": ["ALL","Bio Medical Engineering", "ECE", "Energy Engineering", "IT"],
+     "Central University of Jammu": ["ALL","CSE", "CSE with CYBER", "ECE", "Electronics and Communication Engineering (Avionics)"],
+     "Institute of Engineering and Technology Dr. H. S. Gour University. Sagar (A Central University)": ["ALL","Aeronautical Engineering", "CSE", "Dairy Engineering", "ECE", "Fashion and Apparel Engineering", "Food Engineering  and Technology"],
+     "Central University of Haryana": ["ALL","CIVIL", "CSE", "EE", "Printing and Packaging Technology"],
+     "Birla Institute of Technology Deoghar Off-Campus": ["ALL","CSE", "EEE", "ECE", "MECHANICAL"],
+     "Birla Institute of Technology Patna Off-Campus": ["ALL","CIVIL", "CSE", "EEE", "ECE", "MECHANICAL"],
+     "Indian Institute of Handloom Technology Salem": ["ALL","Handloom and Textile Technology"]}
+};
+
+
+
+function populateCollegeName(selectedCollegeType) {
+    const collegeSelect = document.getElementById("collegename");
+    const colleges = collegeData[selectedCollegeType]?.Colleges || [];
+
+    collegeSelect.innerHTML = ''; // Clear previous options
+
+    const defaultOption = document.createElement("option");
+    defaultOption.value = '';
+    defaultOption.text = 'Select College Name';
+    collegeSelect.appendChild(defaultOption);
+
+    colleges.forEach(college => {
+        const option = document.createElement("option");
+        option.value = college;
+        option.text = college;
+        collegeSelect.appendChild(option);
+    });
+}
+function populateQuota(selectedCollegeType) {
+    const quotaSelect = document.getElementById("quota");
+    const quota = hok[selectedCollegeType]?.Quota || [];
+
+    quotaSelect.innerHTML = ''; // Clear previous options
+
+    const defaultOption = document.createElement("option");
+    defaultOption.value = '';
+    defaultOption.text = '--Select--';
+    quotaSelect.appendChild(defaultOption);
+
+    quota.forEach(quotaOption => {
+        const option = document.createElement("option");
+        option.value = quotaOption;
+        option.text = quotaOption;
+        quotaSelect.appendChild(option);
+    });
+}
+function populateCol(selectedCollegeType){
+    populateCollegeName(selectedCollegeType),
+    populateQuota(selectedCollegeType)
+}
+// Function to populate Branch dropdown based on College selection and College Name
+function populateBranch(selectedCollegeType, selectedcollegename) {
+    const branchSelect = document.getElementById("branch");
+
+    // Retrieve branches based on selectedCollegeType and selectedCollegeName
+    const branches = collegeBranches[selectedCollegeType]?.[selectedcollegename] || [];
+
+    branchSelect.innerHTML = ''; // Clear previous options
+
+    const defaultOption = document.createElement("option");
+    defaultOption.value = '';
+    defaultOption.text = 'Select Branch';
+    branchSelect.appendChild(defaultOption);
+
+    branches.forEach(branch => {
+        const option = document.createElement("option");
+        option.value = branch;
+        option.text = branch;
+        branchSelect.appendChild(option);
+    });
+}
+
+
+
+function sendData(event) {
+    event.preventDefault(); // Prevent default form submission
+
+    var college = document.getElementById("college").value;
+    var category = document.getElementById("category").value;
+    var gender = document.getElementById("gender").value;
+    var quota = document.getElementById("quota").value;
+    var branch = document.getElementById("branch").value;
+    var collegename = document.getElementById("collegename").value;
+
+    // Create a new XMLHttpRequest object
+    var xhr = new XMLHttpRequest();
+
+    // Configure the request
+    xhr.open("POST", "/hooh/process_data", true);
+    xhr.setRequestHeader("Content-Type", "application/json");
+
+    // Define the callback function to handle the response
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === XMLHttpRequest.DONE) {
+            if (xhr.status === 200) {
+                // If successful, update the result table with the response
+                var response = JSON.parse(xhr.responseText);
+                displayResults(response);
+            } else {
+                // If an error occurred, display an error message
+                console.error("Error occurred:", xhr.status);
+            }
+        }
+    };
+
+    // Prepare the data to be sent as JSON
+    var data = JSON.stringify({
+        "college": college,
+        "category": category,
+        "gender": gender,
+        "quota": quota,
+        "branch": branch,
+        "collegename": collegename
+    });
+
+    // Send the request with the data
+    xhr.send(data);
+}
+
+
+function displayResults(results) {
+    const resultTableBody = document.getElementById('resultBody');
+    resultTableBody.innerHTML = ''; // Clear existing rows
+
+    results.forEach(result => {
+        const row = document.createElement('tr');
+
+        const collegeCell = document.createElement('td');
+        collegeCell.textContent = result.College;
+        row.appendChild(collegeCell);
+
+        const branchCell = document.createElement('td');
+        branchCell.textContent = result.Branch;
+        row.appendChild(branchCell);
+
+        const categoryCell = document.createElement('td'); // Corrected variable name
+        categoryCell.textContent = result.Category;
+        row.appendChild(categoryCell); // Corrected variable name
+
+        const openingRankCell = document.createElement('td');
+        openingRankCell.textContent = result['Opening Rank']; // Adjusted
+        row.appendChild(openingRankCell);
+
+        const closingRankCell = document.createElement('td');
+        closingRankCell.textContent = result['Closing Rank']; // Adjusted
+        row.appendChild(closingRankCell);
+
+        resultTableBody.appendChild(row);
+    });
+}
+
+
+
+</script>
+<footer
+  class="flex flex-col items-center bg-[#111827] text-center text-white">
+  <div class="container px-6 pt-6">
+    <!-- Social media icons container -->
+    <div class="mb-6 flex justify-center space-x-2">
+        <a href="https://instagram.com/aaklon4809">
+        <span class="[&>svg]:h-7 [&>svg]:w-7 [&>svg]:fill-[#c13584]">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+              <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc. -->
+              <path
+                d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z" />
+            </svg>
+          </span>
+        </a>
+          <a href="https://youtube.com/MahenjuWeb">
+          <span class="[&>svg]:h-7 [&>svg]:w-7 [&>svg]:fill-[#ff0000]">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+              <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc. -->
+              <path
+                d="M549.7 124.1c-6.3-23.7-24.8-42.3-48.3-48.6C458.8 64 288 64 288 64S117.2 64 74.6 75.5c-23.5 6.3-42 24.9-48.3 48.6-11.4 42.9-11.4 132.3-11.4 132.3s0 89.4 11.4 132.3c6.3 23.7 24.8 41.5 48.3 47.8C117.2 448 288 448 288 448s170.8 0 213.4-11.5c23.5-6.3 42-24.2 48.3-47.8 11.4-42.9 11.4-132.3 11.4-132.3s0-89.4-11.4-132.3zm-317.5 213.5V175.2l142.7 81.2-142.7 81.2z" />
+            </svg>
+          </span>
+          </a>
+    </div>
+  </div>
+
+  <!--Copyright section-->
+  <div class="w-full bg-black/5 p-4 text-center">
+    © 2024 Copyright:
+    <a href="https://mwaaklon.pythonanywhere.com/">Mahenju Web</a>
+  </div>
+</footer>
+</body>
+</html>

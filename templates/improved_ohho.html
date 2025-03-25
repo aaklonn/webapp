@@ -1,0 +1,1723 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Improved College Predictor 2024</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <style>
+        /* Base styles */
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #1e293b 0%, #475569 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* Card styling - make all cards white with dark text for better contrast */
+        .card {
+            background-color: rgba(255, 255, 255, 0.95);
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            padding: 30px;
+            margin-bottom: 30px;
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            color: #1e293b;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+        }
+        
+        /* Form styling */
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        /* Sequential RGB colors for labels */
+        /* Red */
+        .form-group:nth-of-type(1) label {
+            color: #ef4444;
+            font-weight: 600;
+            display: block;
+            margin-bottom: 8px;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Orange */
+        .form-group:nth-of-type(2) label {
+            color: #f97316;
+            font-weight: 600;
+            display: block;
+            margin-bottom: 8px;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Yellow */
+        .form-group:nth-of-type(3) label {
+            color: #eab308;
+            font-weight: 600;
+            display: block;
+            margin-bottom: 8px;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Green */
+        .form-group:nth-of-type(4) label {
+            color: #22c55e;
+            font-weight: 600;
+            display: block;
+            margin-bottom: 8px;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Blue */
+        .form-group:nth-of-type(5) label {
+            color: #3b82f6;
+            font-weight: 600;
+            display: block;
+            margin-bottom: 8px;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Indigo */
+        .form-group:nth-of-type(6) label {
+            color: #6366f1;
+            font-weight: 600;
+            display: block;
+            margin-bottom: 8px;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Purple */
+        .form-group:nth-of-type(7) label {
+            color: #8b5cf6;
+            font-weight: 600;
+            display: block;
+            margin-bottom: 8px;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Sequential RGB colors for input borders */
+        /* Red */
+        .form-group:nth-of-type(1) input,
+        .form-group:nth-of-type(1) select {
+            border: 2px solid #ef4444;
+            box-shadow: 0 2px 5px rgba(239, 68, 68, 0.2);
+        }
+        
+        /* Orange */
+        .form-group:nth-of-type(2) input,
+        .form-group:nth-of-type(2) select {
+            border: 2px solid #f97316;
+            box-shadow: 0 2px 5px rgba(249, 115, 22, 0.2);
+        }
+        
+        /* Yellow */
+        .form-group:nth-of-type(3) input,
+        .form-group:nth-of-type(3) select {
+            border: 2px solid #eab308;
+            box-shadow: 0 2px 5px rgba(234, 179, 8, 0.2);
+        }
+        
+        /* Green */
+        .form-group:nth-of-type(4) input,
+        .form-group:nth-of-type(4) select {
+            border: 2px solid #22c55e;
+            box-shadow: 0 2px 5px rgba(34, 197, 94, 0.2);
+        }
+        
+        /* Blue */
+        .form-group:nth-of-type(5) input,
+        .form-group:nth-of-type(5) select {
+            border: 2px solid #3b82f6;
+            box-shadow: 0 2px 5px rgba(59, 130, 246, 0.2);
+        }
+        
+        /* Indigo */
+        .form-group:nth-of-type(6) input,
+        .form-group:nth-of-type(6) select {
+            border: 2px solid #6366f1;
+            box-shadow: 0 2px 5px rgba(99, 102, 241, 0.2);
+        }
+        
+        /* Purple */
+        .form-group:nth-of-type(7) input,
+        .form-group:nth-of-type(7) select {
+            border: 2px solid #8b5cf6;
+            box-shadow: 0 2px 5px rgba(139, 92, 246, 0.2);
+        }
+        
+        input[type="number"], 
+        select {
+            width: 100%;
+            padding: 12px 15px;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            background-color: rgba(255, 255, 255, 0.9);
+            color: #1e293b;
+            font-weight: 500;
+        }
+        
+        /* Sequential RGB colors for placeholder text */
+        input::placeholder {
+            color: #ef4444;
+            opacity: 0.7;
+        }
+        
+        /* Focus effects with matching colors */
+        .form-group:nth-of-type(1) input:focus,
+        .form-group:nth-of-type(1) select:focus {
+            border-color: #ef4444;
+            box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.3);
+            outline: none;
+        }
+        
+        .form-group:nth-of-type(2) input:focus,
+        .form-group:nth-of-type(2) select:focus {
+            border-color: #f97316;
+            box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.3);
+            outline: none;
+        }
+        
+        .form-group:nth-of-type(3) input:focus,
+        .form-group:nth-of-type(3) select:focus {
+            border-color: #eab308;
+            box-shadow: 0 0 0 3px rgba(234, 179, 8, 0.3);
+            outline: none;
+        }
+        
+        .form-group:nth-of-type(4) input:focus,
+        .form-group:nth-of-type(4) select:focus {
+            border-color: #22c55e;
+            box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.3);
+            outline: none;
+        }
+        
+        .form-group:nth-of-type(5) input:focus,
+        .form-group:nth-of-type(5) select:focus {
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
+            outline: none;
+        }
+        
+        /* Enhanced button styling with gradient */
+        .btn {
+            display: inline-block;
+            padding: 14px 28px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 18px;
+            letter-spacing: 0.5px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(90deg, 
+                #ef4444 0%, 
+                #f97316 14%, 
+                #eab308 28%, 
+                #22c55e 42%, 
+                #3b82f6 56%, 
+                #6366f1 70%, 
+                #8b5cf6 84%, 
+                #d946ef 100%);
+            color: white;
+            border: none;
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.5);
+            text-transform: uppercase;
+            background-size: 200% auto;
+            animation: gradient 3s linear infinite;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(59, 130, 246, 0.6);
+            background-size: 200% auto;
+        }
+        
+        .btn-primary:active {
+            transform: translateY(0);
+            box-shadow: 0 4px 6px rgba(59, 130, 246, 0.4);
+        }
+        
+        .btn-primary .btn-content {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .btn-primary .btn-icon {
+            margin-right: 8px;
+        }
+        
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: all 0.6s ease;
+        }
+        
+        .btn-primary:hover::before {
+            left: 100%;
+        }
+        
+        @keyframes gradient {
+            0% {background-position: 0% center;}
+            50% {background-position: 100% center;}
+            100% {background-position: 0% center;}
+        }
+        
+        /* Select2 styling with rainbow colors */
+        .select2-container--default .select2-selection--multiple {
+            border-radius: 8px;
+            padding: 6px;
+            min-height: 42px;
+            background-color: rgba(255, 255, 255, 0.9);
+        }
+        
+        /* College Names - Blue */
+        #college-names + .select2-container .select2-selection--multiple {
+            border: 2px solid #3b82f6;
+            box-shadow: 0 2px 5px rgba(59, 130, 246, 0.2);
+        }
+        
+        #college-names + .select2-container.select2-container--focus .select2-selection--multiple {
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
+        }
+        
+        /* Branches - Purple */
+        #branches + .select2-container .select2-selection--multiple {
+            border: 2px solid #8b5cf6;
+            box-shadow: 0 2px 5px rgba(139, 92, 246, 0.2);
+        }
+        
+        #branches + .select2-container.select2-container--focus .select2-selection--multiple {
+            border-color: #8b5cf6;
+            box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.3);
+        }
+        
+        .select2-container--default .select2-selection--multiple .select2-selection__choice {
+            background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 6px;
+            padding: 4px 8px;
+            margin: 4px;
+            color: white;
+            font-weight: 500;
+        }
+        
+        .select2-container--default .select2-selection--multiple .select2-selection__choice__remove {
+            color: rgba(255, 255, 255, 0.9);
+            margin-right: 6px;
+            position: relative;
+            top: -1px;
+            font-weight: 700;
+            padding: 0 4px;
+            border-radius: 50%;
+            transition: all 0.2s ease;
+        }
+        
+        .select2-container--default .select2-selection--multiple .select2-selection__choice__remove:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+            color: white;
+        }
+        
+        .select2-dropdown {
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 8px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            background-color: #ffffff;
+        }
+        
+        .select2-container--default .select2-results__option--highlighted[aria-selected] {
+            background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+        }
+        
+        /* Results table styling */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background-color: rgba(255, 255, 255, 0.95);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Rainbow gradient for table headers */
+        th:nth-child(1) {
+            background: linear-gradient(135deg, #ef4444 0%, #f97316 100%);
+        }
+        
+        th:nth-child(2) {
+            background: linear-gradient(135deg, #f97316 0%, #eab308 100%);
+        }
+        
+        th:nth-child(3) {
+            background: linear-gradient(135deg, #eab308 0%, #22c55e 100%);
+        }
+        
+        th:nth-child(4) {
+            background: linear-gradient(135deg, #22c55e 0%, #3b82f6 100%);
+        }
+        
+        th:nth-child(5) {
+            background: linear-gradient(135deg, #3b82f6 0%, #6366f1 100%);
+        }
+        
+        th:nth-child(6) {
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+        }
+        
+        th {
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+        }
+        
+        td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #e2e8f0;
+            color: #1e293b;
+        }
+        
+        tr:last-child td {
+            border-bottom: none;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f1f5f9;
+        }
+        
+        tr:hover {
+            background-color: #dbeafe;
+        }
+        
+        /* Probability badges with gradients */
+        .badge {
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 14px;
+            display: inline-block;
+            text-align: center;
+            min-width: 100px;
+            color: white;
+        }
+        
+        .badge-very-high {
+            background: linear-gradient(135deg, #15803d 0%, #22c55e 100%);
+            box-shadow: 0 2px 5px rgba(34, 197, 94, 0.4);
+        }
+        
+        .badge-high {
+            background: linear-gradient(135deg, #0369a1 0%, #0ea5e9 100%);
+            box-shadow: 0 2px 5px rgba(14, 165, 233, 0.4);
+        }
+        
+        .badge-medium {
+            background: linear-gradient(135deg, #a16207 0%, #eab308 100%);
+            box-shadow: 0 2px 5px rgba(234, 179, 8, 0.4);
+        }
+        
+        .badge-low {
+            background: linear-gradient(135deg, #b45309 0%, #f59e0b 100%);
+            box-shadow: 0 2px 5px rgba(245, 158, 11, 0.4);
+        }
+        
+        .badge-very-low {
+            background: linear-gradient(135deg, #b91c1c 0%, #ef4444 100%);
+            box-shadow: 0 2px 5px rgba(239, 68, 68, 0.4);
+        }
+        
+        /* New badge */
+        .new-badge {
+            background: linear-gradient(135deg, #6d28d9 0%, #8b5cf6 100%);
+            color: white;
+            font-size: 12px;
+            font-weight: 600;
+            padding: 3px 8px;
+            border-radius: 12px;
+            margin-left: 8px;
+            box-shadow: 0 2px 4px rgba(139, 92, 246, 0.4);
+        }
+        
+        /* Header with gradient */
+        .header {
+            background: linear-gradient(90deg, 
+                #ef4444 0%, 
+                #f97316 14%, 
+                #eab308 28%, 
+                #22c55e 42%, 
+                #3b82f6 56%, 
+                #6366f1 70%, 
+                #8b5cf6 84%, 
+                #d946ef 100%);
+            padding: 24px 0;
+            margin-bottom: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .header-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+        
+        .header a {
+            text-decoration: none;
+        }
+        
+        .header h1 {
+            font-size: 32px;
+            margin: 0;
+            color: white;
+            text-align: center;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .header h2 {
+            font-size: 20px;
+            margin: 10px 0 0;
+            color: #ffffff;
+            font-weight: 500;
+            text-align: center;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Loading spinner */
+        .spinner {
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top: 4px solid #3b82f6;
+            width: 30px;
+            height: 30px;
+            animation: spin 1s linear infinite;
+            margin: 20px auto;
+            display: none;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* Results info styling */
+        #results-info {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 12px 16px;
+            border-radius: 8px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            color: #1e293b;
+            border-left: 4px solid #3b82f6;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Card headings */
+        .card h3 {
+            color: #1e293b;
+            font-size: 24px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid rgba(59, 130, 246, 0.3);
+            padding-bottom: 10px;
+            background: linear-gradient(90deg, 
+                #ef4444 0%, 
+                #f97316 14%, 
+                #eab308 28%, 
+                #22c55e 42%, 
+                #3b82f6 56%, 
+                #6366f1 70%, 
+                #8b5cf6 84%, 
+                #d946ef 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 200% auto;
+            animation: gradient 3s linear infinite;
+        }
+        
+        /* Probability legend */
+        .probability-legend {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 12px 16px;
+            border-radius: 8px;
+            margin-top: 16px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            align-items: center;
+        }
+        
+        .probability-legend span:first-child {
+            color: #1e293b;
+            font-weight: 600;
+            margin-right: 8px;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            
+            .card {
+                padding: 20px;
+            }
+            
+            .header h1 {
+                font-size: 24px;
+            }
+            
+            .header h2 {
+                font-size: 16px;
+            }
+        }
+        
+        /* Theme toggle */
+        .theme-toggle {
+            position: fixed;
+            bottom: 1rem;
+            right: 1rem;
+            z-index: 1000;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            color: white;
+            border: none;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(99, 102, 241, 0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 10px rgba(99, 102, 241, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(99, 102, 241, 0);
+            }
+        }
+        
+        .theme-toggle:hover {
+            transform: rotate(180deg) scale(1.1);
+        }
+        
+        /* Updated Select2 styling for college names and branches with improved visibility */
+        #college_names + .select2-container .select2-selection--multiple,
+        #branches + .select2-container .select2-selection--multiple,
+        .select2-container--default .select2-selection--single {
+            background-color: rgba(255, 255, 255, 0.9) !important;
+            border: 2px solid rgba(59, 130, 246, 0.5) !important;
+            border-radius: 8px;
+            min-height: 42px;
+            padding: 6px;
+        }
+        
+        /* Single select styling */
+        .select2-container--default .select2-selection--single {
+            display: flex;
+            align-items: center;
+        }
+        
+        .select2-container--default .select2-selection--single .select2-selection__rendered {
+            color: #1e293b !important;
+            padding-left: 4px;
+            line-height: 30px;
+            background: linear-gradient(135deg, #1e40af, #3b82f6) !important;
+            -webkit-background-clip: text !important;
+            -webkit-text-fill-color: transparent !important;
+            font-weight: 600;
+        }
+        
+        .select2-container--default .select2-selection--single .select2-selection__arrow {
+            height: 30px;
+        }
+        
+        /* Blue background with white text for selected items - FIXED VISIBILITY */
+        .select2-container--default .select2-selection--multiple .select2-selection__choice {
+            background-color: #3b82f6 !important;
+            border: 1px solid rgba(255, 255, 255, 0.2) !important;
+            color: white !important;
+            font-weight: 600;
+            border-radius: 20px;
+            padding: 4px 8px 4px 25px;
+            margin: 4px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Improved placeholder styling with better visibility */
+        .select2-container--default .select2-search--inline .select2-search__field::placeholder {
+            color: #3b82f6 !important;
+            opacity: 0.7;
+            font-style: italic;
+            font-weight: 500;
+        }
+        
+        /* Remove button styling with better visibility */
+        .select2-container--default .select2-selection--multiple .select2-selection__choice__remove {
+            color: rgba(255, 255, 255, 0.9) !important;
+            background-color: rgba(0, 0, 0, 0.2) !important;
+            border-radius: 50%;
+            margin-right: 5px;
+            padding: 0 5px;
+            font-weight: 700;
+            transition: all 0.2s ease;
+            position: absolute;
+            left: 4px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        
+        .select2-container--default .select2-selection--multiple .select2-selection__choice__remove:hover {
+            background-color: rgba(0, 0, 0, 0.4) !important;
+            color: white !important;
+        }
+        
+        /* Improved dropdown styling */
+        .select2-dropdown {
+            background-color: #ffffff !important;
+            border: 2px solid rgba(59, 130, 246, 0.5) !important;
+            border-radius: 0 0 8px 8px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+        }
+        
+        .select2-container--default .select2-results__option {
+            padding: 8px 12px;
+            color: #1e293b;
+            transition: all 0.2s ease;
+        }
+        
+        .select2-container--default .select2-results__option--highlighted[aria-selected] {
+            background-color: #3b82f6 !important;
+            color: white !important;
+        }
+        
+        /* Fix for dropdown options visibility */
+        .select2-results__options {
+            background-color: #ffffff !important;
+        }
+        
+        body.dark-mode .select2-results__options {
+            background-color: #1e293b !important;
+        }
+        
+        /* Fix for single select dropdown */
+        .select2-container--default .select2-selection--single {
+            background-color: rgba(255, 255, 255, 0.9) !important;
+        }
+        
+        /* Dark mode support */
+        body.dark-mode .select2-container--default .select2-selection--multiple,
+        body.dark-mode .select2-container--default .select2-selection--single {
+            background-color: rgba(30, 41, 59, 0.8) !important;
+            border-color: rgba(99, 102, 241, 0.5) !important;
+        }
+        
+        body.dark-mode .select2-dropdown {
+            background-color: rgba(30, 41, 59, 0.95) !important;
+            border-color: rgba(99, 102, 241, 0.5) !important;
+        }
+        
+        body.dark-mode .select2-container--default .select2-results__option {
+            color: rgba(255, 255, 255, 0.9) !important;
+        }
+        
+        /* Fix for selected text display */
+        .select2-container--default .select2-selection--multiple .select2-selection__choice__display {
+            padding: 0 6px;
+            font-weight: 700;
+            letter-spacing: 0.02em;
+            background: linear-gradient(135deg, #1e40af, #3b82f6) !important; /* Dark blue gradient */
+            -webkit-background-clip: text !important;
+            -webkit-text-fill-color: transparent !important;
+            font-weight: 800;
+            text-shadow: none;
+        }
+        
+        /* Seat type toggle styling */
+        #female-seat-toggle {
+            background-color: rgba(168, 85, 247, 0.15);
+            border: 1px solid rgba(168, 85, 247, 0.3);
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+        
+        #female-seat-toggle label {
+            position: relative;
+            display: inline-block;
+            width: 56px;
+            height: 28px;
+            background-color: #4b5563;
+            border-radius: 14px;
+            transition: all 0.3s;
+            cursor: pointer;
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        
+        #female-seat-toggle label span {
+            position: absolute;
+            left: 4px;
+            top: 4px;
+            width: 20px;
+            height: 20px;
+            background-color: white;
+            border-radius: 50%;
+            transition: all 0.3s;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        
+        #seat-type-toggle:checked + label {
+            background-color: #3b82f6;
+        }
+        
+        #seat-type-toggle:checked + label span {
+            left: 32px;
+        }
+        
+        #toggle-label {
+            font-weight: 600;
+            color: #1e293b;
+        }
+        
+        /* Seat type badges */
+        .seat-type-badge {
+            display: inline-block;
+            padding: 0.25rem 0.5rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin: 0.1rem;
+            text-align: center;
+        }
+        
+        .female-badge {
+            background-color: #f9a8d4;
+            color: #831843;
+        }
+        
+        .neutral-badge {
+            background-color: #93c5fd;
+            color: #1e3a8a;
+        }
+        
+        /* Dark mode for badges */
+        .dark .female-badge {
+            background-color: #db2777;
+            color: #fbcfe8;
+        }
+        
+        .dark .neutral-badge {
+            background-color: #3b82f6;
+            color: #dbeafe;
+        }
+        
+        /* Radio button styling */
+        .form-radio {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            display: inline-block;
+            position: relative;
+            background-color: #f1f5f9;
+            color: #3b82f6;
+            height: 18px;
+            width: 18px;
+            border: 2px solid #3b82f6;
+            border-radius: 50%;
+            cursor: pointer;
+            margin-right: 5px;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+        
+        .form-radio:checked {
+            background-color: #3b82f6;
+            border-color: #3b82f6;
+        }
+        
+        .form-radio:checked::before {
+            position: absolute;
+            content: '';
+            height: 8px;
+            width: 8px;
+            background-color: white;
+            border-radius: 50%;
+            left: 3px;
+            top: 3px;
+        }
+        
+        .form-radio[value="female"]:checked {
+            background-color: #ec4899;
+            border-color: #ec4899;
+        }
+        
+        body.dark-mode .form-radio {
+            background-color: #1e293b;
+            border-color: #4b5563;
+        }
+        
+        body.dark-mode .form-radio:checked {
+            background-color: #3b82f6;
+            border-color: #3b82f6;
+        }
+        
+        body.dark-mode .form-radio[value="female"]:checked {
+            background-color: #ec4899;
+            border-color: #ec4899;
+        }
+    </style>
+</head>
+<body>
+    <!-- Theme toggle button -->
+    <button class="theme-toggle" id="theme-toggle">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+        </svg>
+    </button>
+    
+    <div id="loading" class="loading-overlay" style="display: none;">
+        <div class="spinner"></div>
+        <div>Processing your request...</div>
+    </div>
+
+    <header class="py-6">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-wrap items-center justify-between">
+                <a href="/" class="flex items-center space-x-3">
+                    <img src="https://i.ibb.co/y42LjdW/p.png" class="w-14 h-14" alt="Logo">
+                    <h1 class="text-2xl md:text-3xl font-extrabold text-white">Mahenju<span class="bg-gradient-to-r from-blue-200 to-indigo-100 text-indigo-800 text-xl md:text-2xl font-semibold px-3 py-1 rounded-lg ml-2 shadow-sm">Web</span></h1>
+                </a>
+                
+                <div class="mt-4 md:mt-0">
+                    <h2 class="text-xl md:text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-pink-300 via-purple-300 to-indigo-300">Improved College Predictor 2023-2024</h2>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-8">
+        <div class="card">
+            <h3 class="text-xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500">Enter Your Details</h3>
+            
+            <form id="predictorForm">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="form-group">
+                        <label class="form-label">Your Rank</label>
+                        <input type="number" id="rank" class="form-control" placeholder="Enter your rank" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Category</label>
+                        <select id="category" class="form-control" required>
+                            <option value="" disabled selected>Select Category</option>
+                            <option value="OPEN">OPEN</option>
+                            <option value="OBC-NCL">OBC-NCL</option>
+                            <option value="EWS">EWS</option>
+                            <option value="SC">SC</option>
+                            <option value="ST">ST</option>
+                            <option value="OPEN-PWD">OPEN-PWD</option>
+                            <option value="OBC-PWD">OBC-PWD</option>
+                            <option value="EWS-PWD">EWS-PWD</option>
+                            <option value="SC-PWD">SC-PWD</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Gender</label>
+                        <select id="gender" class="form-control" required>
+                            <option value="" disabled selected>Select Gender</option>
+                            <option value="MALE">Male</option>
+                            <option value="FEMALE">Female</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">State Quota</label>
+                        <select id="home_state" class="form-control" required>
+                            <option value="" disabled selected>Select Your State Quota</option>
+                            <!-- Will be populated dynamically from the server -->
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">College Type</label>
+                        <select id="college_type" class="form-control">
+                            <option value="ALL" selected>All Colleges</option>
+                            <option value="NIT">NITs</option>
+                            <option value="IIIT">IIITs</option>
+                            <option value="GFTI">GFTIs</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-group mt-4">
+                    <label class="form-label">College Names</label>
+                    <select id="college_names" class="form-control" multiple="multiple">
+                        <!-- Will be populated dynamically -->
+                    </select>
+                </div>
+                
+                <div class="form-group mt-4">
+                    <label class="form-label">Branches</label>
+                    <select id="branches" class="form-control" multiple="multiple">
+                        <!-- Will be populated dynamically -->
+                    </select>
+                </div>
+                
+                <div class="mt-6">
+                    <button type="submit" class="btn btn-primary w-100">
+                        <span class="btn-content">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="btn-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M5 12h14"></path>
+                                <path d="m12 5 7 7-7 7"></path>
+                            </svg>
+                            Predict Colleges
+                        </span>
+                    </button>
+                </div>
+            </form>
+        </div>
+        
+        <div id="results-container" class="card" style="display: none;">
+            <h3>Predicted Colleges</h3>
+            
+            <div id="results-info"></div>
+            
+            <!-- Female seat toggle - only visible for female candidates -->
+            <div id="female-seat-toggle" class="mb-4 p-3 rounded-lg bg-opacity-20 bg-purple-500 flex flex-wrap items-center" style="display: none;">
+                <span class="mr-3 font-medium text-sm">Filter seats:</span>
+                <div class="flex space-x-4">
+                    <label class="inline-flex items-center">
+                        <input type="radio" name="seat-type-filter" value="all" class="form-radio h-4 w-4 text-blue-600" checked>
+                        <span class="ml-2 text-sm font-medium">All Seats</span>
+                    </label>
+                    <label class="inline-flex items-center">
+                        <input type="radio" name="seat-type-filter" value="female" class="form-radio h-4 w-4 text-pink-600">
+                        <span class="ml-2 text-sm font-medium">Female-Only Seats</span>
+                    </label>
+                    <label class="inline-flex items-center">
+                        <input type="radio" name="seat-type-filter" value="neutral" class="form-radio h-4 w-4 text-blue-600">
+                        <span class="ml-2 text-sm font-medium">Neutral Seats</span>
+                    </label>
+                </div>
+                <div class="ml-auto text-xs italic opacity-75 mt-2 md:mt-0">Female candidates are eligible for both neutral and female-only seats</div>
+            </div>
+            
+            <div class="table-responsive">
+                <table class="results-table">
+                    <thead>
+                        <tr>
+                            <th>College</th>
+                            <th>Branch</th>
+                            <th>Quota</th>
+                            <th>2023 CR</th>
+                            <th>2024 CR</th>
+                            <th>Probability</th>
+                        </tr>
+                    </thead>
+                    <tbody id="results-body">
+                        <!-- Results will be populated here -->
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="probability-legend">
+                <span>Probability:</span>
+                <span class="badge badge-very-high">Very High</span>
+                <span class="badge badge-high">High</span>
+                <span class="badge badge-medium">Medium</span>
+                <span class="badge badge-low">Low</span>
+                <span class="badge badge-very-low">Very Low</span>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        $(document).ready(function() {
+            // Initialize Select2 with improved performance and styling options
+            $('#college_names, #branches').select2({
+                placeholder: "Select options",
+                allowClear: true,
+                closeOnSelect: false,
+                dropdownCssClass: "select2-dropdown-large",
+                selectionCssClass: "select2-selection-improved",
+                // Improve performance with these options
+                minimumInputLength: 0,
+                maximumSelectionLength: 50,
+                selectOnClose: false,
+                // Delay loading until dropdown is opened
+                dropdownParent: $('body'),
+                // Custom template for selection items to improve appearance
+                templateSelection: function(data) {
+                    if (!data.id) return data.text;
+                    return $('<span class="select2-selection-item" style="background: linear-gradient(135deg, #1e40af, #3b82f6) !important; -webkit-background-clip: text !important; -webkit-text-fill-color: transparent !important; font-weight: 800;">' + data.text + '</span>');
+                },
+                // Custom placeholder that matches site theme
+                placeholder: function() {
+                    return $('<span style="color: #3b82f6 !important; font-style: italic; font-weight: 500;">Select options...</span>');
+                }
+            });
+            
+            // Initialize Select2 for single-select dropdowns
+            $('#category, #gender, #home_state, #college_type').select2({
+                width: '100%',
+                dropdownCssClass: "select2-dropdown-large",
+                selectionCssClass: "select2-selection-improved",
+                minimumResultsForSearch: 10, // Hide search for dropdowns with few options
+                // Custom template for selection items
+                templateSelection: function(data) {
+                    if (!data.id) return data.text;
+                    return $('<span style="background: linear-gradient(135deg, #1e40af, #3b82f6) !important; -webkit-background-clip: text !important; -webkit-text-fill-color: transparent !important; font-weight: 800;">' + data.text + '</span>');
+                }
+            });
+            
+            // Theme toggle functionality
+            $('#theme-toggle').on('click', function() {
+                $('body').toggleClass('dark-mode');
+                
+                // Update Select2 styling based on theme
+                if ($('body').hasClass('dark-mode')) {
+                    $('.select2-container--default .select2-selection--multiple').css({
+                        'background-color': 'rgba(30, 41, 59, 0.8)',
+                        'border-color': 'rgba(99, 102, 241, 0.5)'
+                    });
+                    $('.select2-container--default .select2-selection--single').css({
+                        'background-color': 'rgba(30, 41, 59, 0.8)',
+                        'border-color': 'rgba(99, 102, 241, 0.5)'
+                    });
+                    $('.select2-dropdown').css({
+                        'background-color': 'rgba(30, 41, 59, 0.95)',
+                        'border-color': 'rgba(99, 102, 241, 0.5)'
+                    });
+                    $('.select2-results__options').css('background-color', '#1e293b');
+                    $('.select2-container--default .select2-results__option').css('color', 'rgba(255, 255, 255, 0.9)');
+                } else {
+                    $('.select2-container--default .select2-selection--multiple').css({
+                        'background-color': 'rgba(255, 255, 255, 0.9)',
+                        'border-color': 'rgba(59, 130, 246, 0.5)'
+                    });
+                    $('.select2-container--default .select2-selection--single').css({
+                        'background-color': 'rgba(255, 255, 255, 0.9)',
+                        'border-color': 'rgba(59, 130, 246, 0.5)'
+                    });
+                    $('.select2-dropdown').css({
+                        'background-color': '#ffffff',
+                        'border-color': 'rgba(59, 130, 246, 0.5)'
+                    });
+                    $('.select2-results__options').css('background-color', '#ffffff');
+                    $('.select2-container--default .select2-results__option').css('color', '#1e293b');
+                }
+            });
+            
+            // Load quotas from server
+            function loadQuotas() {
+                // Show loading
+                $('#loading').show();
+                
+                // Make AJAX request to get quotas
+                $.ajax({
+                    url: '/get_quotas',
+                    type: 'GET',
+                    success: function(quotas) {
+                        // Clear previous options
+                        $('#home_state').empty();
+                        
+                        // Add placeholder
+                        $('#home_state').append('<option value="" disabled selected>Select Your State Quota</option>');
+                        
+                        // Add quotas
+                        quotas.forEach(function(quota) {
+                            $('#home_state').append(new Option(quota, quota, false, false));
+                        });
+                        
+                        $('#loading').hide();
+                    },
+                    error: function(error) {
+                        console.error('Error loading quotas:', error);
+                        $('#loading').hide();
+                    }
+                });
+            }
+            
+            // Load colleges based on college type - with performance improvements
+            function loadColleges() {
+                const collegeType = $('#college_type').val();
+                
+                // Show loading
+                $('#loading').show();
+                
+                // Clear previous options
+                $('#college_names').empty();
+                
+                // Add ALL option
+                $('#college_names').append(new Option('ALL', 'ALL', false, false));
+                
+                // Make AJAX request to get colleges
+                $.ajax({
+                    url: '/get_colleges',
+                    type: 'GET',
+                    data: { type: collegeType },
+                    success: function(colleges) {
+                        // Process in batches for better performance
+                        const batchSize = 50;
+                        const batches = Math.ceil(colleges.length / batchSize);
+                        
+                        function processBatch(batchIndex) {
+                            if (batchIndex >= batches) {
+                                // All batches processed
+                                $('#college_names').trigger('change');
+                                $('#loading').hide();
+                                return;
+                            }
+                            
+                            const start = batchIndex * batchSize;
+                            const end = Math.min(start + batchSize, colleges.length);
+                            
+                            // Process this batch
+                            for (let i = start; i < end; i++) {
+                                $('#college_names').append(new Option(colleges[i], colleges[i], false, false));
+                            }
+                            
+                            // Process next batch
+                            setTimeout(function() {
+                                processBatch(batchIndex + 1);
+                            }, 0);
+                        }
+                        
+                        // Start processing batches
+                        processBatch(0);
+                    },
+                    error: function(error) {
+                        console.error('Error loading colleges:', error);
+                        $('#loading').hide();
+                    }
+                });
+            }
+            
+            // Load branches based on selected colleges - with performance improvements
+            function loadBranches() {
+                const selectedColleges = $('#college_names').val() || [];
+                
+                // Show loading
+                $('#loading').show();
+                
+                // Clear previous options
+                $('#branches').empty();
+                
+                // Add ALL option
+                $('#branches').append(new Option('ALL', 'ALL', false, false));
+                
+                // If "ALL" is selected, don't filter by college
+                const collegesForFilter = selectedColleges.includes('ALL') ? [] : selectedColleges;
+                
+                // Make AJAX request to get branches
+                $.ajax({
+                    url: '/get_branches',
+                    type: 'GET',
+                    data: { 'colleges[]': collegesForFilter },
+                    success: function(branches) {
+                        // Process in batches for better performance
+                        const batchSize = 30;
+                        const batches = Math.ceil(branches.length / batchSize);
+                        
+                        function processBatch(batchIndex) {
+                            if (batchIndex >= batches) {
+                                // All batches processed
+                                $('#branches').trigger('change');
+                                $('#loading').hide();
+                                return;
+                            }
+                            
+                            const start = batchIndex * batchSize;
+                            const end = Math.min(start + batchSize, branches.length);
+                            
+                            // Process this batch
+                            for (let i = start; i < end; i++) {
+                                $('#branches').append(new Option(branches[i], branches[i], false, false));
+                            }
+                            
+                            // Process next batch
+                            setTimeout(function() {
+                                processBatch(batchIndex + 1);
+                            }, 0);
+                        }
+                        
+                        // Start processing batches
+                        processBatch(0);
+                    },
+                    error: function(error) {
+                        console.error('Error loading branches:', error);
+                        $('#loading').hide();
+                    }
+                });
+            }
+            
+            // Function to update categories based on selected college and gender
+            function updateCategories() {
+                const selectedColleges = $('#college_names').val() || [];
+                const gender = $('#gender').val();
+                
+                // If no college selected or gender not selected, don't update
+                if (!selectedColleges.length || !gender) {
+                    return;
+                }
+                
+                // If multiple colleges are selected or "ALL" is selected, use default categories
+                let collegeName = "";
+                if (selectedColleges.length === 1 && selectedColleges[0] !== "ALL") {
+                    collegeName = selectedColleges[0];
+                }
+                
+                // Make AJAX request to get categories
+                $.ajax({
+                    url: '/get_categories',
+                    type: 'GET',
+                    data: { 
+                        college: collegeName,
+                        gender: gender
+                    },
+                    success: function(response) {
+                        const categorySelect = $('#category');
+                        const selectedCategory = categorySelect.val(); // Save current selection
+                        
+                        // Clear previous options
+                        categorySelect.empty();
+                        
+                        // Add placeholder
+                        categorySelect.append('<option value="" disabled selected>Select Category</option>');
+                        
+                        // Add categories - now using the available categories from the response
+                        const categories = response.available || [];
+                        categories.forEach(function(category) {
+                            categorySelect.append(new Option(category, category, false, false));
+                        });
+                        
+                        // Restore previous selection if it exists in the new options
+                        if (selectedCategory && categorySelect.find('option[value="' + selectedCategory + '"]').length > 0) {
+                            categorySelect.val(selectedCategory);
+                        }
+                        
+                        // Refresh Select2
+                        categorySelect.trigger('change');
+                        
+                        // Show popup for unavailable categories if any
+                        const unavailableCategories = response.unavailable || [];
+                        if (unavailableCategories.length > 0 && collegeName) {
+                            // Create popup element if it doesn't exist
+                            if (!$('#category-popup').length) {
+                                $('body').append(`
+                                    <div id="category-popup" class="fixed inset-0 flex items-center justify-center z-50" style="display: none;">
+                                        <div class="absolute inset-0 bg-black bg-opacity-50"></div>
+                                        <div class="relative bg-white dark:bg-gray-800 rounded-lg shadow-xl p-6 max-w-md w-full mx-4">
+                                            <div class="flex justify-between items-center mb-4">
+                                                <h3 class="text-xl font-bold text-gray-900 dark:text-white">Category Information</h3>
+                                                <button id="close-popup" class="text-gray-400 hover:text-gray-500 focus:outline-none">
+                                                    <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                                                    </svg>
+                                                </button>
+                                            </div>
+                                            <div id="popup-content" class="text-gray-700 dark:text-gray-300"></div>
+                                            <div class="mt-6 flex justify-end">
+                                                <button id="confirm-popup" class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 focus:outline-none">
+                                                    OK
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                `);
+                                
+                                // Add event listeners for popup buttons
+                                $('#close-popup, #confirm-popup').on('click', function() {
+                                    $('#category-popup').fadeOut(300);
+                                });
+                            }
+                            
+                            // Update popup content
+                            $('#popup-content').html(`
+                                <p class="mb-4">JOSAA did not have data for <strong>${collegeName}</strong> for the following categories:</p>
+                                <ul class="list-disc pl-5 mb-4">
+                                    ${unavailableCategories.map(cat => `<li>${cat}</li>`).join('')}
+                                </ul>
+                                <p>Please select from the available categories.</p>
+                            `);
+                            
+                            // Show popup
+                            $('#category-popup').fadeIn(300);
+                        }
+                    },
+                    error: function(error) {
+                        console.error('Error loading categories:', error);
+                    }
+                });
+            }
+            
+            // Handle college type change
+            $('#college_type').on('change', function() {
+                loadColleges();
+            });
+            
+            // Handle college selection change
+            $('#college_names').on('change', function() {
+                const selectedColleges = $(this).val() || [];
+                
+                // If "ALL" is selected, deselect other options
+                if (selectedColleges.includes('ALL') && selectedColleges.length > 1) {
+                    if (selectedColleges[0] === 'ALL') {
+                        $(this).val(['ALL']).trigger('change');
+                    } else {
+                        $(this).val(selectedColleges.filter(val => val !== 'ALL')).trigger('change');
+                    }
+                }
+                
+                // Load branches based on selected colleges
+                loadBranches();
+                
+                // Update categories if gender is already selected
+                if ($('#gender').val()) {
+                    updateCategories();
+                }
+            });
+            
+            // Handle gender change
+            $('#gender').on('change', function() {
+                // Update categories based on selected college and gender
+                updateCategories();
+            });
+            
+            // Handle branch selection change
+            $('#branches').on('change', function() {
+                const selectedBranches = $(this).val() || [];
+                
+                // If "ALL" is selected, deselect other options
+                if (selectedBranches.includes('ALL') && selectedBranches.length > 1) {
+                    if (selectedBranches[0] === 'ALL') {
+                        $(this).val(['ALL']).trigger('change');
+                    } else {
+                        $(this).val(selectedBranches.filter(val => val !== 'ALL')).trigger('change');
+                    }
+                }
+            });
+            
+            // Form submission
+            $('#predictorForm').on('submit', function(e) {
+                e.preventDefault();
+                
+                // Validate form
+                const collegeNames = $('#college_names').val();
+                const branches = $('#branches').val();
+                
+                if (!collegeNames || collegeNames.length === 0) {
+                    alert('Please select at least one college');
+                    return;
+                }
+                
+                if (!branches || branches.length === 0) {
+                    alert('Please select at least one branch');
+                    return;
+                }
+                
+                // Show loading
+                $('#loading').show();
+                
+                // Get form data
+                const formData = {
+                    rank: $('#rank').val(),
+                    category: $('#category').val(),
+                    gender: $('#gender').val(),
+                    home_state: $('#home_state').val(),
+                    college_type: $('#college_type').val(),
+                    college_names: collegeNames,
+                    branches: branches
+                };
+                
+                // Function to make the actual request
+                function makeRequest(seatFilter) {
+                    // Add seat filter to form data
+                    formData.seat_filter = seatFilter;
+                    
+                    // Make AJAX request
+                $.ajax({
+                    url: '/predict_colleges',
+                    type: 'POST',
+                    contentType: 'application/json',
+                    data: JSON.stringify(formData),
+                    success: function(results) {
+                            console.log('Results from backend:', results);
+                            
+                            // Store original results
+                            window.originalResults = results;
+                            window.allResults = results;
+                            
+                            // Show female seat toggle for female candidates
+                            if (formData.gender === 'FEMALE' && seatFilter === 'all') {
+                                $('#female-seat-toggle').show();
+                                
+                                // Count seat types
+                                const femaleSeats = results.filter(r => r['Seat Type'] === 'Female Only').length;
+                                const neutralSeats = results.filter(r => r['Seat Type'] === 'Gender Neutral').length;
+                                console.log(`Seat counts: Female Only=${femaleSeats}, Gender Neutral=${neutralSeats}`);
+                            } else {
+                                $('#female-seat-toggle').hide();
+                            }
+                            
+                            // Display results
+                        displayResults(results);
+                        $('#loading').hide();
+                    },
+                    error: function(error) {
+                        console.error('Error predicting colleges:', error);
+                        $('#results-container').show();
+                        $('#results-info').html(`<p class="text-red-500">Error: ${error.responseJSON?.error || 'Failed to process request'}</p>`);
+                        $('#loading').hide();
+                    }
+                });
+                }
+                
+                // If female, show seat type selection popup
+                if (formData.gender === 'FEMALE') {
+                    // Create seat selection popup if it doesn't exist
+                    if (!$('#seat-selection-popup').length) {
+                        $('body').append(`
+                            <div id="seat-selection-popup" class="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50">
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-xl max-w-md w-full">
+                                    <h3 class="text-xl font-bold mb-4">Seat Type Selection</h3>
+                                    <p class="mb-4">Female candidates are eligible for both Gender Neutral and Female-Only seats. Which seats would you like to view?</p>
+                                    <div class="flex flex-col space-y-2 mb-6">
+                                        <label class="inline-flex items-center p-2 bg-purple-100 dark:bg-purple-900 rounded-lg">
+                                            <input type="radio" name="seat-popup-filter" value="all" class="form-radio h-4 w-4 text-blue-600" checked>
+                                            <span class="ml-2 font-medium">All Seats (Gender Neutral + Female-Only)</span>
+                                        </label>
+                                        <label class="inline-flex items-center p-2 bg-pink-100 dark:bg-pink-900 rounded-lg">
+                                            <input type="radio" name="seat-popup-filter" value="female" class="form-radio h-4 w-4 text-pink-600">
+                                            <span class="ml-2 font-medium">Female-Only Seats</span>
+                                        </label>
+                                        <label class="inline-flex items-center p-2 bg-blue-100 dark:bg-blue-900 rounded-lg">
+                                            <input type="radio" name="seat-popup-filter" value="neutral" class="form-radio h-4 w-4 text-blue-600">
+                                            <span class="ml-2 font-medium">Gender Neutral Seats</span>
+                                        </label>
+                                    </div>
+                                    <div class="flex justify-end">
+                                        <button id="seat-popup-continue" class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">
+                                            Continue
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        `);
+                        
+                        // Handle continue button click
+                        $(document).on('click', '#seat-popup-continue', function() {
+                            const selectedFilter = $('input[name="seat-popup-filter"]:checked').val();
+                            $('#seat-selection-popup').remove();
+                            
+                            // Set the radio button in the main UI to match
+                            $(`input[name="seat-type-filter"][value="${selectedFilter}"]`).prop('checked', true);
+                            
+                            // Make the request with the selected filter
+                            makeRequest(selectedFilter);
+                        });
+                    } else {
+                        // Just show the popup if it already exists
+                        $('#seat-selection-popup').show();
+                    }
+                } else {
+                    // For male, just make the request with neutral filter
+                    makeRequest('neutral');
+                }
+            });
+            
+            // Handle seat type toggle
+            $('input[name="seat-type-filter"]').on('change', function() {
+                const filterValue = $('input[name="seat-type-filter"]:checked').val();
+                console.log('Selected filter value:', filterValue);
+                
+                // If we have original results, use them
+                if (window.originalResults) {
+                    $('#loading').show();
+                    
+                    // Get form data
+                    const formData = {
+                        rank: $('#rank').val(),
+                        category: $('#category').val(),
+                        gender: $('#gender').val(),
+                        home_state: $('#home_state').val(),
+                        college_type: $('#college_type').val(),
+                        college_names: $('#college_names').val(),
+                        branches: $('#branches').val(),
+                        seat_filter: filterValue
+                    };
+                    
+                    // Make a new request with the selected filter
+                    $.ajax({
+                        url: '/predict_colleges',
+                        type: 'POST',
+                        contentType: 'application/json',
+                        data: JSON.stringify(formData),
+                        success: function(results) {
+                            window.allResults = results;
+                            displayResults(results);
+                            $('#loading').hide();
+                        },
+                        error: function(error) {
+                            console.error('Error filtering colleges:', error);
+                            $('#results-container').show();
+                            $('#results-info').html(`<p class="text-red-500">Error: ${error.responseJSON?.error || 'Failed to process request'}</p>`);
+                            $('#loading').hide();
+                        }
+                    });
+                }
+            });
+            
+            // Function to display results
+            function displayResults(results) {
+                // Show results container
+                $('#results-container').show();
+                
+                // Clear existing results
+                $('#results-table tbody').empty();
+                
+                // Check if no results found
+                if (results.length === 0) {
+                    $('#results-info').html(`<p class="text-red-500 dark:text-red-400">No colleges found matching your criteria</p>`);
+                    return;
+                }
+                
+                const gender = $('#gender').val();
+                const selectedFilter = $('input[name="seat-type-filter"]:checked').val();
+                
+                // For female candidates in "all" view, we want to group results by college and branch
+                if (gender === 'FEMALE' && selectedFilter === 'all') {
+                    // First, group results by college and branch
+                    const groupedResults = {};
+                    results.forEach(result => {
+                        const key = `${result.College}|${result.Branch}`;
+                        if (!groupedResults[key]) {
+                            groupedResults[key] = {
+                                college: result.College,
+                                branch: result.Branch,
+                                quota: result.Quota,
+                                category: result.Category,
+                                closingRank2024: result['Closing Rank 2024'],
+                                closingRank2023: result['Closing Rank 2023'],
+                                probability: result.Probability,
+                                seatTypes: [result['Seat Type']]
+                            };
+                        } else if (!groupedResults[key].seatTypes.includes(result['Seat Type'])) {
+                            groupedResults[key].seatTypes.push(result['Seat Type']);
+                        }
+                    });
+                    
+                    // Then display the grouped results
+                    let counter = 0;
+                    Object.values(groupedResults).forEach((result) => {
+                        const seatTypeBadges = result.seatTypes.map(seatType => {
+                            if (seatType === 'Female Only') {
+                                return `<span class="seat-type-badge female-badge">Female Only</span>`;
+                            } else {
+                                return `<span class="seat-type-badge neutral-badge">Gender Neutral</span>`;
+                            }
+                        }).join(' ');
+                        
+                        $('#results-table tbody').append(`
+                            <tr class="result-row hover:bg-purple-50 dark:hover:bg-purple-900 animate-fade-in" style="animation-delay: ${counter * 50}ms">
+                                <td class="p-3">${result.college}</td>
+                                <td class="p-3">${result.branch}</td>
+                                <td class="p-3">${seatTypeBadges}</td>
+                                <td class="p-3">${result.closingRank2024 || 'N/A'}</td>
+                                <td class="p-3">${result.closingRank2023 || 'N/A'}</td>
+                                <td class="p-3">
+                                    <span class="prob-badge ${result.probability.replace(/\s+/g, '-').toLowerCase()}-prob">
+                                        ${result.probability}
+                                    </span>
+                                </td>
+                            </tr>
+                        `);
+                        counter++;
+                    });
+                    
+                    // Update results count to reflect the number of unique college-branch combinations
+                    const uniqueCount = Object.keys(groupedResults).length;
+                    $('#results-info').html(`
+                        <p class="text-green-600 dark:text-green-400">
+                            Found ${uniqueCount} potential colleges for you
+                            ${uniqueCount !== results.length ? ` (${results.length} total seat options)` : ''}
+                        </p>
+                    `);
+                } else {
+                    // Regular display for other views
+                    results.forEach((result, index) => {
+                        const seatTypeBadge = result['Seat Type'] === 'Female Only' 
+                            ? `<span class="seat-type-badge female-badge">Female Only</span>`
+                            : `<span class="seat-type-badge neutral-badge">Gender Neutral</span>`;
+                        
+                        $('#results-table tbody').append(`
+                            <tr class="result-row hover:bg-purple-50 dark:hover:bg-purple-900 animate-fade-in" style="animation-delay: ${index * 50}ms">
+                                <td class="p-3">${result.College}</td>
+                                <td class="p-3">${result.Branch}</td>
+                                <td class="p-3">${seatTypeBadge}</td>
+                                <td class="p-3">${result['Closing Rank 2024'] || 'N/A'}</td>
+                                <td class="p-3">${result['Closing Rank 2023'] || 'N/A'}</td>
+                                <td class="p-3">
+                                    <span class="prob-badge ${result.Probability.replace(/\s+/g, '-').toLowerCase()}-prob">
+                                        ${result.Probability}
+                                    </span>
+                                </td>
+                            </tr>
+                        `);
+                    });
+                    
+                    // Update results info
+                    $('#results-info').html(`<p class="text-green-600 dark:text-green-400">Found ${results.length} potential colleges for you</p>`);
+                }
+                
+                // Animate results to scroll into view
+                $('#results-container')[0].scrollIntoView({ behavior: 'smooth' });
+            }
+            
+            // Load initial data
+            loadQuotas();
+            loadColleges();
+        });
+    </script>
+</body>
+</html> 

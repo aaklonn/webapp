@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JEE Mains 2024 Rank Predictor</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --gradient-main: linear-gradient(to right, #EC4899, #8B5CF6);
+            --text-placeholder: #EC4899;
+        }
+        
+        body {
+            font-family: 'Libre Franklin', sans-serif;
+            background-color: #F3F4F6;
+        }
+        
+        .gradient-text {
+            background: var(--gradient-main);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .input-field {
+            border: 2px solid #E5E7EB;
+            border-radius: 8px;
+            padding: 12px 16px;
+            width: 100%;
+            font-size: 16px;
+            transition: all 0.3s;
+        }
+        
+        .input-field:focus {
+            outline: none;
+            border-color: #EC4899;
+            box-shadow: 0 0 0 3px rgba(236, 72, 153, 0.1);
+        }
+        
+        .select-field {
+            border: 2px solid #E5E7EB;
+            border-radius: 8px;
+            padding: 12px 16px;
+            width: 100%;
+            font-size: 16px;
+            transition: all 0.3s;
+            background-color: white;
+        }
+        
+        .select-field:focus {
+            outline: none;
+            border-color: #EC4899;
+            box-shadow: 0 0 0 3px rgba(236, 72, 153, 0.1);
+        }
+        
+        .result-card {
+            background: white;
+            border-radius: 16px;
+            padding: 32px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            display: none;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease-out;
+        }
+        
+        .result-card.show {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .result-column {
+            flex: 1;
+            padding: 20px;
+            border-radius: 12px;
+            background: #F8FAFC;
+            position: relative;
+        }
+
+        .result-column:not(:last-child) {
+            margin-right: 16px;
+            border-right: 2px solid #E2E8F0;
+        }
+
+        .result-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid #E2E8F0;
+        }
+
+        .result-row:last-child {
+            border-bottom: none;
+        }
+
+        .result-label {
+            color: #64748B;
+            font-size: 0.95rem;
+        }
+
+        .result-value {
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .year-label {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #1E293B;
+            margin-bottom: 16px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #E2E8F0;
+        }
+
+        .scenario-indicator {
+            position: absolute;
+            bottom: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 1rem;
+            padding: 8px 16px;
+            border-radius: 20px;
+            background: white;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            white-space: nowrap;
+        }
+
+        .scenario-emoji {
+            font-size: 1.5rem;
+            display: inline-flex;
+            align-items: center;
+            position: relative;
+        }
+
+        .scenario-emoji::before,
+        .scenario-emoji::after {
+            position: absolute;
+            font-size: 0.5em;
+        }
+
+        .best-case {
+            color: #059669;
+        }
+        
+        .best-case .scenario-emoji::before,
+        .best-case .scenario-emoji::after {
+            content: "✓";
+        }
+        
+        .best-case .scenario-emoji::before {
+            left: -12px;
+            top: 0;
+        }
+        
+        .best-case .scenario-emoji::after {
+            right: -12px;
+            top: 0;
+        }
+
+        .optimal-case {
+            color: #D97706;
+        }
+        
+        .optimal-case .scenario-emoji::before,
+        .optimal-case .scenario-emoji::after {
+            content: "•";
+        }
+        
+        .optimal-case .scenario-emoji::before {
+            left: -12px;
+            top: -2px;
+        }
+        
+        .optimal-case .scenario-emoji::after {
+            right: -12px;
+            top: -2px;
+        }
+
+        .worst-case {
+            color: #DC2626;
+        }
+        
+        .worst-case .scenario-emoji::before,
+        .worst-case .scenario-emoji::after {
+            content: "×";
+        }
+        
+        .worst-case .scenario-emoji::before {
+            left: -12px;
+            top: -2px;
+        }
+        
+        .worst-case .scenario-emoji::after {
+            right: -12px;
+            top: -2px;
+        }
+
+        .inflation-info {
+            background: #FEF3C7;
+            border-radius: 8px;
+            padding: 16px;
+            margin-top: 40px;
+            font-size: 0.9rem;
+            color: #92400E;
+        }
+
+        .inflation-info ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 12px 0 0 0;
+        }
+
+        .inflation-info li {
+            margin: 8px 0;
+            display: flex;
+            align-items: center;
+        }
+
+        .inflation-info li::before {
+            content: "•";
+            margin-right: 8px;
+            font-weight: bold;
+        }
+        
+        .submit-btn {
+            background: var(--gradient-main);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+        
+        .submit-btn:hover {
+            opacity: 0.9;
+            transform: translateY(-1px);
+        }
+        
+        .submit-btn:active {
+            transform: translateY(1px);
+        }
+    </style>
+</head>
+<body class="min-h-screen py-8">
+    <div class="max-w-4xl mx-auto px-4">
+        <div class="text-center mb-8">
+            <h1 class="text-3xl font-bold mb-2">JEE Mains 2024 Rank Predictor</h1>
+            <p class="text-gray-600">Predict your rank based on your percentile and category</p>
+        </div>
+        
+        <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
+            <form id="rankForm" class="space-y-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Percentile</label>
+                        <input type="number" id="percentile" class="input-field" placeholder="Enter your percentile" step="0.01" min="0" max="100" required>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Category</label>
+                        <select id="category" class="select-field" required>
+                            <option value="">Select category</option>
+                            <option value="OPEN">General</option>
+                            <option value="EWS">EWS</option>
+                            <option value="OBC">OBC-NCL</option>
+                            <option value="SC">SC</option>
+                            <option value="ST">ST</option>
+                            <option value="OPEN-PWD">General-PWD</option>
+                            <option value="EWS-PWD">EWS-PWD</option>
+                            <option value="OBC-PWD">OBC-NCL-PWD</option>
+                            <option value="SC-PWD">SC-PWD</option>
+                            <option value="ST-PWD">ST-PWD</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="text-center">
+                    <button type="submit" class="submit-btn">
+                        Predict Rank
+                    </button>
+                </div>
+            </form>
+        </div>
+        
+        <div class="result-card">
+            <h3 class="text-2xl font-semibold mb-6 text-center gradient-text">Predicted Results</h3>
+            
+            <div class="flex flex-col md:flex-row">
+                <div class="result-column">
+                    <div class="year-label text-[#EC4899]">2024 (Last Year)</div>
+                    <div class="result-row">
+                        <span class="result-label">Rank</span>
+                        <span class="result-value" id="lastYearRank"></span>
+                    </div>
+                    <div class="result-row">
+                        <span class="result-label">Total Candidates</span>
+                        <span class="result-value" id="lastYearCandidates"></span>
+                    </div>
+                    <div class="scenario-indicator best-case">
+                        <span class="scenario-emoji">☺</span>
+                        <span class="font-medium">Best</span>
+                    </div>
+                </div>
+                
+                <div class="result-column">
+                    <div class="year-label text-[#8B5CF6]">2025 (5.5% Inflation)</div>
+                    <div class="result-row">
+                        <span class="result-label">Predicted Rank</span>
+                        <span class="result-value" id="resultRankOptimal"></span>
+                    </div>
+                    <div class="result-row">
+                        <span class="result-label">Total Candidates</span>
+                        <span class="result-value" id="totalCandidatesOptimal"></span>
+                    </div>
+                    <div class="scenario-indicator optimal-case">
+                        <span class="scenario-emoji">☺</span>
+                        <span class="font-medium">Optimal</span>
+                    </div>
+                </div>
+
+                <div class="result-column">
+                    <div class="year-label text-[#8B5CF6]">2025 (9.7% Inflation)</div>
+                    <div class="result-row">
+                        <span class="result-label">Predicted Rank</span>
+                        <span class="result-value" id="resultRankWorst"></span>
+                    </div>
+                    <div class="result-row">
+                        <span class="result-label">Total Candidates</span>
+                        <span class="result-value" id="totalCandidatesWorst"></span>
+                    </div>
+                    <div class="scenario-indicator worst-case">
+                        <span class="scenario-emoji">☹</span>
+                        <span class="font-medium">Worst</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="inflation-info">
+                <strong>Inflation Rate Scenarios:</strong>
+                <ul>
+                    <li class="best-case">Best Case (0%): Using last year's data as reference</li>
+                    <li class="optimal-case">Optimal Case (5.5%): Moderate increase in candidates</li>
+                    <li class="worst-case">Worst Case (9.7%): Maximum expected increase in candidates</li>
+                </ul>
+                <p class="mt-2">The prediction takes into account different inflation scenarios to provide a range of possible ranks. The actual rank may fall anywhere within this range depending on the final number of candidates.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            $('#rankForm').on('submit', function(e) {
+                e.preventDefault();
+                
+                const percentile = parseFloat($('#percentile').val());
+                const category = $('#category').val();
+                
+                if (!percentile || !category) {
+                    alert('Please fill all fields');
+                    return;
+                }
+                
+                if (percentile < 0 || percentile > 100) {
+                    alert('Percentile must be between 0 and 100');
+                    return;
+                }
+                
+                // Show loading state
+                $('.submit-btn').prop('disabled', true).text('Predicting...');
+                
+                // Make the AJAX request
+                $.ajax({
+                    url: '/predict_rank',
+                    method: 'POST',
+                    contentType: 'application/json',
+                    data: JSON.stringify({
+                        percentile: percentile,
+                        category: category
+                    }),
+                    success: function(response) {
+                        if (response.error) {
+                            alert('Error: ' + response.error);
+                            return;
+                        }
+                        
+                        // Update the result values
+                        $('#lastYearRank').text(response.last_year_rank.toLocaleString());
+                        $('#lastYearCandidates').text(response.last_year_candidates.toLocaleString());
+                        
+                        // Calculate optimal case (5.5% inflation)
+                        const optimalInflation = 1.055;
+                        const optimalRank = Math.round(response.last_year_rank * optimalInflation);
+                        const optimalCandidates = Math.round(response.last_year_candidates * optimalInflation);
+                        
+                        // Calculate worst case (9.7% inflation)
+                        const worstInflation = 1.097;
+                        const worstRank = Math.round(response.last_year_rank * worstInflation);
+                        const worstCandidates = Math.round(response.last_year_candidates * worstInflation);
+                        
+                        // Update the display
+                        $('#resultRankOptimal').text(optimalRank.toLocaleString());
+                        $('#totalCandidatesOptimal').text(optimalCandidates.toLocaleString());
+                        $('#resultRankWorst').text(worstRank.toLocaleString());
+                        $('#totalCandidatesWorst').text(worstCandidates.toLocaleString());
+                        
+                        // Show the result card with animation
+                        $('.result-card').removeClass('hidden').addClass('show');
+                        
+                        // Scroll to the result card
+                        $('html, body').animate({
+                            scrollTop: $('.result-card').offset().top - 100
+                        }, 500);
+                    },
+                    error: function(xhr) {
+                        console.error('Error:', xhr);
+                        alert('Error: ' + (xhr.responseJSON?.error || 'Something went wrong'));
+                    },
+                    complete: function() {
+                        // Reset button state
+                        $('.submit-btn').prop('disabled', false).text('Predict Rank');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html> 

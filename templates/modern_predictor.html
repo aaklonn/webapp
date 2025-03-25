@@ -1,0 +1,1610 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern College Predictor 2024</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <style>
+        :root {
+            /* Color Palette */
+            --bg-primary: #F8FAFC;
+            --bg-secondary: #F1F5F9;
+            --gradient-main: linear-gradient(135deg, #EC4899, #8B5CF6);
+            --text-primary: #374151;
+            --text-placeholder: #EC4899;
+            /* Rainbow Gradients */
+            --gradient-1: linear-gradient(135deg, #FF416C, #FF4B2B); /* Red to Orange */
+            --gradient-2: linear-gradient(135deg, #FF4B2B, #FFB347); /* Orange to Yellow */
+            --gradient-3: linear-gradient(135deg, #FFB347, #48BB78); /* Yellow to Green */
+            --gradient-4: linear-gradient(135deg, #48BB78, #0BC5EA); /* Green to Blue */
+            --gradient-5: linear-gradient(135deg, #0BC5EA, #805AD5); /* Blue to Purple */
+            --gradient-6: linear-gradient(135deg, #805AD5, #D53F8C); /* Purple to Pink */
+            --accent-neon: #00FFD1;
+            --accent-blue: #4F46E5;
+            --accent-purple: #7C3AED;
+            --accent-pink: #EC4899;
+            --text-neon: #00FFD1;
+            --glass-bg: rgba(26, 31, 53, 0.95);
+            --glass-border: rgba(0, 255, 209, 0.2);
+            --shadow-neon: 0 0 20px rgba(0, 255, 209, 0.2);
+            --gradient-cyber: linear-gradient(135deg, #4F46E5, #7C3AED);
+            --gradient-neon: linear-gradient(135deg, #00FFD1, #4F46E5);
+            --font-display: 'Outfit', sans-serif;
+            --font-body: 'DM Sans', sans-serif;
+        }
+
+        /* Base Styles */
+        body {
+            font-family: 'Libre Franklin', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        /* Form Label Styling */
+        .form-label {
+            background: var(--gradient-main);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 700;
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        /* Form Control Styling */
+        .form-control,
+        .select2-container--default .select2-selection {
+            border: 2px solid transparent;
+            border-image: var(--gradient-main);
+            border-image-slice: 1;
+            background: white;
+            color: var(--text-primary);
+            border-radius: 8px;
+            padding: 0.75rem 1rem;
+            width: 100%;
+            transition: all 0.3s ease;
+            font-weight: 400;
+        }
+
+        /* Placeholder Styling */
+        .form-control::placeholder,
+        .select2-container--default .select2-search--inline .select2-search__field::placeholder,
+        .select2-container--default .select2-selection--single .select2-selection__placeholder {
+            color: var(--text-placeholder) !important;
+            opacity: 1;
+            font-weight: 400 !important;
+            font-style: normal;
+            font-family: 'Libre Franklin', sans-serif;
+        }
+
+        /* Select2 Styling */
+        .select2-container--default .select2-selection--multiple,
+        .select2-container--default .select2-selection--single {
+            background: white !important;
+            min-height: 50px;
+            padding: 8px 12px;
+            border: 2px solid transparent !important;
+            border-image: var(--gradient-main) !important;
+            border-image-slice: 1 !important;
+        }
+
+        .select2-container--default .select2-selection--multiple .select2-selection__choice {
+            background: var(--gradient-main);
+            border: none;
+            color: white;
+            border-radius: 6px;
+            padding: 4px 8px 4px 25px;
+            margin: 4px;
+            font-weight: 400;
+            position: relative;
+            font-family: 'Libre Franklin', sans-serif;
+        }
+
+        .select2-container--default .select2-selection--multiple .select2-selection__choice__remove {
+            color: white !important;
+            opacity: 0.9;
+            font-weight: 500;
+            position: absolute;
+            left: 8px;
+            top: 50%;
+            transform: translateY(-50%);
+            border: none;
+            background: none;
+            padding: 0;
+            margin: 0;
+            font-size: 14px;
+        }
+
+        .select2-container--default .select2-selection--multiple .select2-selection__choice__remove:hover {
+            background: none;
+            color: white !important;
+            opacity: 1;
+        }
+
+        .select2-container--default .select2-selection--multiple .select2-selection__choice__display {
+            color: white;
+            padding: 0;
+            font-weight: 400;
+        }
+
+        /* Fix the search field in multiple select */
+        .select2-container--default .select2-selection--multiple .select2-search__field {
+            color: var(--text-placeholder);
+            font-family: 'Libre Franklin', sans-serif;
+            font-weight: 400;
+            margin-top: 6px;
+            margin-left: 6px;
+        }
+
+        /* Fix the container height and alignment */
+        .select2-container--default .select2-selection--multiple {
+            min-height: 50px;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            padding: 4px 8px;
+        }
+
+        /* Fix the rendered items container */
+        .select2-container--default .select2-selection--multiple .select2-selection__rendered {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4px;
+            padding: 0;
+            margin: 0;
+        }
+
+        .select2-container--default .select2-results__option--highlighted[aria-selected] {
+            background: var(--gradient-main);
+            color: white;
+        }
+
+        .select2-dropdown {
+            background-color: white;
+            border: 1px solid #EC4899;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .select2-container--default .select2-selection--single .select2-selection__rendered {
+            color: var(--text-placeholder);
+            line-height: 2;
+            padding-left: 0;
+            font-family: 'Libre Franklin', sans-serif;
+            font-weight: 400;
+        }
+
+        .select2-container--default .select2-selection--single .select2-selection__placeholder {
+            color: var(--text-placeholder) !important;
+            opacity: 1;
+            font-weight: 400;
+            font-family: 'Libre Franklin', sans-serif;
+        }
+
+        .select2-container--default .select2-search--dropdown .select2-search__field {
+            border: 2px solid transparent;
+            border-image: var(--gradient-main);
+            border-image-slice: 1;
+            border-radius: 4px;
+            padding: 6px 12px;
+        }
+
+        .select2-container--default .select2-results__option {
+            padding: 8px 12px;
+            color: var(--text-primary);
+            font-weight: 400;
+        }
+
+        .select2-container--default .select2-results__option--highlighted {
+            background: var(--gradient-main);
+            color: white;
+        }
+
+        /* Glass Container */
+        .glass-container {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            margin: 2rem auto;
+            max-width: 1200px;
+            border: 1px solid rgba(236, 72, 153, 0.2);
+        }
+
+        /* Results Table */
+        .modern-table th {
+            background: var(--gradient-main);
+            color: white;
+            font-weight: 600;
+            padding: 1rem;
+            text-align: left;
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+        }
+
+        .modern-table td {
+            background: white;
+            color: var(--text-primary);
+            border-bottom: 1px solid rgba(236, 72, 153, 0.2);
+            padding: 1rem;
+            font-weight: 400;
+        }
+
+        /* Button Styling */
+        .btn-primary {
+            background: var(--gradient-main);
+            color: white;
+            font-weight: 600;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(236, 72, 153, 0.3);
+        }
+
+        /* Form Label Rainbow Styling */
+        .form-group:nth-of-type(1) .form-label,
+        .form-group:nth-of-type(2) .form-label,
+        .form-group:nth-of-type(3) .form-label,
+        .form-group:nth-of-type(4) .form-label,
+        .form-group:nth-of-type(5) .form-label,
+        .form-group:nth-of-type(6) .form-label {
+            background: var(--gradient-main);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 700;
+        }
+
+        /* Form Control Rainbow Outlines */
+        .form-group:nth-of-type(1) .form-control,
+        .form-group:nth-of-type(1) .select2-container--default .select2-selection,
+        .form-group:nth-of-type(2) .form-control,
+        .form-group:nth-of-type(2) .select2-container--default .select2-selection,
+        .form-group:nth-of-type(3) .form-control,
+        .form-group:nth-of-type(3) .select2-container--default .select2-selection,
+        .form-group:nth-of-type(4) .form-control,
+        .form-group:nth-of-type(4) .select2-container--default .select2-selection,
+        .form-group:nth-of-type(5) .form-control,
+        .form-group:nth-of-type(5) .select2-container--default .select2-selection,
+        .form-group:nth-of-type(6) .form-control,
+        .form-group:nth-of-type(6) .select2-container--default .select2-selection {
+            border: 2px solid transparent;
+            border-image: var(--gradient-main);
+            border-image-slice: 1;
+        }
+
+        /* Enhanced Form Controls */
+        .form-control:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.5);
+        }
+
+        /* Results section styling update */
+        .modern-table tr:hover td {
+            background: #F7FAFC;
+        }
+
+        /* Cyberpunk Buttons */
+            .btn-gradient {
+            background: var(--gradient-neon);
+            color: #000;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            box-shadow: 0 0 20px rgba(0, 255, 209, 0.3);
+        }
+
+        .btn-gradient:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 30px rgba(0, 255, 209, 0.5);
+        }
+
+        .btn-gradient::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                45deg,
+                transparent,
+                rgba(255, 255, 255, 0.3),
+                transparent
+            );
+            transform: rotate(45deg);
+            animation: buttonShine 6s infinite;
+        }
+
+        /* Enhanced Table Styling */
+        .modern-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            margin-top: 2rem;
+            box-shadow: 0 4px 10px rgba(236, 72, 153, 0.1);
+            overflow: hidden;
+            border-radius: 8px;
+        }
+
+        .modern-table tr:hover td {
+            background: #F8F9FF;
+            transition: all 0.2s ease;
+        }
+        
+        /* Seat type badges */
+        .seat-type-badge {
+            display: inline-block;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            white-space: nowrap;
+        }
+        
+        .female-badge {
+            background-color: #FCE7F3;
+            color: #DB2777;
+            border: 1px solid #F9A8D4;
+        }
+        
+        .neutral-badge {
+            background-color: #EFF6FF;
+            color: #3B82F6;
+            border: 1px solid #BFDBFE;
+        }
+        
+        /* Quota badges */
+        .quota-badge {
+            display: inline-block;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            white-space: nowrap;
+        }
+        
+        .quota-ai {
+            background-color: #ECFDF5;
+            color: #059669;
+            border: 1px solid #A7F3D0;
+        }
+        
+        .quota-state {
+            background-color: #FEF3C7;
+            color: #D97706;
+            border: 1px solid #FDE68A;
+        }
+        
+        /* New badge */
+        .new-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #F43F5E, #EC4899);
+            color: white;
+            padding: 0.15rem 0.4rem;
+            border-radius: 4px;
+            font-size: 0.65rem;
+            font-weight: 700;
+            margin-left: 0.5rem;
+            vertical-align: middle;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(236, 72, 153, 0.4); }
+            70% { box-shadow: 0 0 0 5px rgba(236, 72, 153, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(236, 72, 153, 0); }
+        }
+
+        /* Enhanced Badge Styling */
+        .probability-badge {
+            font-family: 'Libre Franklin', sans-serif;
+            padding: 0.4rem 0.8rem;
+            border-radius: 999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: white;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 80px;
+            text-align: center;
+        }
+
+        .probability-badge.very-high {
+            background: linear-gradient(135deg, #059669, #10B981);
+            box-shadow: 0 2px 4px rgba(16, 185, 129, 0.3);
+        }
+
+        .probability-badge.high {
+            background: linear-gradient(135deg, #0284C7, #38BDF8);
+            box-shadow: 0 2px 4px rgba(56, 189, 248, 0.3);
+        }
+
+        .probability-badge.medium {
+            background: linear-gradient(135deg, #7C3AED, #8B5CF6);
+            box-shadow: 0 2px 4px rgba(139, 92, 246, 0.3);
+        }
+
+        .probability-badge.low {
+            background: linear-gradient(135deg, #D97706, #F59E0B);
+            box-shadow: 0 2px 4px rgba(245, 158, 11, 0.3);
+        }
+
+        .probability-badge.very-low {
+            background: linear-gradient(135deg, #DC2626, #EF4444);
+            box-shadow: 0 2px 4px rgba(239, 68, 68, 0.3);
+        }
+
+        /* Female seat toggle styling */
+        #female-seat-toggle {
+            background-color: white;
+            border: 2px solid #FCE7F3;
+            border-radius: 8px;
+            padding: 12px 16px;
+            margin: 16px 0;
+            display: none; /* Hidden by default, shown via JS */
+        }
+
+        #female-seat-toggle .toggle-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            align-items: center;
+        }
+
+        #female-seat-toggle .radio-group {
+            display: flex;
+            gap: 12px;
+        }
+
+        #female-seat-toggle .radio-label {
+            display: inline-flex;
+            align-items: center;
+            padding: 6px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            background: #FDF2F8;
+        }
+
+        #female-seat-toggle .radio-label:hover {
+            background: #FCE7F3;
+        }
+
+        #female-seat-toggle .info-text {
+            color: #9CA3AF;
+            font-size: 0.875rem;
+            font-style: italic;
+        }
+
+        /* Animation for table rows */
+        .animate-fade-in {
+            animation: fadeIn 0.5s ease-in-out forwards;
+            opacity: 0;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Scrollbar Styling */
+        ::-webkit-scrollbar {
+            width: 10px;
+            height: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg-secondary);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--accent-neon);
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--accent-blue);
+        }
+
+        /* Remove theme toggle button */
+        .theme-toggle {
+            display: none !important;
+        }
+
+        /* Table container with proper scrolling */
+        .table-container {
+            max-height: 70vh;
+            overflow-y: auto;
+            border-radius: 8px;
+            background: white;
+            box-shadow: 0 4px 10px rgba(236, 72, 153, 0.1);
+        }
+
+        /* Keep table header fixed while scrolling */
+        .modern-table thead {
+            position: sticky;
+            top: 0;
+            z-index: 1;
+            background: white;
+        }
+
+        .modern-table th {
+            background: var(--gradient-main);
+            color: white;
+            font-weight: 600;
+            padding: 1rem;
+            text-align: left;
+        }
+
+        /* Ensure proper table layout */
+        .modern-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Enhanced Theme toggle with improved position and style -->
+    <button class="theme-toggle" onclick="toggleTheme()">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 dark-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+        </svg>
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 light-icon hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+        </svg>
+    </button>
+
+    <!-- Loading overlay -->
+    <div id="loading" class="loading-overlay fixed inset-0 z-50" style="display: none;">
+        <div class="bg-white p-5 rounded-lg shadow-lg flex flex-col items-center">
+            <div class="loading-spinner mb-3"></div>
+            <p class="text-gray-700 font-medium">Loading...</p>
+        </div>
+    </div>
+
+        <header class="py-6 px-4 bg-white">
+            <div class="container mx-auto flex flex-wrap items-center justify-between">
+                <!-- Logo and Name -->
+                <a href="/" class="flex items-center space-x-2">
+                    <img src="https://i.ibb.co/y42LjdW/p.png" class="w-12 h-12" alt="Logo">
+                    <h1 class="text-2xl md:text-3xl font-extrabold text-gray-900">Mahenju<span class="bg-blue-100 text-blue-800 text-xl md:text-2xl font-semibold px-2 py-0.5 rounded ml-1">Web</span></h1>
+                </a>
+                
+                <div class="mt-4 md:mt-0">
+                    <h2 class="text-xl md:text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-purple-500">JEE College Predictor 2024</h2>
+                </div>
+            </div>
+  
+            </div>
+        </div>
+    </header>
+
+    <!-- Main content -->
+    <main class="container mx-auto px-4">
+        <!-- Form section -->
+        <div class="glass-container">
+            <form id="predictorForm" class="space-y-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Rank input -->
+                    <div class="form-group">
+                        <label class="form-label">Your Rank</label>
+                        <input type="number" id="rank" class="form-control" placeholder="Enter your JEE Main rank" required>
+                    </div>
+
+                    <!-- Category select -->
+                    <div class="form-group">
+                        <label class="form-label">Category</label>
+                        <select id="category" class="form-control" required>
+                            <option value="" disabled selected>Select your category</option>
+                            <option value="OPEN">OPEN</option>
+                            <option value="OBC-NCL">OBC-NCL</option>
+                            <option value="EWS">EWS</option>
+                            <option value="SC">SC</option>
+                            <option value="ST">ST</option>
+                            <option value="OPEN-PWD">OPEN-PWD</option>
+                            <option value="OBC-PWD">OBC-PWD</option>
+                            <option value="EWS-PWD">EWS-PWD</option>
+                            <option value="SC-PWD">SC-PWD</option>
+                        </select>
+                    </div>
+
+                    <!-- Gender select -->
+                    <div class="form-group">
+                        <label class="form-label">Gender</label>
+                        <select id="gender" class="form-control" required>
+                            <option value="" disabled selected>Select your gender</option>
+                            <option value="MALE">Male</option>
+                            <option value="FEMALE">Female</option>
+                        </select>
+                    </div>
+
+                    <!-- State Quota select -->
+                    <div class="form-group">
+                        <label class="form-label">State Quota</label>
+                        <select id="home-state" class="form-control" required>
+                            <option value="" disabled selected>Select your state quota</option>
+                        </select>
+                    </div>
+
+                    <!-- College Type select -->
+                    <div class="form-group">
+                        <label class="form-label">College Type</label>
+                        <select id="college-type" class="form-control">
+                            <option value="ALL" style="font-weight: 400; color: #EC4899;">All Colleges</option>
+                            <option value="NIT">NITs</option>
+                            <option value="IIIT">IIITs</option>
+                            <option value="GFTI">GFTIs</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- College Names multiselect -->
+                <div class="form-group">
+                    <label class="form-label">College Names</label>
+                    <select id="college-names" class="form-control" multiple="multiple">
+                        <!-- Will be populated dynamically -->
+                    </select>
+                </div>
+
+                <!-- Branches multiselect -->
+                <div class="form-group">
+                    <label class="form-label">Branches</label>
+                    <select id="branches" class="form-control" multiple="multiple">
+                        <!-- Will be populated dynamically -->
+                    </select>
+                </div>
+
+                <!-- Submit button -->
+                <button type="submit" class="btn-primary w-full">Predict Colleges</button>
+            </form>
+        </div>
+
+        <!-- Results section -->
+        <div class="mt-8">
+            <div id="results-container" style="display: none;">
+                <h2 class="text-xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-purple-500">Predicted Colleges</h2>
+                
+                <!-- Results count info -->
+                <div id="results-info" class="mb-4">
+                    <!-- Will be populated dynamically -->
+            </div>
+            
+                <!-- Female seat toggle -->
+                <div id="female-seat-toggle">
+                    <div class="toggle-container">
+                        <span class="font-medium text-gray-700">Filter seats:</span>
+                        <div class="radio-group">
+                            <label class="radio-label">
+                                <input type="radio" name="seat-type-filter" value="all" class="form-radio h-4 w-4 text-purple-600" checked>
+                                <span class="ml-2 text-sm font-medium text-gray-700">All Seats</span>
+                    </label>
+                            <label class="radio-label">
+                        <input type="radio" name="seat-type-filter" value="female" class="form-radio h-4 w-4 text-pink-600">
+                                <span class="ml-2 text-sm font-medium text-gray-700">Female-Only</span>
+                    </label>
+                            <label class="radio-label">
+                        <input type="radio" name="seat-type-filter" value="neutral" class="form-radio h-4 w-4 text-blue-600">
+                                <span class="ml-2 text-sm font-medium text-gray-700">Gender Neutral</span>
+                    </label>
+                </div>
+                        <span class="info-text">Female candidates are eligible for both seat types</span>
+                    </div>
+            </div>
+
+                <!-- Table container with scrolling -->
+                <div class="table-container">
+                <table class="modern-table">
+                    <thead>
+                        <tr>
+                                <th>College Name</th>
+                            <th>Branch</th>
+                            <th>Quota</th>
+                                <th>2023 Rank</th>
+                                <th>2024 Rank</th>
+                                <th>Seat Type</th>
+                            <th>Probability</th>
+                        </tr>
+                    </thead>
+                        <tbody id="results-body"></tbody>
+                </table>
+            </div>
+
+                <!-- Probability Legend -->
+            <div class="mt-6 flex flex-wrap gap-4 items-center">
+                    <span class="text-sm font-semibold text-gray-700">Probability Legend:</span>
+                <span class="probability-badge very-high">Very High</span>
+                <span class="probability-badge high">High</span>
+                <span class="probability-badge medium">Medium</span>
+                <span class="probability-badge low">Low</span>
+                <span class="probability-badge very-low">Very Low</span>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        $(document).ready(function() {
+            // Remove theme toggle functionality
+            $('.theme-toggle').remove();
+            
+            // Initialize Select2
+            $('.select2').select2({
+                theme: 'default',
+                placeholder: 'Select options...',
+                allowClear: true
+            });
+
+            // Enhanced dropdown styling
+            $('.select2-container--default .select2-selection--multiple').css({
+                'background': 'linear-gradient(135deg, rgba(30, 41, 59, 0.8), rgba(30, 41, 59, 0.6))',
+                'border-color': 'rgba(59, 130, 246, 0.3)',
+                'color': '#ffffff'
+            });
+
+            // Remove any light theme classes
+            $('html').removeClass('light').addClass('dark');
+        });
+
+        // Updated theme toggle functionality with enhanced animation
+        function toggleTheme() {
+            const html = document.documentElement;
+            const themeToggle = document.querySelector('.theme-toggle');
+            
+            // Add rotation animation
+            themeToggle.style.transform = 'rotate(360deg) scale(1.1)';
+            
+            if (html.classList.contains('dark')) {
+                html.classList.remove('dark');
+                html.classList.add('light');
+                localStorage.setItem('theme', 'light');
+            } else {
+                html.classList.remove('light');
+                html.classList.add('dark');
+                localStorage.setItem('theme', 'dark');
+            }
+            
+            // Update Select2 styling when theme changes
+            applyThemeToSelect2();
+            
+            // Reset transform after animation completes
+            setTimeout(() => {
+                themeToggle.style.transform = '';
+            }, 600);
+            
+            // Trigger custom event for theme change
+            $(document).trigger('themeChanged');
+        }
+        
+        // Check for saved theme preference
+        if (localStorage.getItem('theme') === 'dark' || 
+            (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+            document.documentElement.classList.remove('light');
+        } else {
+            document.documentElement.classList.remove('dark');
+            document.documentElement.classList.add('light');
+        }
+
+        $(document).ready(function() {
+            // Initialize Select2 for multi-select dropdowns
+            $('#college-names, #branches').select2({
+                placeholder: "Select options",
+                allowClear: true,
+                closeOnSelect: false,
+                theme: "classic",
+                width: '100%',
+                templateSelection: function(data) {
+                    if (data.id === '') {
+                        return $('<span style="color: #EC4899 !important; font-family: Libre Franklin, sans-serif; font-weight: 400;">Select options</span>');
+                    }
+                    return $('<span style="color: white; font-family: Libre Franklin, sans-serif; font-weight: 400;">' + data.text + '</span>');
+                },
+                templateResult: function(data) {
+                    if (data.id === '') {
+                        return $('<span style="color: #EC4899 !important; font-family: Libre Franklin, sans-serif; font-weight: 400;">Select options</span>');
+                    }
+                    return $('<span style="color: #374151; font-family: Libre Franklin, sans-serif; font-weight: 400;">' + data.text + '</span>');
+                }
+            }).on('select2:opening select2:closing', function() {
+                // Fix the search field color when dropdown opens/closes
+                setTimeout(function() {
+                    $('.select2-search__field').css('color', '#EC4899');
+                }, 0);
+            });
+            
+            // Initialize Select2 for single-select dropdowns
+            $('#category, #gender, #home-state, #college-type').select2({
+                theme: "classic",
+                width: '100%',
+                minimumResultsForSearch: 10,
+                templateSelection: function(data) {
+                    if (!data.id) {
+                        return $('<span style="color: #EC4899 !important; font-family: Libre Franklin, sans-serif; font-weight: 400;">' + data.text + '</span>');
+                    }
+                    return $('<span style="color: #374151; font-family: Libre Franklin, sans-serif; font-weight: 400;">' + data.text + '</span>');
+                },
+                templateResult: function(data) {
+                    if (!data.id) {
+                        return $('<span style="color: #EC4899 !important; font-family: Libre Franklin, sans-serif; font-weight: 400;">' + data.text + '</span>');
+                    }
+                    return $('<span style="color: #374151; font-family: Libre Franklin, sans-serif; font-weight: 400;">' + data.text + '</span>');
+                },
+                placeholder: function() {
+                    return $('<span style="color: #EC4899 !important; font-family: Libre Franklin, sans-serif; font-weight: 400;">Select an option...</span>');
+                }
+            });
+
+            // Apply theme-specific styles to Select2
+            function applyThemeToSelect2() {
+                const isLight = !document.documentElement.classList.contains('dark');
+                $('.select2-container--classic').toggleClass('light-theme', isLight);
+                $('.select2-container--classic').toggleClass('dark-theme', !isLight);
+                
+                // Update text colors for selected items - same for both themes
+                $('.select2-selection__choice__display').css({
+                    'color': 'white',
+                    'background': 'none',
+                    '-webkit-background-clip': 'initial',
+                    '-webkit-text-fill-color': 'initial'
+                });
+                
+                // Update selected items background - same for both themes
+                $('.select2-selection__choice').css({
+                    'background': 'linear-gradient(135deg, #1e40af, #3b82f6)',
+                    'color': 'white'
+                });
+                
+                // Update placeholder styling for all Select2 elements
+                $('.select2-selection__placeholder').css({
+                    'background': 'var(--secondary-gradient)',
+                    '-webkit-background-clip': 'text',
+                    '-webkit-text-fill-color': 'transparent',
+                    'opacity': '0.7',
+                    'font-weight': 'normal',
+                    'font-style': 'italic'
+                });
+                
+                if (isLight) {
+                    $('.select2-selection__rendered').css({
+                        'color': '#3b82f6',
+                        'background': 'none',
+                        '-webkit-background-clip': 'initial',
+                        '-webkit-text-fill-color': 'initial'
+                    });
+                    
+                    // Update dropdown styling for light mode
+                    $('.select2-dropdown').css({
+                        'background-color': 'white',
+                        'border-color': 'rgba(59, 130, 246, 0.5)'
+                    });
+                    $('.select2-results__options').css('background-color', 'white');
+                    $('.select2-container--default .select2-results__option').css('color', '#1e293b');
+                    
+                    // Update single select styling for light mode
+                    $('.select2-container--default .select2-selection--single').css({
+                        'background-color': 'rgba(255, 255, 255, 0.9)',
+                        'border-color': 'rgba(59, 130, 246, 0.5)'
+                    });
+                } else {
+                    $('.select2-selection__rendered').css({
+                        'background': 'linear-gradient(135deg, #1e40af, #3b82f6)',
+                        '-webkit-background-clip': 'text',
+                        '-webkit-text-fill-color': 'transparent',
+                        'font-weight': '800'
+                    });
+                    
+                    // Update dropdown styling for dark mode
+                    $('.select2-dropdown').css({
+                        'background-color': '#1e293b',
+                        'border-color': 'rgba(99, 102, 241, 0.5)'
+                    });
+                    $('.select2-results__options').css('background-color', '#1e293b');
+                    $('.select2-container--default .select2-results__option').css('color', 'white');
+                    
+                    // Update single select styling for dark mode
+                    $('.select2-container--default .select2-selection--single').css({
+                        'background-color': 'rgba(30, 41, 59, 0.8)',
+                        'border-color': 'rgba(99, 102, 241, 0.5)'
+                    });
+                }
+                
+                // Ensure remove buttons are styled correctly
+                $('.select2-selection__choice__remove').css({
+                    'display': 'inline-flex',
+                    'color': '#ffffff', /* Pure white color */
+                    'background-color': 'transparent',
+                    'opacity': '1', /* Full opacity */
+                    'visibility': 'visible',
+                    'position': 'absolute',
+                    'left': '6px',
+                    'top': '50%',
+                    'transform': 'translateY(-50%)',
+                    'align-items': 'center',
+                    'justify-content': 'center',
+                    'z-index': '20',
+                    'line-height': '1',
+                    'font-size': '16px', /* Increased font size */
+                    'font-weight': '900', /* Bolder text */
+                    'text-shadow': '0 0 2px rgba(0, 0, 0, 0.5)', /* Enhanced shadow */
+                    'filter': 'brightness(1.2) contrast(1.2)' /* Increased brightness and contrast */
+                });
+            }
+            
+            // Call initially and on theme toggle
+            applyThemeToSelect2();
+            
+            // Function to ensure remove buttons are visible
+            function fixRemoveButtons() {
+                // Force the remove buttons to be visible and properly aligned
+                $('.select2-selection__choice__remove').css({
+                    'display': 'inline-flex',
+                    'color': '#ffffff', /* Pure white color */
+                    'background-color': 'transparent',
+                    'opacity': '1', /* Full opacity */
+                    'visibility': 'visible',
+                    'position': 'absolute',
+                    'left': '6px',
+                    'top': '50%',
+                    'transform': 'translateY(-50%)',
+                    'align-items': 'center',
+                    'justify-content': 'center',
+                    'z-index': '20',
+                    'line-height': '1',
+                    'font-size': '16px', /* Increased font size */
+                    'font-weight': '900', /* Bolder text */
+                    'text-shadow': '0 0 2px rgba(0, 0, 0, 0.5)', /* Enhanced shadow */
+                    'filter': 'brightness(1.2) contrast(1.2)' /* Increased brightness and contrast */
+                });
+                
+                // Ensure selected items have the right styling and padding for the remove button
+                $('.select2-selection__choice').css({
+                    'background': 'linear-gradient(135deg, #1e40af, #3b82f6)',
+                    'color': 'white',
+                    'padding-left': '28px',
+                    'position': 'relative',
+                    'display': 'inline-flex',
+                    'align-items': 'center',
+                    'min-height': '24px'
+                });
+                
+                // Ensure the text is white and properly aligned
+                $('.select2-selection__choice__display').css({
+                    'color': 'white',
+                    'background': 'none',
+                    '-webkit-background-clip': 'initial',
+                    '-webkit-text-fill-color': 'initial',
+                    'display': 'inline-flex',
+                    'align-items': 'center',
+                    'min-height': '20px'
+                });
+                
+                // Add a slight delay and check again to ensure buttons are visible
+                setTimeout(function() {
+                    if ($('.select2-selection__choice__remove').css('visibility') !== 'visible') {
+                        $('.select2-selection__choice__remove').css('visibility', 'visible');
+                    }
+                }, 50);
+            }
+            
+            // Call after Select2 is initialized and whenever selections change
+            $('#college-names, #branches').on('select2:select select2:unselect', function(e) {
+                setTimeout(fixRemoveButtons, 10);
+            });
+            
+            // Call after dropdown opens/closes
+            $('#college-names, #branches').on('select2:open select2:close', function(e) {
+                setTimeout(fixRemoveButtons, 10);
+            });
+            
+            // Call after theme changes
+            $(document).on('themeChanged', fixRemoveButtons);
+            
+            // Initial call
+            setTimeout(fixRemoveButtons, 100);
+
+            // Load quotas
+            function loadQuotas() {
+                $('#loading').show();
+                $.ajax({
+                    url: '/get_quotas',
+                    type: 'GET',
+                    success: function(quotas) {
+                        $('#home-state').empty()
+                            .append('<option value="" disabled selected>Select your state quota</option>');
+                        quotas.forEach(quota => {
+                            $('#home-state').append(new Option(quota, quota));
+                        });
+                        $('#loading').hide();
+                    },
+                    error: function(error) {
+                        console.error('Error loading quotas:', error);
+                        $('#loading').hide();
+                    }
+                });
+            }
+
+            // Load colleges
+            function loadColleges() {
+                const collegeType = $('#college-type').val();
+                const homeState = $('#home-state').val();
+                $('#loading').show();
+                
+                $.ajax({
+                    url: '/get_colleges',
+                    type: 'GET',
+                    data: { 
+                        type: collegeType,
+                        home_state: homeState 
+                    },
+                    success: function(colleges) {
+                        $('#college-names').empty()
+                            .append(new Option('ALL', 'ALL'));
+                        
+                        colleges.forEach(college => {
+                            $('#college-names').append(new Option(college, college));
+                        });
+                        
+                        $('#college-names').trigger('change');
+                        $('#loading').hide();
+                    },
+                    error: function(error) {
+                        console.error('Error loading colleges:', error);
+                        $('#loading').hide();
+                    }
+                });
+            }
+
+            // Load branches
+            function loadBranches() {
+                const selectedColleges = $('#college-names').val() || [];
+                const gender = $('#gender').val();
+                $('#loading').show();
+                
+                $.ajax({
+                    url: '/get_branches',
+                    type: 'GET',
+                    data: { 
+                        'colleges[]': selectedColleges.includes('ALL') ? [] : selectedColleges,
+                        'gender': gender
+                    },
+                    success: function(branches) {
+                        $('#branches').empty()
+                            .append(new Option('ALL', 'ALL'));
+                        
+                        branches.forEach(branch => {
+                            $('#branches').append(new Option(branch, branch));
+                        });
+                        
+                        $('#branches').trigger('change');
+                        $('#loading').hide();
+                    },
+                    error: function(error) {
+                        console.error('Error loading branches:', error);
+                        $('#loading').hide();
+                    }
+                });
+            }
+
+            // Function to update categories based on selected college and gender
+            function updateCategories() {
+                const selectedColleges = $('#college-names').val() || [];
+                const gender = $('#gender').val();
+                
+                // If no college selected or gender not selected, don't update
+                if (!selectedColleges.length || !gender) {
+                    return;
+                }
+                
+                // If multiple colleges are selected or "ALL" is selected, use default categories
+                let collegeName = "";
+                if (selectedColleges.length === 1 && selectedColleges[0] !== "ALL") {
+                    collegeName = selectedColleges[0];
+                }
+                
+                // Make AJAX request to get categories
+                $.ajax({
+                    url: '/get_categories',
+                    type: 'GET',
+                    data: { 
+                        college: collegeName,
+                        gender: gender
+                    },
+                    success: function(response) {
+                        const categorySelect = $('#category');
+                        const selectedCategory = categorySelect.val(); // Save current selection
+                        
+                        // Clear previous options
+                        categorySelect.empty();
+                        
+                        // Add placeholder
+                        categorySelect.append('<option value="" disabled selected>Select your category</option>');
+                        
+                        // Add categories - now using the available categories from the response
+                        const categories = response.available || [];
+                        categories.forEach(function(category) {
+                            categorySelect.append(new Option(category, category, false, false));
+                        });
+                        
+                        // Restore previous selection if it exists in the new options
+                        if (selectedCategory && categorySelect.find('option[value="' + selectedCategory + '"]').length > 0) {
+                            categorySelect.val(selectedCategory);
+                        }
+                        
+                        // Refresh Select2
+                        categorySelect.trigger('change');
+                        
+                        // Show popup for unavailable categories if any
+                        const unavailableCategories = response.unavailable || [];
+                        if (unavailableCategories.length > 0 && collegeName) {
+                            // Create popup element if it doesn't exist
+                            if (!$('#category-popup').length) {
+                                $('body').append(`
+                                    <div id="category-popup" class="fixed inset-0 flex items-center justify-center z-50" style="display: none;">
+                                        <div class="absolute inset-0 bg-black bg-opacity-50"></div>
+                                        <div class="relative bg-white dark:bg-gray-800 rounded-lg shadow-xl p-6 max-w-md w-full mx-4">
+                                            <div class="flex justify-between items-center mb-4">
+                                                <h3 class="text-xl font-bold text-gray-900 dark:text-white">Category Information</h3>
+                                                <button id="close-popup" class="text-gray-400 hover:text-gray-500 focus:outline-none">
+                                                    <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                                                    </svg>
+                                                </button>
+                                            </div>
+                                            <div id="popup-content" class="text-gray-700 dark:text-gray-300"></div>
+                                            <div class="mt-6 flex justify-end">
+                                                <button id="confirm-popup" class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 focus:outline-none">
+                                                    OK
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                `);
+                                
+                                // Add event listeners for popup buttons
+                                $('#close-popup, #confirm-popup').on('click', function() {
+                                    $('#category-popup').fadeOut(300);
+                                });
+                            }
+                            
+                            // Update popup content
+                            $('#popup-content').html(`
+                                <p class="mb-4">JOSAA did not have data for <strong>${collegeName}</strong> for the following categories:</p>
+                                <ul class="list-disc pl-5 mb-4">
+                                    ${unavailableCategories.map(cat => `<li>${cat}</li>`).join('')}
+                                </ul>
+                                <p>Please select from the available categories.</p>
+                            `);
+                            
+                            // Show popup
+                            $('#category-popup').fadeIn(300);
+                        }
+                    },
+                    error: function(error) {
+                        console.error('Error loading categories:', error);
+                    }
+                });
+            }
+
+            // Event handlers
+            $('#college-type').on('change', loadColleges);
+            $('#home-state').on('change', loadColleges);
+            $('#gender').on('change', function() {
+                loadBranches();
+                updateCategories();
+            });
+            
+            $('#college-names').on('change', function() {
+                const selected = $(this).val() || [];
+                if (selected.includes('ALL') && selected.length > 1) {
+                    $(this).val(selected[0] === 'ALL' ? ['ALL'] : selected.filter(v => v !== 'ALL')).trigger('change');
+                }
+                loadBranches();
+                
+                // Update categories if gender is already selected
+                if ($('#gender').val()) {
+                    updateCategories();
+                }
+            });
+
+            $('#branches').on('change', function() {
+                const selected = $(this).val() || [];
+                if (selected.includes('ALL') && selected.length > 1) {
+                    $(this).val(selected[0] === 'ALL' ? ['ALL'] : selected.filter(v => v !== 'ALL')).trigger('change');
+                }
+            });
+
+            // Form submission
+            $('#predictorForm').on('submit', function(e) {
+                e.preventDefault();
+                
+                // Validate form
+                const rank = $('#rank').val();
+                const category = $('#category').val();
+                const gender = $('#gender').val();
+                const homeState = $('#home-state').val();
+                const collegeType = $('#college-type').val();
+                const collegeNames = $('#college-names').val() || [];
+                const branches = $('#branches').val() || [];
+                
+                if (!rank || !category || !gender || !collegeNames.length || !branches.length) {
+                    showAlert('Please fill in all required fields', 'error');
+                    return;
+                }
+                
+                // Show loading
+                $('#loading').show();
+                $('#results-container').hide();
+                
+                // Function to make the actual request
+                function makeRequest(seatFilter) {
+                $.ajax({
+                    url: '/predict_colleges',
+                    type: 'POST',
+                    contentType: 'application/json',
+                    data: JSON.stringify({
+                            rank: rank,
+                            category: category,
+                            gender: gender,
+                            home_state: homeState || 'AI',
+                            college_type: collegeType,
+                        college_names: collegeNames,
+                            branches: branches,
+                            seat_filter: seatFilter // Add seat filter to request
+                    }),
+                    success: function(results) {
+                            console.log('Results from backend:', results);
+                            
+                            // Store original results
+                            window.originalResults = results;
+                            window.allResults = results;
+                            
+                            // Show female seat toggle for female candidates
+                            if (gender === 'FEMALE' && seatFilter === 'all') {
+                                $('#female-seat-toggle').show();
+                                
+                                // Count seat types
+                                const femaleSeats = results.filter(r => r['Seat Type'] === 'Female Only').length;
+                                const neutralSeats = results.filter(r => r['Seat Type'] === 'Gender Neutral').length;
+                                console.log(`Seat counts: Female Only=${femaleSeats}, Gender Neutral=${neutralSeats}`);
+                            } else {
+                                $('#female-seat-toggle').hide();
+                            }
+                            
+                            // Display results
+                            displayResults(results, rank);
+                        $('#loading').hide();
+                            $('#results-container').show();
+                            
+                            // Scroll to results
+                            $('html, body').animate({
+                                scrollTop: $('#results-container').offset().top - 100
+                            }, 500);
+                    },
+                    error: function(error) {
+                            console.error('Error predicting colleges:', error);
+                            showAlert('Error predicting colleges. Please try again.', 'error');
+                            $('#loading').hide();
+                        }
+                    });
+                }
+                
+                // If female, show seat type selection popup
+                if (gender === 'FEMALE') {
+                    // Create seat selection popup if it doesn't exist
+                    if (!$('#seat-selection-popup').length) {
+                        $('body').append(`
+                            <div id="seat-selection-popup" class="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50">
+                                <div class="bg-white rounded-lg p-6 shadow-xl max-w-md w-full border border-pink-400">
+                                    <h3 class="text-xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-purple-500">Seat Type Selection</h3>
+                                    <p class="mb-4 text-gray-700">Female candidates are eligible for both Gender Neutral and Female-Only seats. Which seats would you like to view?</p>
+                                    <div class="flex flex-col space-y-2 mb-6">
+                                        <label class="inline-flex items-center p-3 rounded-lg border border-purple-300 bg-white hover:bg-gray-50 transition-all cursor-pointer">
+                                            <input type="radio" name="seat-popup-filter" value="all" class="form-radio h-4 w-4 text-purple-600" checked>
+                                            <span class="ml-2 font-medium text-gray-700">All Seats (Gender Neutral + Female-Only)</span>
+                                        </label>
+                                        <label class="inline-flex items-center p-3 rounded-lg border border-pink-300 bg-white hover:bg-gray-50 transition-all cursor-pointer">
+                                            <input type="radio" name="seat-popup-filter" value="female" class="form-radio h-4 w-4 text-pink-600">
+                                            <span class="ml-2 font-medium text-gray-700">Female-Only Seats</span>
+                                        </label>
+                                        <label class="inline-flex items-center p-3 rounded-lg border border-blue-300 bg-white hover:bg-gray-50 transition-all cursor-pointer">
+                                            <input type="radio" name="seat-popup-filter" value="neutral" class="form-radio h-4 w-4 text-blue-600">
+                                            <span class="ml-2 font-medium text-gray-700">Gender Neutral Seats</span>
+                                        </label>
+                                    </div>
+                                    <div class="flex justify-end">
+                                        <button id="seat-popup-continue" class="px-6 py-3 bg-gradient-to-r from-pink-500 to-purple-500 text-white font-bold rounded-lg hover:shadow-lg hover:translate-y-[-2px] transition-all">
+                                            Continue
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        `);
+                        
+                        // Handle continue button click
+                        $(document).on('click', '#seat-popup-continue', function() {
+                            const selectedFilter = $('input[name="seat-popup-filter"]:checked').val();
+                            $('#seat-selection-popup').remove();
+                            
+                            // Set the radio button in the main UI to match
+                            $(`input[name="seat-type-filter"][value="${selectedFilter}"]`).prop('checked', true);
+                            
+                            // Make the request with the selected filter
+                            makeRequest(selectedFilter);
+                        });
+                    } else {
+                        // Just show the popup if it already exists
+                        $('#seat-selection-popup').show();
+                    }
+                } else {
+                    // For male, just make the request with neutral filter
+                    makeRequest('neutral');
+                }
+            });
+
+            // Handle seat type toggle
+            $('input[name="seat-type-filter"]').on('change', function() {
+                const filterValue = $('input[name="seat-type-filter"]:checked').val();
+                console.log('Selected filter value:', filterValue);
+                
+                // Show loading
+                    $('#loading').show();
+                    
+                    // Make a new request with the selected filter
+                    $.ajax({
+                        url: '/predict_colleges',
+                        type: 'POST',
+                        contentType: 'application/json',
+                        data: JSON.stringify({
+                            rank: $('#rank').val(),
+                            category: $('#category').val(),
+                            gender: $('#gender').val(),
+                            home_state: $('#home-state').val() || 'AI',
+                            college_type: $('#college-type').val(),
+                            college_names: $('#college-names').val() || [],
+                            branches: $('#branches').val() || [],
+                            seat_filter: filterValue
+                        }),
+                        success: function(results) {
+                        console.log('Filtered results:', results);
+                            window.allResults = results;
+                            displayResults(results, $('#rank').val());
+                            $('#loading').hide();
+                        },
+                        error: function(error) {
+                            console.error('Error filtering colleges:', error);
+                        alert('Error filtering colleges. Please try again.');
+                        $('#loading').hide();
+                    }
+                });
+            });
+
+            // Display results
+            function displayResults(results, rank) {
+                // Show results container
+                $('#results-container').show();
+                
+                // Clear existing results
+                $('#results-body').empty();
+                
+                if (results.length === 0) {
+                    $('#results-info').html(`<p class="text-red-500">No colleges found matching your criteria</p>`);
+                    return;
+                }
+                
+                const gender = $('#gender').val();
+                const selectedFilter = $('input[name="seat-type-filter"]:checked').val();
+                
+                // Create collegesIn2023 set
+                const collegesIn2023 = new Set();
+                const collegesIn2024 = new Set();
+                
+                // Identify colleges in each year
+                results.forEach(result => {
+                    const collegeKey = `${result.College}|${result.Branch}`;
+                    if (result['Closing Rank 2023']) {
+                        collegesIn2023.add(collegeKey);
+                    }
+                    if (result['Closing Rank 2024']) {
+                        collegesIn2024.add(collegeKey);
+                    }
+                });
+                
+                // Filter out colleges that were in 2023 but not in 2024
+                const filteredResults = results.filter(result => {
+                    const collegeKey = `${result.College}|${result.Branch}`;
+                    return collegesIn2024.has(collegeKey);
+                });
+                
+                // For female candidates in "all" view, we want to group results by college and branch
+                if (gender === 'FEMALE' && selectedFilter === 'all') {
+                    // First, group results by college and branch
+                    const groupedResults = {};
+                    
+                    // Process each result
+                filteredResults.forEach(result => {
+                        const key = `${result.College}|${result.Branch}`;
+                        
+                        if (!groupedResults[key]) {
+                            // First time seeing this college-branch combo
+                            groupedResults[key] = {
+                                college: result.College,
+                                branch: result.Branch,
+                                quota: result.Quota,
+                                category: result.Category,
+                                closingRank2024: result['Closing Rank 2024'],
+                                closingRank2023: result['Closing Rank 2023'],
+                                probability: result.Probability,
+                                seatTypes: [result['Seat Type']],
+                                isNew: !collegesIn2023.has(key) && collegesIn2024.has(key)
+                            };
+                        } else if (!groupedResults[key].seatTypes.includes(result['Seat Type'])) {
+                            // Add the seat type if not already included
+                            groupedResults[key].seatTypes.push(result['Seat Type']);
+                            
+                            // Update closing ranks if needed - use the better rank (lower number)
+                            if (result['Closing Rank 2024'] && 
+                                (!groupedResults[key].closingRank2024 || 
+                                 parseInt(result['Closing Rank 2024']) > parseInt(groupedResults[key].closingRank2024))) {
+                                groupedResults[key].closingRank2024 = result['Closing Rank 2024'];
+                            }
+                            
+                            if (result['Closing Rank 2023'] && 
+                                (!groupedResults[key].closingRank2023 || 
+                                 parseInt(result['Closing Rank 2023']) > parseInt(groupedResults[key].closingRank2023))) {
+                                groupedResults[key].closingRank2023 = result['Closing Rank 2023'];
+                            }
+                            
+                            // Update probability if better
+                            const probOrder = {'Very High': 5, 'High': 4, 'Medium': 3, 'Low': 2, 'Very Low': 1};
+                            if (probOrder[result.Probability] > probOrder[groupedResults[key].probability]) {
+                                groupedResults[key].probability = result.Probability;
+                            }
+                        }
+                    });
+                    
+                    // Then display the grouped results
+                    let counter = 0;
+                    const groupedArray = Object.values(groupedResults);
+                    
+                    // Sort by probability and then by college name
+                    groupedArray.sort((a, b) => {
+                        const probOrder = {'Very High': 5, 'High': 4, 'Medium': 3, 'Low': 2, 'Very Low': 1};
+                        const probDiff = probOrder[b.probability] - probOrder[a.probability];
+                        if (probDiff !== 0) return probDiff;
+                        return a.college.localeCompare(b.college);
+                    });
+                    
+                    groupedArray.forEach((result) => {
+                        const seatTypeBadges = result.seatTypes.map(seatType => {
+                            if (seatType === 'Female Only') {
+                                return `<span class="seat-type-badge female-badge">Female Only</span>`;
+                            } else {
+                                return `<span class="seat-type-badge neutral-badge">Gender Neutral</span>`;
+                            }
+                        }).join(' ');
+                        
+                        // Create quota badge
+                        const quotaBadge = result.quota === 'AI' ? 
+                            `<span class="quota-badge quota-ai">All India</span>` : 
+                            `<span class="quota-badge quota-state">${result.quota}</span>`;
+                        
+                        // Add NEW badge if it's a new college-branch
+                        const newBadge = result.isNew ? '<span class="new-badge">NEW</span>' : '';
+                        
+                        $('#results-body').append(`
+                            <tr>
+                                <td class="px-6 py-2 whitespace-nowrap">${result.college} ${newBadge}</td>
+                                <td class="px-6 py-2 whitespace-nowrap">${result.branch}</td>
+                                <td class="px-6 py-2 whitespace-nowrap">${quotaBadge}</td>
+                                <td class="px-6 py-2 whitespace-nowrap">${result.closingRank2023 || 'N/A'}</td>
+                                <td class="px-6 py-2 whitespace-nowrap">${result.closingRank2024 || 'N/A'}</td>
+                                <td class="px-6 py-2 whitespace-nowrap">${seatTypeBadges}</td>
+                                <td class="px-6 py-2 whitespace-nowrap">
+                                    <span class="probability-badge ${result.probability.replace(/\s+/g, '-').toLowerCase()}">${result.probability}</span>
+                        </td>
+                            </tr>
+                        `);
+                        counter++;
+                    });
+                    
+                    // Update results count to reflect the number of unique college-branch combinations
+                    const uniqueCount = Object.keys(groupedResults).length;
+                    $('#results-info').html(`
+                        <p class="text-green-600">
+                            Found ${uniqueCount} potential college-branch combinations
+                        </p>
+                        <p class="text-blue-600 text-sm">
+                            These are unique entries. To see all female-only or neutral seat options separately, use the toggle buttons below the results table.
+                        </p>
+                    `);
+                } else {
+                    // Regular display for other views
+                    filteredResults.forEach(result => {
+                        const seatTypeBadge = result['Seat Type'] === 'Female Only' 
+                            ? `<span class="seat-type-badge female-badge">Female Only</span>`
+                            : `<span class="seat-type-badge neutral-badge">Gender Neutral</span>`;
+                        
+                        // Create quota badge
+                        const quotaBadge = result.Quota === 'AI' ? 
+                            `<span class="quota-badge quota-ai">All India</span>` : 
+                            `<span class="quota-badge quota-state">${result.Quota}</span>`;
+                        
+                        // Check if this is a new college-branch combination
+                        const collegeKey = `${result.College}|${result.Branch}`;
+                        const isNew = !collegesIn2023.has(collegeKey) && collegesIn2024.has(collegeKey);
+                        const newBadge = isNew ? '<span class="new-badge">NEW</span>' : '';
+                            
+                        $('#results-body').append(`
+                            <tr>
+                                <td class="px-6 py-2 whitespace-nowrap">${result.College} ${newBadge}</td>
+                                <td class="px-6 py-2 whitespace-nowrap">${result.Branch}</td>
+                                <td class="px-6 py-2 whitespace-nowrap">${quotaBadge}</td>
+                                <td class="px-6 py-2 whitespace-nowrap">${result['Closing Rank 2023'] || 'N/A'}</td>
+                                <td class="px-6 py-2 whitespace-nowrap">${result['Closing Rank 2024'] || 'N/A'}</td>
+                                <td class="px-6 py-2 whitespace-nowrap">${seatTypeBadge}</td>
+                                <td class="px-6 py-2 whitespace-nowrap">
+                                    <span class="probability-badge ${result.Probability.replace(/\s+/g, '-').toLowerCase()}">${result.Probability}</span>
+                                </td>
+                            </tr>
+                        `);
+                    });
+                    
+                    // Update results info
+                    $('#results-info').html(`<p class="text-green-600">Found ${filteredResults.length} potential colleges for you</p>`);
+                }
+                
+                // Add animation classes to rows
+                $('#results-body tr').each(function(index) {
+                    $(this).addClass('animate-fade-in');
+                    $(this).css('animation-delay', `${index * 50}ms`);
+                });
+                
+                // Scroll to results
+                $('html, body').animate({
+                    scrollTop: $('#results-container').offset().top - 100
+                }, 1000);
+            }
+
+            // Initial load
+            loadQuotas();
+            loadColleges();
+        });
+
+        // Show/hide female seat toggle based on gender
+        function updateFemaleSeatToggle() {
+            const gender = $('#gender').val();
+            const toggle = $('#female-seat-toggle');
+            
+            if (gender === 'FEMALE') {
+                toggle.slideDown(300);
+            } else {
+                toggle.slideUp(300);
+            }
+        }
+
+        // Add event listener for gender change
+        $('#gender').on('change', function() {
+            updateFemaleSeatToggle();
+        });
+
+        // Initial check for female seat toggle
+        $(document).ready(function() {
+            updateFemaleSeatToggle();
+        });
+    </script>
+</body>
+</html> 

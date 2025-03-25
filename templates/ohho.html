@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>College Predictor 2024</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+     <style>
+        /* Improved background and styling */
+        body {
+            background: linear-gradient(to right, #0f172a, #1e293b);
+            color: #e2e8f0;
+        }
+        
+        /* Checkbox styling */
+        .checkbox-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 8px;
+        }
+        
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .checkbox-item:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        .checkbox-item input {
+            margin-right: 6px;
+        }
+        
+        /* Table styling */
+        table {
+        border-collapse: collapse;
+        width: 100%;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        th {
+            background-color: #4f46e5;
+            color: white;
+            font-weight: bold;
+            padding: 12px;
+            text-align: left;
+        }
+        
+        td {
+            padding: 10px 12px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        tr:nth-child(even) {
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+        
+        tr:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Probability badges */
+        .probability-very-high {
+            background-color: #10B981;
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+        
+        .probability-high {
+            background-color: #6EE7B7;
+            color: black;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+        
+        .probability-medium {
+            background-color: #FBBF24;
+            color: black;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+        
+        .probability-low {
+            background-color: #F87171;
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+        
+        .probability-very-low {
+            background-color: #EF4444;
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+        
+        /* Loading spinner */
+        .loading {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            color: white;
+            flex-direction: column;
+        }
+        
+        .spinner {
+            border: 5px solid #f3f3f3;
+            border-top: 5px solid #3498db;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+            margin-bottom: 20px;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* Form styling */
+        input, select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+            transition: all 0.3s ease;
+        }
+        
+        input:focus, select:focus {
+            outline: none;
+            border-color: #4f46e5;
+            background-color: rgba(255, 255, 255, 0.15);
+        }
+        
+        input::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+        
+        select option {
+            background-color: #1e293b;
+            color: white;
+        }
+        
+        /* Button styling */
+        .submit-button {
+            background: linear-gradient(to right, #4f46e5, #7c3aed);
+            color: white;
+            font-weight: bold;
+            padding: 12px 24px;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            text-align: center;
+            margin-top: 16px;
+        }
+        
+        .submit-button:hover {
+            background: linear-gradient(to right, #4338ca, #6d28d9);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3);
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .form-container, .results-container {
+                padding: 16px;
+    }
+
+    th, td {
+        padding: 8px;
+                font-size: 14px;
+            }
+            
+            .checkbox-item {
+                padding: 4px 8px;
+                font-size: 14px;
+            }
+    }
+    </style>
+</head>
+<body>
+    <div id="loading" class="loading" style="display: none;">
+        <div class="spinner"></div>
+        <div>Processing your request...</div>
+    </div>
+
+    <header class="py-6 px-4 bg-gradient-to-r from-indigo-900 to-purple-900">
+        <div class="container mx-auto flex flex-wrap items-center justify-between">
+            <!-- Logo and Name -->
+            <a href="/" class="flex items-center space-x-2">
+                <img src="https://i.ibb.co/y42LjdW/p.png" class="w-12 h-12" alt="Logo">
+                <h1 class="text-2xl md:text-3xl font-extrabold text-white">Mahenju<span class="bg-blue-100 text-blue-800 text-xl md:text-2xl font-semibold px-2 py-0.5 rounded ml-1">Web</span></h1>
+            </a>
+            
+            <div class="mt-4 md:mt-0">
+                <h2 class="text-xl md:text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-yellow-400">JEE College Predictor 2023-2024</h2>
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <!-- Form Section -->
+            <div class="form-container bg-gray-800 bg-opacity-50 p-6 rounded-lg shadow-lg">
+                <h3 class="text-xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500">Enter Your Details</h3>
+                
+                <form id="predictorForm">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                        <div>
+                            <label class="block text-sm font-medium mb-2 text-transparent bg-clip-text bg-gradient-to-r from-red-400 to-orange-500">
+                                Your Rank
+                    </label>
+                            <input id="rank" type="number" placeholder="Enter Category Rank" required>
+                </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium mb-2 text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-yellow-500">
+                        Category
+                    </label>
+                            <select id="category" required>
+                                <option value="" disabled selected>Select Category</option>
+                                <option>OPEN</option>
+                                <option>OBC-NCL</option>
+                                <option>EWS</option>
+                                <option>SC</option>
+                                <option>ST</option>
+                                <option>OPEN-PWD</option>
+                                <option>OBC-PWD</option>
+                                <option>EWS-PWD</option>
+                                <option>SC-PWD</option>
+                        </select>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium mb-2 text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-green-500">
+                        Gender
+                    </label>
+                            <select id="gender" required>
+                                <option value="" disabled selected>Select Gender</option>
+                            <option>MALE</option>
+                            <option>FEMALE</option>
+                        </select>
+                </div>
+
+                        <div>
+                            <label class="block text-sm font-medium mb-2 text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-teal-500">
+        Home State
+    </label>
+                            <select id="hs" required>
+                                <option value="" disabled selected>Select Home State</option>
+            <option>Andhra Pradesh</option>
+            <option>Arunachal Pradesh</option>
+            <option>Assam</option>
+            <option>Bihar</option>
+                                <option>Chhattisgarh</option>
+            <option>Goa</option>
+            <option>Gujarat</option>
+            <option>Haryana</option>
+            <option>Himachal Pradesh</option>
+            <option>Jharkhand</option>
+            <option>Karnataka</option>
+            <option>Kerala</option>
+            <option>Madhya Pradesh</option>
+            <option>Maharashtra</option>
+            <option>Manipur</option>
+            <option>Meghalaya</option>
+            <option>Mizoram</option>
+            <option>Nagaland</option>
+            <option>Odisha</option>
+            <option>Punjab</option>
+            <option>Rajasthan</option>
+            <option>Sikkim</option>
+            <option>Tamil Nadu</option>
+            <option>Telangana</option>
+            <option>Tripura</option>
+            <option>Uttar Pradesh</option>
+            <option>Uttarakhand</option>
+            <option>West Bengal</option>
+                                <option>Andaman and Nicobar Islands</option>
+                                <option>Chandigarh</option>
+                                <option>Dadra and Nagar Haveli and Daman and Diu</option>
+                                <option>Delhi</option>
+                                <option>Jammu and Kashmir</option>
+                                <option>Ladakh</option>
+                                <option>Lakshadweep</option>
+                                <option>Puducherry</option>
+        </select>
+    </div>
+</div>
+
+                    <div class="mb-6">
+                        <label class="block text-sm font-medium mb-2 text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-blue-500">
+                            College Types
+                        </label>
+                        <div class="checkbox-container">
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="college" value="ALL" checked> All Colleges
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="college" value="NIT"> NITs
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="college" value="IIIT"> IIITs
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="college" value="GFTI"> GFTIs
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-6">
+                        <label class="block text-sm font-medium mb-2 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-500">
+                            Branches
+                        </label>
+                        <div class="checkbox-container">
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="branch" value="ALL" checked> All Branches
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="branch" value="Computer Science and Engineering"> CSE
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="branch" value="Electronics and Communication Engineering"> ECE
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="branch" value="Electrical Engineering"> EE
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="branch" value="Mechanical Engineering"> ME
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="branch" value="Civil Engineering"> CE
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="branch" value="Chemical Engineering"> ChE
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="branch" value="Biotechnology"> BT
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="branch" value="Data Science and AI"> DS & AI
+                            </label>
+                </div>
+            </div>
+                    
+                    <button type="submit" class="submit-button">
+                        Predict Colleges
+                    </button>
+        </form>
+    </div>
+            
+            <!-- Results Section -->
+            <div class="results-container bg-gray-800 bg-opacity-50 p-6 rounded-lg shadow-lg overflow-auto" style="max-height: 800px;">
+                <h3 class="text-xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-500">Results</h3>
+                
+                <div id="results" class="text-gray-300">
+                    <p class="text-center py-10">Enter your details and click "Predict Colleges" to see results.</p>
+                </div>
+                
+                <div id="probability-legend" class="mt-6 hidden">
+                    <h4 class="text-lg font-bold mb-2">Probability Legend:</h4>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="probability-very-high">Very High</span>
+                        <span class="probability-high">High</span>
+                        <span class="probability-medium">Medium</span>
+                        <span class="probability-low">Low</span>
+                        <span class="probability-very-low">Very Low</span>
+                    </div>
+                    <p class="mt-2 text-sm">Based on the difference between your rank and the closing rank.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+<script>
+        $(document).ready(function() {
+            // Handle checkbox logic for "All" options
+            $('input[value="ALL"]').change(function() {
+                const name = $(this).attr('name');
+                if ($(this).is(':checked')) {
+                    $(`input[name="${name}"]`).not(this).prop('checked', false);
+                }
+            });
+            
+            $('input[type="checkbox"]').not('[value="ALL"]').change(function() {
+                const name = $(this).attr('name');
+                if ($(this).is(':checked')) {
+                    $(`input[name="${name}"][value="ALL"]`).prop('checked', false);
+                }
+                
+                // If no checkboxes are selected, check the "ALL" option
+                if ($(`input[name="${name}"]:checked`).length === 0) {
+                    $(`input[name="${name}"][value="ALL"]`).prop('checked', true);
+                }
+            });
+            
+            // Form submission
+            $('#predictorForm').on('submit', function(e) {
+                e.preventDefault();
+                
+                // Show loading spinner
+                $('#loading').show();
+                
+                // Get selected colleges
+                const colleges = [];
+                $('input[name="college"]:checked').each(function() {
+                    colleges.push($(this).val());
+                });
+                
+                // Get selected branches
+                const branches = [];
+                $('input[name="branch"]:checked').each(function() {
+                    branches.push($(this).val());
+                });
+                
+                // Get form data
+                const formData = {
+                    rank: $('#rank').val(),
+                    category: $('#category').val(),
+                    gender: $('#gender').val(),
+                    hs: $('#hs').val(),
+                    colleges: colleges,
+                    branches: branches,
+                    collegenames: ["ALL"] // Always use ALL for college names
+                };
+                
+                // Send AJAX request
+                $.ajax({
+                    url: '/ohho/compare_data',
+                    type: 'POST',
+                    contentType: 'application/json',
+                    data: JSON.stringify(formData),
+                    success: function(response) {
+                        displayResults(response);
+                        $('#loading').hide();
+                        $('#probability-legend').removeClass('hidden');
+                    },
+                    error: function(error) {
+                        console.error('Error:', error);
+                        $('#results').html(`<p class="text-red-500">Error: ${error.responseJSON?.error || 'Failed to process request'}</p>`);
+                        $('#loading').hide();
+                    }
+                });
+            });
+            
+            // Function to display results
+            function displayResults(data) {
+                if (data.length === 0) {
+                    $('#results').html('<p class="text-center py-10">No matching colleges found for your criteria.</p>');
+                    return;
+                }
+                
+                let html = `
+                    <div class="overflow-x-auto">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>College</th>
+                                    <th>Branch</th>
+                                    <th>2023 CR</th>
+                                    <th>2024 CR</th>
+                                    <th>Probability</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                `;
+                
+                data.forEach(item => {
+                    const probabilityClass = `probability-${item.Probability.toLowerCase().replace(' ', '-')}`;
+                    
+                    html += `
+                        <tr>
+                            <td>${item.College}</td>
+                            <td>${item.Branch}</td>
+                            <td>${item['Closing Rank 2023'] || 'N/A'}</td>
+                            <td>${item['Closing Rank 2024'] || 'N/A'}</td>
+                            <td><span class="${probabilityClass}">${item.Probability}</span></td>
+                        </tr>
+                    `;
+                });
+                
+                html += `
+                            </tbody>
+                        </table>
+                    </div>
+                `;
+                
+                $('#results').html(html);
+            }
+        });
+</script>
+</body>
+</html>
